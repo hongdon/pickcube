@@ -126,5 +126,6 @@ app.post('/deletelecture',routes.deletelecture);
 app.post('/writereply',routes.writereply);
 app.post('/showallreply',routes.showallreply);
 http.createServer(app).listen(process.env.PORT || 3000, function(){
-   console.log('listening on', http.address().port);
+  	  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+
 });
