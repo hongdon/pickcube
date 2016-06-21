@@ -2,17 +2,21 @@
   "name": "Simulator",
   "version": "0.0.1",
   "private": true,
+ 
   "scripts": {
     "start": "node app.js",
-    },
-  "dependencies": { "connect-redis": "^3.0.2",
+    
+  },
+  "dependencies": {
+    "connect-redis": "^3.0.2",
     "cookie-parser": "^1.4.3",
     "express": "3.2.6",
     "express-session": "^1.13.0",
     "jade": "*"
+   
   },
-  "engines": {
-    "node": "4.4.4",
-    "npm": "2.15.1"
+  "engines":{
+	  "node":"4.4.4",
+	  "npm":"2.15.1"
   }
 }
