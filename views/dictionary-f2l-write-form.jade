@@ -1,0 +1,128 @@
+extends layout
+
+block content
+	div(class='section')
+		div(class='container')
+			div(class='row')
+				div(class='col-md-6')
+					table(style='float:left')
+						tbody
+							tr
+								td(id='1')
+								td(id='2')
+								td(id='3')
+							tr
+								td(id='4')
+								td(id='5')
+								td(id='6')
+							tr
+								td(id='7')
+								td(id='8')
+								td(id='9')
+					table(border='1', id='U',style='float:left')
+						tbody
+							tr
+								td(id='U1')
+								td(id='U2')
+								td(id='U3')
+							tr
+								td(id='U4')
+								td(bgcolor='yellow')
+								td(id='U6')
+							tr
+								td(id='U7')
+								td(id='U8')
+								td(id='U9')
+					table(style='float:left')
+						tbody
+							tr
+								td(id='1')
+								td(id='2')
+								td(id='3')
+							tr
+								td(id='4')
+								td(id='5')
+								td(id='6')
+							tr
+								td(id='7')
+								td(id='8')
+								td(id='9')
+					table(border='1',id='B')
+						tbody
+							tr
+								td(id='B1')
+								td(id='B2')
+								td(id='B3')
+							tr
+								td
+								td
+								td
+							tr
+								td
+								td
+								td
+					table(border='1', style='float:left',id='L')
+						tbody
+							tr
+								td(id='L1')
+								td(id='L2')
+								td(id='L3')
+							tr
+								td
+								td
+								td
+							tr
+								td
+								td
+								td
+							
+					table(border='1', style='float:left',id='F')
+						tbody
+							tr
+								td(id='F1')
+								td(id='F2')
+								td(id='F3')
+							tr
+								td(id='F4')
+								td(bgcolor='red')
+								td(bgcolor='red')
+							tr
+								td(id='F7')
+								td(bgcolor='red')
+								td(bgcolor='red')
+					table(border='1', style='float:left',id='R')
+						tbody
+							tr
+								td(id='R1')
+								td(id='R2')
+								td(id='R3')
+							tr
+								td(bgcolor='green')
+								td(bgcolor='green')
+								td(id='R6')
+							tr
+								td(bgcolor='green')
+								td(bgcolor='green')
+								td(id='R9')
+
+					
+		div(class='container')
+			div(class='row')
+				div(class='col-md-6')
+					input(type='button', value='red', class='btn btn-default', id='color', style='background-color:red')
+					input(type='button', value='green', class='btn btn-default', id='color', style='background-color:green')
+					input(type='button', value='white', class='btn btn-default', id='color', style='background-color:white')
+					a(class='btn btn-success', value='F2' id='setblackImage') defaultcube
+					input(type='button', value='search' class='btn btn-default', id='f2lsearch',style='background-color:white')
+					a(class='btn btn-success', value='F2' id='setblackImage' href='/writef2l') write
+				
+	script(src='/resources/makeCube.js', charset='utf-8')
+	//script(src='/resources/movingCube.js' charset='utf-8')
+	script(src='/resources/setView.js' charset='utf-8')
+	//script(src='/resources/movingController.js' charset='utf-8')
+	script(src='/resources/MakingCubeDiagram.js' charset='utf-8')
+	script(src='/resourcesCFOP/CFOPsetting.js' charset='utf-8')
+	//script(src='/resources/Parser.js' charset='utf-8')
+	script(src='/resourcesCFOP/f2lmain.js' charset='utf-8')
+	//script(src = '/resourcesCFOP/f2l-write.js' charset='utf-8')
+	

@@ -1,0 +1,39 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table{
+  left : 150px;
+      top : 78px;
+      border-spacing: 0px;
+      
+      }
+      
+      
+      td{
+      width : 35px;
+      height : 35px;
+      }
+tr#inputsctr{
+width : 450px;
+height : 50px;
+}
+      
+input#inputsc{
+border-color: cyan;   
+font-size: 1em;
+width : 450px;
+height : 50px;
+      
+      
+      }
+input#lecturetitle{
+font-size: 1em;
+width : 450px;
+height : 30px;
+}
