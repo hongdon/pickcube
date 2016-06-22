@@ -4,7 +4,8 @@ var Mongolian = require('mongolian')
 //,db=server.db('PICKTHECUBE');
 
 //if(process.env.MONGO_URL) {
-	  ,db = new Mongolian(process.env.MONGO_DB);
+	  ,db = new Mongolian("mongodb://heroku_4hps7b82:968lcl8ftptkj6cfq4q32egmtd@ds021434.mlab.com:21434/heroku_4hps7b82");
+	
 	//} else {
 	//  server = new Mongolian;
 	  
@@ -14,7 +15,7 @@ var users=db.collection('members')
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
-
+db.auth()
 
 var dao = module.exports={
 	/*	insertUser : function(req,res){
