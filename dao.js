@@ -14,7 +14,8 @@ var users=db.collection('members')
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
-evt = new EventEmitter();
+
+
 var dao = module.exports={
 	/*	insertUser : function(req,res){
 			
@@ -91,6 +92,7 @@ var dao = module.exports={
 				console.log('??????????????????fghfghfh?????????????');
 				console.log(result);
 				if(err){
+					//throw err;
 					evt.emit('logincomplete',err,false);
 				}
 				if(result){
@@ -111,7 +113,17 @@ var dao = module.exports={
 			
 			users.findOne({'$or':[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
 				if(err){
-					throw err;
+					users.insert({
+						email:data.email,
+						nickname:data.nickname,
+						password : data.password
+					},function(err,result){
+						if(err){
+							throw err;
+						}
+						
+						evt.emit('joinfinish',err,true);
+					});
 				}
 				if(result){
 					evt.emit('joinfinish',err,result);
