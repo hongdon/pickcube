@@ -1,14 +1,14 @@
 ﻿
 var Mongolian = require('mongolian')
-,server = new Mongolian
-,db=server.db('PICKTHECUBE');
+//,server = new Mongolian
+//,db=server.db('PICKTHECUBE');
 
-if(process.env.MONGO_URL) {
-	  db = new Mongolian(process.env.MONGO_URL);
-	} else {
-	  server = new Mongolian;
+//if(process.env.MONGO_URL) {
+	  ,db = new Mongolian('mongodb://hongdon:rjsgml8911@ds021434.mlab.com:21434/heroku_4hps7b82');
+	//} else {
+	//  server = new Mongolian;
 	  
-	}
+	//}
 var users=db.collection('members')
 ,session = require('express-session'),
 idchecked, nicknamechecked,
@@ -111,7 +111,6 @@ var dao = module.exports={
 			
 			
 			users.findOne({'$or':[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
-				console.log('asdfsag'+result)
 				if(err){
 					console.log(err)
 				}
