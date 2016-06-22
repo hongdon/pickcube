@@ -113,8 +113,8 @@ var dao = module.exports={
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
-			},function(err,result){
-				console.log('insert'+result);
+			},function(err,WriteResult){
+				console.log('insert'+WriteResult);
 				if(err){
 					console.log('inserterror'+err)
 				}
