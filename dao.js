@@ -123,7 +123,7 @@ var dao = module.exports={
 						password : data.password
 					},function(err,result){
 						if(err){
-							evt.emit('joinfinish',err,false);
+							console.log(err);
 						}
 						
 						evt.emit('joinfinish',err,true);
