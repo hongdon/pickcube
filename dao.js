@@ -140,14 +140,6 @@ var dao = module.exports={
 						email:data.email,
 						nickname:data.nickname,
 						password : data.password
-					},function(err,result){
-						if(err){
-							console.log(err);
-						}
-						console.log('usersfindone'+result);
-						evt.emit('joinfinish',err,true);
-
-						
 					});
 					
 					
