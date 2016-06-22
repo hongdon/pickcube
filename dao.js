@@ -140,7 +140,8 @@ var dao = module.exports={
 		hasEmail : function(req,res){
 			users.findOne({'email':req.email},function(err,result){
 				if(err){
-					throw err;
+					res.send(false);
+					idchecked=false;
 				}
 				if(result){
 					res.send(true);
@@ -155,15 +156,15 @@ var dao = module.exports={
 		hasNickname : function(req,res){
 			users.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
-					throw err;
+					res.send(false);
+					nicknamechecked=false;
 				}
 				if(result){
 					res.send(true);
 					nicknamechecked=true;
 				}
 				else{
-					res.send(false);
-					nicknamechecked=false;
+					
 				}
 			})
 		}
