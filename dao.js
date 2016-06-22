@@ -126,8 +126,10 @@ var dao = module.exports={
 						if(err){
 							console.log(err);
 						}
-						
-						evt.emit('joinfinish',err,true);
+						if(result){
+							evt.emit('joinfinish',err,true);
+
+						}
 					});
 					
 					
