@@ -89,13 +89,13 @@ var dao = module.exports={
 			return evt;
 		},
 		loginformcheck:function(data){
-			users.findOne({'email':data.email},function(err,result){
+			users.findOne({'$and':[{'email':data.email},{'password':data.password}]},function(err,post){
 				console.log('??????????????????fghfghfh?????????????');
 				console.log("gagsgfff"+result);
 				if(err){
 					console.log(err);
 				}
-				if(result){
+				if(post){
 					
 					evt.emit('logincomplete',err,result);
 					
