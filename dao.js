@@ -4,12 +4,13 @@ var Mongolian = require('mongolian')
 //,db=server.db('PICKTHECUBE');
 
 //if(process.env.MONGO_URL) {
-,db = new Mongolian("mongodb://hongdon:rjsgml8911@ds021434.mlab.com:21434/heroku_4hps7b82")
+,db = new Mongolian("mongodb://heroku_v07gqcbw:rjsgml8911@ds047812.mlab.com:47812/heroku_v07gqcbw")
 	
 	//} else {
 	//  server = new Mongolian;
-	db.auth('hongdon','rjsgml8911')  
+	//db.auth('hongdon','rjsgml8911')  
 	//}
+
 var users=db.collection('members')
 ,session = require('express-session'),
 idchecked, nicknamechecked,
