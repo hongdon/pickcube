@@ -118,7 +118,24 @@ var dao = module.exports={
 				if(result){
 					evt.emit('joinfinish',err,result);
 				}else{
-					users.insert({
+					users.findAndModify({
+						query : {email:data.target,nickname:data.nickname},
+						update:  {email:data.email,nickname:data.nickname,password:data.password },
+						upsert : true
+							
+						
+					},function(err,result){
+						if(err){
+							console.log(err);
+						}
+						console.log('usersfindone'+result);
+
+						if(result){
+							evt.emit('joinfinish',err,true);
+
+						}
+					})
+					/*users.insert({
 						email:data.email,
 						nickname:data.nickname,
 						password : data.password
@@ -132,7 +149,7 @@ var dao = module.exports={
 							evt.emit('joinfinish',err,true);
 
 						}
-					});
+					});*/
 					
 					
 				}
