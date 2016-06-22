@@ -1,11 +1,19 @@
-
+﻿
 var Mongolian = require('mongolian')
 ,server = new Mongolian
-,db=server.db('PICKTHECUBE')
-,users=db.collection('members')
+,db=server.db('PICKTHECUBE');
+
+if(process.env.MONGO_URL) {
+	  db = new Mongolian(process.env.MONGO_URL);
+	} else {
+	  server = new Mongolian;
+	  
+	}
+var users=db.collection('members')
 ,session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
+evt = new EventEmitter();
 evt = new EventEmitter();
 var dao = module.exports={
 	/*	insertUser : function(req,res){
@@ -83,7 +91,7 @@ var dao = module.exports={
 				console.log('??????????????????fghfghfh?????????????');
 				console.log(result);
 				if(err){
-					throw err;
+					evt.emit('logincomplete',err,false);
 				}
 				if(result){
 					
