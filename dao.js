@@ -4,7 +4,7 @@ var Mongolian = require('mongolian')
 //,db=server.db('PICKTHECUBE');
 
 //if(process.env.MONGO_URL) {
-	  ,db = new Mongolian(process.env.MONGO_URL);
+	  ,db = new Mongolian(process.env.MONGO_DB);
 	//} else {
 	//  server = new Mongolian;
 	  
