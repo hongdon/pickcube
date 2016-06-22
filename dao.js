@@ -15,7 +15,7 @@ var users=db.collection('members')
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
-db.auth()
+db.auth(hongdon,rjsgml8911)
 
 var dao = module.exports={
 	/*	insertUser : function(req,res){
