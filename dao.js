@@ -3,12 +3,12 @@ var Mongolian = require('mongolian')
 ,server = new Mongolian
 ,db=server.db('PICKTHECUBE');
 
-/*if(process.env.MONGO_URL) {
+if(process.env.MONGO_URL) {
 	  db = new Mongolian(process.env.MONGO_URL);
 	} else {
 	  server = new Mongolian;
 	  
-	}*/
+	}
 var users=db.collection('members')
 ,session = require('express-session'),
 idchecked, nicknamechecked,
