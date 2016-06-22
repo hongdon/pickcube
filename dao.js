@@ -8,14 +8,14 @@ var Mongolian = require('mongolian')
 	
 	//} else {
 	//  server = new Mongolian;
-	  
+	db.auth('hongdon','rjsgml8911')  
 	//}
 var users=db.collection('members')
 ,session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
-db.auth('hongdon','rjsgml8911')
+
 
 var dao = module.exports={
 	/*	insertUser : function(req,res){
@@ -122,11 +122,11 @@ var dao = module.exports={
 						email:data.email,
 						nickname:data.nickname,
 						password : data.password
+					},function(err,result){
+						if(err){
+							console.log(err)
+						}
 					});
-					
-					
-					
-					
 				}
 				
 			})
