@@ -1,6 +1,7 @@
-var Mongolian = require('mongolian')
-,server = new Mongolian
-,db=server.db('PICKTHECUBE')
+﻿var Mongolian = require('mongolian')
+//,server = new Mongolian
+//,db=server.db('PICKTHECUBE')
+,db = new Mongolian("mongodb://heroku_4hps7b82:968lcl8ftptkj6cfq4q32egmtd@ds021434.mlab.com:21434/heroku_4hps7b82")
 ,lecture=db.collection('lecture')
 ,reply =db.collection('replylecture')
 
