@@ -113,7 +113,7 @@ var dao = module.exports={
 			
 			users.findOne({'$or':[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
 				if(err){
-					console.log(err)
+					console.log('joinformerror'+err)
 				}else if(result){
 					evt.emit('joinfinish',err,result);
 				}else{
