@@ -90,7 +90,7 @@ var dao = module.exports={
 		loginformcheck:function(data){
 			users.findOne({'$and':[{'email':data.email},{'password':data.password}]},function(err,result){
 				console.log('??????????????????fghfghfh?????????????');
-				console.log(result);
+				console.log("gagsgfff"+result);
 				if(err){
 					console.log(err);
 				}
