@@ -1,4 +1,4 @@
-
+﻿
 /*
  * GET home page.
  */
@@ -30,7 +30,7 @@ exports.join = function(req,res){
 	var resultquery=dao.joinformcheck(data);
 	
 	resultquery.on('joinfinish',function(err,result){
-		
+		console.log('joinfinish'+result);
 		if(result===true){
 			var sess = req.session
 			sess.email = req.body.email;
