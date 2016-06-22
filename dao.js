@@ -118,7 +118,7 @@ var dao = module.exports={
 				if(err){
 					console.log('inserterror'+err)
 				}
-				evt.emit('joinfinish',err,true);
+				evt.emit('joinfinish',true);
 			});
 			
 			return evt;
