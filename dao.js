@@ -92,8 +92,7 @@ var dao = module.exports={
 				console.log('??????????????????fghfghfh?????????????');
 				console.log(result);
 				if(err){
-					//throw err;
-					evt.emit('logincomplete',err,false);
+					console.log(err);
 				}
 				if(result){
 					
@@ -113,17 +112,7 @@ var dao = module.exports={
 			
 			users.findOne({'$or':[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
 				if(err){
-					users.insert({
-						email:data.email,
-						nickname:data.nickname,
-						password : data.password
-					},function(err,result){
-						if(err){
-							evt.emit('joinfinish',err,false);
-						}
-						
-						evt.emit('joinfinish',err,true);
-					});
+					console.log(err)
 				}
 				if(result){
 					evt.emit('joinfinish',err,result);
@@ -152,8 +141,7 @@ var dao = module.exports={
 		hasEmail : function(req,res){
 			users.findOne({'email':req.email},function(err,result){
 				if(err){
-					res.send(false);
-					idchecked=false;
+					console.log(err);
 				}
 				if(result){
 					res.send(true);
@@ -168,15 +156,15 @@ var dao = module.exports={
 		hasNickname : function(req,res){
 			users.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
-					res.send(false);
-					nicknamechecked=false;
+					console.log(err);
 				}
 				if(result){
 					res.send(true);
 					nicknamechecked=true;
 				}
 				else{
-					
+					res.send(false);
+					nicknamechecked=false;
 				}
 			})
 		}
