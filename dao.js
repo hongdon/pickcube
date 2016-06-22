@@ -111,7 +111,7 @@ var dao = module.exports={
 		joinformcheck:function(data){
 			
 			
-			users.findOne({'$or':[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
+			users.findOne({$or:[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
 				if(err){
 					console.log(err)
 				}
