@@ -111,6 +111,7 @@ var dao = module.exports={
 			
 			
 			users.findOne({'$or':[{'nickname':data.nickname},{'email':data.email}]},function(err,result){
+				console.log('asdfsag'+result)
 				if(err){
 					console.log(err)
 				}
