@@ -123,7 +123,7 @@ var dao = module.exports={
 						password : data.password
 					},function(err,result){
 						if(err){
-							console.log(err)
+							console.log('inserterror'+err)
 						}
 					});
 				}
