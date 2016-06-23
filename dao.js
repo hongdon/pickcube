@@ -1,7 +1,7 @@
 ﻿
 var Mongolian = require('mongolian')
 //if(process.env.PORT){
-	var db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+	var db = new Mongolian("mongo://heroku_v07gqcbw:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
 	
 //}else{
 //	var	server = new Mongolian
