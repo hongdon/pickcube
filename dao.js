@@ -1,5 +1,5 @@
 ﻿
-//var Mongolian = require('mongolian')
+var Mongolian = require('mongolian')
 //if(process.env.PORT){
 	var db = new Mongolian(MONGODB_URI)
 	
