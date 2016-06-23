@@ -1,7 +1,7 @@
 ﻿var Mongolian = require('mongolian')
-//,server = new Mongolian
-//,db=server.db('PICKTHECUBE')
-,db = new Mongolian("mongodb://heroku_4hps7b82:968lcl8ftptkj6cfq4q32egmtd@ds021434.mlab.com:21434/heroku_4hps7b82")
+,server = new Mongolian
+,db=server.db('PICKTHECUBE')
+
 ,lecture=db.collection('lecture')
 ,reply =db.collection('replylecture')
 
@@ -22,6 +22,7 @@ var daolecture = module.exports = {
 			unrecommend :0
 			
 		},function(err,result){
+			
 			if(err){
 				throw err;
 			}

@@ -1,15 +1,11 @@
 ﻿
 var Mongolian = require('mongolian')
-//,server = new Mongolian
-//,db=server.db('PICKTHECUBE');
-
-//if(process.env.MONGO_URL) {
-,db = new Mongolian("mongodb://heroku_v07gqcbw:rjsgml8911@ds047812.mlab.com:47812/heroku_v07gqcbw")
-	
-	//} else {
-	//  server = new Mongolian;
-	//db.auth('hongdon','rjsgml8911')  
-	//}
+if(process.env.PORT){
+	var db = new Mongolian('mongodb://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube')
+}else{
+	var server = new Mongolian
+	var db=server.db('PICKTHECUBE')
+}
 
 var users=db.collection('members')
 ,session = require('express-session'),
@@ -92,13 +88,13 @@ var dao = module.exports={
 		loginformcheck:function(data){
 			users.findOne({'$and':[{'email':data.email},{'password':data.password}]},function(err,post){
 				console.log('??????????????????fghfghfh?????????????');
-				console.log("gagsgfff"+result);
+				//console.log("gagsgfff"+result);
 				if(err){
 					console.log(err);
 				}
 				if(post){
 					
-					evt.emit('logincomplete',err,result);
+					evt.emit('logincomplete',err,post);
 					
 				}else{
 					
