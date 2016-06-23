@@ -1,8 +1,9 @@
 ﻿
 var Mongolian = require('mongolian')
 //if(process.env.PORT){
+	var server = new Mongolian("ds021751.mlab.com:21751")
 	var db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
-	db.auth(hongdon, rjsgml8911)
+	db.auth('hongdon', 'rjsgml8911')
 
 //}else{
 //	var	server = new Mongolian
