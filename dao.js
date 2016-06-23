@@ -1,12 +1,12 @@
 ﻿
 var Mongolian = require('mongolian')
-if(process.env.PORT){
+//if(process.env.PORT){
 	var db = new Mongolian(process.env.MONGODB_URI)
 	
-}else{
-	var	server = new Mongolian
-	var db=server.db('PICKTHECUBE')
-}
+//}else{
+//	var	server = new Mongolian
+//	var db=server.db('PICKTHECUBE')
+//}
 
 var users=db.collection('members')
 ,session = require('express-session'),
