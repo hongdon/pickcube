@@ -2,8 +2,9 @@
 var Mongolian = require('mongolian')
 if(process.env.PORT){
 	var db = new Mongolian('mongodb://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube')
+	db.auth("hongdon","rjsgml8911")
 }else{
-	var server = new Mongolian
+	var	server = new Mongolian
 	var db=server.db('PICKTHECUBE')
 }
 
@@ -12,7 +13,7 @@ var users=db.collection('members')
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
-
+console.log("MEMBERS"+users);
 
 var dao = module.exports={
 	/*	insertUser : function(req,res){
@@ -110,8 +111,8 @@ var dao = module.exports={
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
-			},function(err,result){
-				console.log('insert'+result);
+			},function(err,WriteResult){
+				console.log('insert'+WriteResult);
 				if(err){
 					console.log('inserterror'+err)
 				}
