@@ -1,7 +1,7 @@
 ﻿
 var Mongolian = require('mongolian')
 if(process.env.PORT){
-	var db = new Mongolian('mongodb://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube')
+	var db = new Mongolian(process.env.MONGODB_URI)
 	
 }else{
 	var	server = new Mongolian
