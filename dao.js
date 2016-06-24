@@ -121,7 +121,11 @@ var dao = module.exports={
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
-			Data.save({
+			var newData = new data();
+			newData.email =data.email;
+			newData.nickname = data.nickname;
+			newData.password = data.password;
+			/*Data.save({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password},function(err,result){
@@ -131,8 +135,13 @@ var dao = module.exports={
 				}
 				evt.emit('joinfinish',err,true);
 				
-			});
-			
+			});*/
+			newData.save(function(err,result){
+				if(err){
+					console.log(err)
+				}
+				evt.emit('joinfinish',err,true);
+			})
 			return evt;
 			
 			
