@@ -15,7 +15,7 @@ db.once("open",function () {
 		name : String,
 		nickname : String,
 		password : String,
-		Joindate : { type: Date.now  }
+		Joindate : Date  
 	})	
 	var Data = mongoose.model('members',datsSchema);
 	
