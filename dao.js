@@ -17,7 +17,7 @@ db.once("open",function () {
 		password : String,
 		Joindate : Date  
 	})	
-	var Data = mongoose.model('members',datSchema);
+	var Data = mongoose.model('members',dataSchema);
 	
 //var users = db.collection('members')
 var session = require('express-session'),
