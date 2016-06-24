@@ -121,7 +121,7 @@ var dao = module.exports={
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
-			Data.insert({
+			Data.save({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password},function(err,result){
