@@ -1,17 +1,24 @@
 ﻿
 var Mongolian = require('mongolian')
 //if(process.env.PORT){
-	//var server = new Mongolian("ds021751.mlab.com:21751")
-	db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
-	db.auth('hongdon', 'rjsgml8911')
+	var server = new Mongolian("ds021751.mlab.com:21751")
+server.auth("heroku_v07gqcbw", "rjsgml8911", function(err){
+	if(err){
+		console.log(err)
+	}
+	var db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+	,users =db.collection('members')
+})
+	
+	//db.auth('hongdon', 'rjsgml8911')
 	
 //}else{
 //	var	server = new Mongolian
 //	var db=server.db('PICKTHECUBE')
 //}
 
-var users=db.collection('members')
-,session = require('express-session'),
+//var users=db.collection('members')
+var session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
@@ -110,6 +117,7 @@ var dao = module.exports={
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
+			db.c
 			users.insert({
 				email:data.email,
 				nickname:data.nickname,
