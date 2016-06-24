@@ -9,16 +9,17 @@ db.once("open",function () {
 	db.on("error",function (err) {
 	  console.log("DB ERROR :", err);
 	});
+	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
-	var dataSchema = mongoose.Schema({
+	var dataSchema = new Schema({
 		name : String,
 		nickname : String,
 		password : String,
-		Joindate : Date
+		Joindate : { type: Date.now  }
 	})	
 	var Data = mongoose.model('members',datsSchema);
 	
-var users = db.collection('members')
+//var users = db.collection('members')
 var session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
