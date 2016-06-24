@@ -1,7 +1,7 @@
 ﻿
 var Mongolian = require('mongolian')
 
-	var db = new Mongolian(process.env.MONGO_DB)
+	var db = new Mongolian(process.env.MONGODB_URI)
 	
 var users = db.collection('members')
 var session = require('express-session'),
