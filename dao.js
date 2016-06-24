@@ -2,7 +2,7 @@
 var Mongolian = require('mongolian')
 
 	var db = new Mongolian(process.env.MONGO_DB)
-	,users =db.members
+	,users =db.collection('members')
 
 var session = require('express-session'),
 idchecked, nicknamechecked,
