@@ -130,6 +130,8 @@ var dao = module.exports={
 			users.findOne({'email':req.email},function(err,result){
 				if(err){
 					console.log('haseamil'+result)
+					res.send(true);
+					idchecked=true;	
 					console.log(err);
 				}else if(result===undefined){
 					res.send(true);
@@ -145,6 +147,8 @@ var dao = module.exports={
 			users.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
 					console.log(err);
+					res.send(true);
+					nicknamechecked=true;
 				}else if(result===undefined){
 					res.send(true);
 					nicknamechecked=true;
