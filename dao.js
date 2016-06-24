@@ -116,7 +116,7 @@ var dao = module.exports={
 			
 				
 			});
-			evt.emit('joinfinish',err,true);
+			evt.emit('joinfinish',true);
 			return evt;
 			
 			
