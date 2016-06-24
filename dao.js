@@ -121,7 +121,7 @@ var dao = module.exports={
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
-			members.insert({
+			Data.insert({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password},function(err,result){
@@ -139,7 +139,7 @@ var dao = module.exports={
 			
 		},
 		hasEmail : function(req,res){
-			members.findOne({email:req.email},function(err,result){
+			Data.findOne({email:req.email},function(err,result){
 				if(err){
 					console.log('haseamil'+result)
 					res.send(false);
@@ -156,7 +156,7 @@ var dao = module.exports={
 			});
 		},
 		hasNickname : function(req,res){
-			members.findOne({nickname:req.nickname},function(err,result){
+			Data.findOne({nickname:req.nickname},function(err,result){
 				if(err){
 					res.send(false);
 					nicknamechecked=false;
