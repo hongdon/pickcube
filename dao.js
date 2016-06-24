@@ -113,10 +113,14 @@ var dao = module.exports={
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
-			
-				
+			},function(err,WriteResult){
+				console.log('insert'+WriteResult);
+				if(err){
+					console.log('inserterror'+err)
+				}
+				evt.emit('joinfinish',err,true);
 			});
-			evt.emit('joinfinish',true);
+			
 			return evt;
 			
 			
@@ -142,9 +146,9 @@ var dao = module.exports={
 		hasNickname : function(req,res){
 			users.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
-					console.log(err);
 					res.send(false);
 					nicknamechecked=false;
+					nicknamechecked=true;
 				}else if(result===undefined){
 					res.send(true);
 					nicknamechecked=true;
