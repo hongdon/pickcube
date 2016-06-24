@@ -131,7 +131,7 @@ var dao = module.exports={
 				if(err){
 					console.log('haseamil'+result)
 					console.log(err);
-				}else if(result){
+				}else if(result===undefined){
 					res.send(true);
 					idchecked=true;	
 				}
@@ -145,7 +145,7 @@ var dao = module.exports={
 			users.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
 					console.log(err);
-				}else if(result){
+				}else if(result===undefined){
 					res.send(true);
 					nicknamechecked=true;
 				}
