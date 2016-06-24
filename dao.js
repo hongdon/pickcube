@@ -1,7 +1,7 @@
 ﻿
 var Mongolian = require('mongolian')
 
-	var db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+	var db = new Mongolian(MONGO_DB)
 
 var users=db.collection('members')
 var session = require('express-session'),
