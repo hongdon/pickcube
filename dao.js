@@ -121,7 +121,7 @@ var dao = module.exports={
 					console.log('inserterror'+err)
 				}
 				evt.emit('joinfinish',err,true);
-				console.log('insert 콜백')
+				
 			});
 			
 			return evt;
