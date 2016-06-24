@@ -33,9 +33,7 @@ exports.join = function(req,res){
 		if(err){
 			console.log('joinfinisherror'+err)
 			
-		}
-		
-		if(result===true){
+		}else if(result===true){
 			var sess = req.session
 			sess.email = req.body.email;
 			sess.logined = true;
