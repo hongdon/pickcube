@@ -24,12 +24,13 @@ exports.wiki = function(req,res){
 	
 }
 exports.join = function(req,res){
-	console.log(req.body);
-	console.log('joinsession'+req.session)
+	//console.log(req.body);
+	//console.log('joinsession'+req.session)
 	var data ={nickname : req.body.nickname	,email: req.body.email,password:req.body.password}
 	//var resultquery=dao.joinformcheck(data);
 	
 	dao.joinformcheck(data).on('joinfinish',function(err,result){
+		console.log('join 콜백')
 		if(err){
 			console.log('joinfinisherror'+err)
 			
