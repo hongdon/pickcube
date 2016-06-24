@@ -113,9 +113,7 @@ var dao = module.exports={
 			users.insert({
 				email:data.email,
 				nickname:data.nickname,
-				password : data.password
-				
-			},function(err,result){
+				password : data.password},function(err,result){
 				console.log('insert'+result);
 				if(err){
 					console.log('inserterror'+err)
