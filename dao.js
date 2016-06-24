@@ -24,7 +24,7 @@ var session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
-console.log("MEMBERS"+db);
+//console.log("MEMBERS"+db);
 
 var dao = module.exports={
 	/*	insertUser : function(req,res){
@@ -139,7 +139,7 @@ var dao = module.exports={
 			
 		},
 		hasEmail : function(req,res){
-			members.findOne({'email':req.email},function(err,result){
+			members.findOne({email:req.email},function(err,result){
 				if(err){
 					console.log('haseamil'+result)
 					res.send(false);
@@ -156,7 +156,7 @@ var dao = module.exports={
 			});
 		},
 		hasNickname : function(req,res){
-			members.findOne({'nickname':req.nickname},function(err,result){
+			members.findOne({nickname:req.nickname},function(err,result){
 				if(err){
 					res.send(false);
 					nicknamechecked=false;
