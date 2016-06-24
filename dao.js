@@ -113,14 +113,10 @@ var dao = module.exports={
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
-			},function(err,WriteResult){
-				console.log('insert'+WriteResult);
-				if(err){
-					console.log('inserterror'+err)
-				}
-				evt.emit('joinfinish',err,true);
-			});
 			
+				
+			});
+			evt.emit('joinfinish',err,true);
 			return evt;
 			
 			
