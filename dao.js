@@ -1,26 +1,9 @@
 ﻿
 var Mongolian = require('mongolian')
-//if(process.env.PORT){
-//var server = new Mongolian("ds021751.mlab.com:21751")
 
-//var db = server.db('pickthecube');
-
-//server.auth("heroku_v07gqcbw", "rjsgml8911", function(err){
-//	if(err){
-//		console.log(err)
-//	}
 	var db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
-	,users =db.membres
-//})
-	
-	//db.auth('hongdon', 'rjsgml8911')
-	
-//}else{
-//	var	server = new Mongolian
-//	var db=server.db('PICKTHECUBE')
-//}
 
-//var users=db.collection('members')
+var users=db.collection('members')
 var session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
