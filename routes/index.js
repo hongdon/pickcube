@@ -27,9 +27,9 @@ exports.join = function(req,res){
 	console.log(req.body);
 	console.log('joinsession'+req.session)
 	var data ={nickname : req.body.nickname	,email: req.body.email,password:req.body.password}
-	var resultquery=dao.joinformcheck(data);
+	//var resultquery=dao.joinformcheck(data);
 	
-	resultquery.on('joinfinish',function(err,result){
+	dao.joinformchect(data).on('joinfinish',function(err,result){
 		if(err){
 			console.log('joinfinisherror'+err)
 			
