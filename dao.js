@@ -109,7 +109,7 @@ var dao = module.exports={
 			return evt;
 		},
 		joinformcheck:function(data){
-			db.members.insert({
+			users.insert({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
@@ -130,8 +130,7 @@ var dao = module.exports={
 			users.findOne({'email':req.email},function(err,result){
 				if(err){
 					console.log(err);
-				}
-				if(result){
+				}else if(result){
 					res.send(true);
 					idchecked=true;	
 				}
@@ -145,8 +144,7 @@ var dao = module.exports={
 			users.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
 					console.log(err);
-				}
-				if(result){
+				}else if(result){
 					res.send(true);
 					nicknamechecked=true;
 				}
