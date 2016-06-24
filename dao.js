@@ -1,10 +1,10 @@
 ﻿
 var Mongolian = require('mongolian')
 //if(process.env.PORT){
-	var server = new Mongolian("ds021751.mlab.com:21751")
-	var db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+	//var server = new Mongolian("ds021751.mlab.com:21751")
+	db = new Mongolian("mongo://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
 	db.auth('hongdon', 'rjsgml8911')
-
+	
 //}else{
 //	var	server = new Mongolian
 //	var db=server.db('PICKTHECUBE')
@@ -109,7 +109,7 @@ var dao = module.exports={
 			return evt;
 		},
 		joinformcheck:function(data){
-			users.insert({
+			db.members.insert({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
