@@ -109,10 +109,12 @@ var dao = module.exports={
 			return evt;
 		},
 		joinformcheck:function(data){
+			console.log("계속 도나?")
 			users.insert({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password
+				
 			},function(err,WriteResult){
 				console.log('insert'+WriteResult);
 				if(err){
