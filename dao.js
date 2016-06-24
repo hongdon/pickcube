@@ -1,7 +1,22 @@
 ﻿
-var Mongolian = require('mongolian')
-
-	var db = new Mongolian(process.env.MONGODB_URI)
+//var Mongolian = require('mongolian')
+var mongoose = require('mongoose')
+mongoose.connect("mongodb://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+var db = mongoose.connection;
+db.once("open",function () {
+	  console.log("DB connected!");
+	});
+	db.on("error",function (err) {
+	  console.log("DB ERROR :", err);
+	});
+	//var db = new Mongolian(process.env.MONGODB_URI)
+	var dataSchema = mongoose.Schema({
+		name : String,
+		nickname : String,
+		password : String,
+		Joindate : Date
+	})	
+	var Data = mongoose.model('members',datsSchema);
 	
 var users = db.collection('members')
 var session = require('express-session'),
@@ -30,8 +45,10 @@ var dao = module.exports={
 			
 			return evt;
 		},*/
+		
 		deleteinfo : function(data){
 			users.remove({'email':data.target},
+					
 				/*{
 			     justOne: true,
 			    
@@ -103,8 +120,7 @@ var dao = module.exports={
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
-			db.c
-			users.insert({
+			members.insert({
 				email:data.email,
 				nickname:data.nickname,
 				password : data.password},function(err,result){
@@ -122,7 +138,7 @@ var dao = module.exports={
 			
 		},
 		hasEmail : function(req,res){
-			users.findOne({'email':req.email},function(err,result){
+			members.findOne({'email':req.email},function(err,result){
 				if(err){
 					console.log('haseamil'+result)
 					res.send(false);
@@ -139,7 +155,7 @@ var dao = module.exports={
 			});
 		},
 		hasNickname : function(req,res){
-			users.findOne({'nickname':req.nickname},function(err,result){
+			members.findOne({'nickname':req.nickname},function(err,result){
 				if(err){
 					res.send(false);
 					nicknamechecked=false;
