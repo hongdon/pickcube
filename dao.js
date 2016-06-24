@@ -129,6 +129,7 @@ var dao = module.exports={
 		hasEmail : function(req,res){
 			users.findOne({'email':req.email},function(err,result){
 				if(err){
+					console.log('haseamil'+result)
 					console.log(err);
 				}else if(result){
 					res.send(true);
