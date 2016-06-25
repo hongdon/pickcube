@@ -22,7 +22,7 @@ db.once("open",function () {
 		date : Date
 		
 	})	
-	var f2ldic = mongoose.model('f2ldics',dataSchema);
+	var f2ldic = mongoose.model('f2ldic',dataSchema);
 	var oridic = mongoose.model('oridic',dataSchema);
 	var perdic = mongoose.model('perdic',dataSchema);
 /*var usersf=db.collection('cubeobjf2l')
@@ -43,6 +43,7 @@ var daoCFOP = module.exports={
 			newData.moves = data.moves,
 			newData.view = 0,
 			newData.recommend =0,
+			newData.comment = data.comment,
 			newData.nickname = req.session.nickname
 			
 			newData.save(function(err,result){
