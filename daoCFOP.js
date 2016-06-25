@@ -157,9 +157,6 @@ var daoCFOP = module.exports={
 						
 					}
 					res.send({result : cursor, totpagenum : totalpage})
-				}else{
-					res.send({result : false, totpagenum : totalpage})
-
 				}
 			})
 			
