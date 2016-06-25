@@ -1,10 +1,34 @@
-var Mongolian = require('mongolian')
-,server = new Mongolian
-,db=server.db('PICKTHECUBE')
-,usersf=db.collection('cubeobjf2l')
+﻿//var Mongolian = require('mongolian')
+//,server = new Mongolian
+//,db=server.db('PICKTHECUBE')
+var mongoose = require('mongoose')
+mongoose.connect("mongodb://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+var db = mongoose.connection;
+db.once("open",function () {
+	  console.log("DB connected!");
+	});
+	db.on("error",function (err) {
+	  console.log("DB ERROR :", err);
+	});
+	var Schema = mongoose.Schema
+	//var db = new Mongolian(process.env.MONGODB_URI)
+	var dataSchema = new Schema({
+		cubeobj : Object,
+		moves : String,
+		view : Number,
+		recommend :Number,
+		comment : String,
+		nickname : String,
+		date : Date
+		
+	})	
+	var f2ldic = mongoose.model('f2ldic',dataSchema);
+	var oridic = mongoose.model('oridic',dataSchema);
+	var perdic = mongoose.model('perdic',dataSchema);
+/*var usersf=db.collection('cubeobjf2l')
 ,userso=db.collection('cubeobjorientation')
-,usersp=db.collection('cubeobjpermutation')
-,session = require('express-session'),
+,usersp=db.collection('cubeobjpermutation')*/
+var session = require('express-session'),
 idchecked, nicknamechecked,
 EventEmitter=require('events').EventEmitter,
 evt = new EventEmitter();
@@ -14,7 +38,23 @@ var daoCFOP = module.exports={
 		writef2l :function(data,req,res){
 			console.log('WRITTTTTE!')
 			console.log(data.cubeObj)
-			usersf.insert({
+			var newData = new f2ldic();
+			newData.cubeobj = data.cubeobj,
+			newData.moves = data.moves,
+			newData.view = 0,
+			newData.recommend =0,
+			newData.nickname = req.session.nickname
+			
+			newData.save(function(err,result){
+				if(err){
+					throw err;
+				}
+				
+				if(result){
+				res.send(true);
+				}
+			})
+			/*usersf.insert({
 				cubeobj : data.cubeobj,
 				moves : data.moves,
 				view :0,
@@ -31,7 +71,7 @@ var daoCFOP = module.exports={
 				if(result){
 				res.send(true);
 				}
-			})
+			})*/
 			
 			//return evt;
 		},
@@ -87,12 +127,12 @@ var daoCFOP = module.exports={
 			console.log('daoCFOP!')
 			console.log(data.cubeObj); 
 			var totalpage;
-			usersf.find({'cubeobj':data.cubeObj}).count(function(err,cursor){
+			f2ldic.find({'cubeobj':data.cubeObj}).count(function(err,cursor){
 				console.log('asfsafsdfsadfsdgsadg');
 				console.log(cursor);
 				totalpage = cursor;
 			})
-			usersf.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
+			f2ldic.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
 				if(err){
 					throw err;
 				}
@@ -210,7 +250,7 @@ var daoCFOP = module.exports={
 		
 			console.log(ObjectId)
 		
-			usersf.findOne({"_id":ObjectId},function(err,result){
+			f2ldic.findOne({"_id":ObjectId},function(err,result){
 				if(err){
 					throw err;
 				}
@@ -294,7 +334,7 @@ viewsUpF : function(data,res){
 	var ObjectId =  require('mongolian').ObjectId
 	ObjectId = new ObjectId(resss);
 	
-	usersf.findAndModify({
+	f2ldic.findAndModify({
 		query : {_id:ObjectId},
 		update : {$inc : {view : 1}}
 		},function(err,result){
@@ -348,7 +388,7 @@ recommendUpf : function(data,res){
 	ObjectId = new ObjectId(resss);
 	
 	
-	usersf.findAndModify({
+	f2ldic.findAndModify({
 		query : {_id:ObjectId},
 		update : {$inc : {recommend : 1}}
 		},function(err,result){
@@ -409,7 +449,7 @@ modifyf2l : function(req,res){
 	var ObjectId =  require('mongolian').ObjectId
 	
 	ObjectId = new ObjectId(resss);
-	usersf.findAndModify({
+	f2ldic.findAndModify({
 		query :{_id:ObjectId},
 		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
 	},function(err,result){
