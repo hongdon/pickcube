@@ -130,10 +130,10 @@ var daoCFOP = module.exports={
 			var totalpage;
 			f2ldic.find({cubeobj:data.cubeObj}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
-				//console.log(cursor);
+				console.log(results);
 				totalpage = results;
 			})
-			f2ldic.find({cubeobj : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).exec(function(err, results) {
+			f2ldic.find({cubeobj : data.cubeObj}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
 				if(err){
 					console.log(err);
 				}
