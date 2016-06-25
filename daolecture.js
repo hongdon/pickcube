@@ -99,7 +99,7 @@ var daolecture = module.exports = {
 		//console.log(data.charAt(1));
 		
 		var resss = new Buffer(req.body.id,'hex')
-		
+		console.log(resss);
 		//var ObjectId =  require('mongolian').ObjectId
 		var ObjectId = mongoose.Types.ObjectId
 		ObjectId = new ObjectId(resss);
