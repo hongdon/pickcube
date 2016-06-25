@@ -48,7 +48,7 @@ var dao = module.exports={
 		},*/
 		
 		deleteinfo : function(data){
-			Data.remove({'email':data.target},
+			Data.remove({email:data.target},
 					
 				/*{
 			     justOne: true,
@@ -84,7 +84,7 @@ var dao = module.exports={
 		getinfo : function(data){
 			console.log(data);
 			console.log('여기까지오냐dfgdgdg');
-			Data.findOne({'email':data.email},function(err,result){
+			Data.findOne({email:data.email},function(err,result){
 				if(err){
 					throw err;
 				}
@@ -100,7 +100,7 @@ var dao = module.exports={
 			return evt;
 		},
 		loginformcheck:function(data){
-			Data.findOne({'$and':[{'email':data.email},{'password':data.password}]},function(err,result){
+			Data.findOne({'$and':[{email:data.email},{password:data.password}]},function(err,result){
 				console.log('??????????????????fghfghfh?????????????');
 				//console.log("gagsgfff"+result);
 				if(err){
