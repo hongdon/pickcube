@@ -54,14 +54,13 @@ var daoCFOP = module.exports={
 			var newData = new f2ldic();
 			//newData.cubeobj = data.cubeobj,
 			for(var i=0;i<data.cubeObj.length;i++){
-				if(i===0){
-					for(var j=0;j<data.cubeObj[i][j].length;j++){
-						for(var k=0;k<data.cubeObj[i][j][k];k++){
+					for(var j=0;j<data.cubeObj[i].length;j++){
+						for(var k=0;k<data.cubeObj[i][j].length;k++){
 							newData.cubeobj[i][j][k] = data.cubeObj[i][j][k]
 						}
 					}
 					
-				}
+				
 			}
 			
 			newData.moves = data.moves,
