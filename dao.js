@@ -48,7 +48,7 @@ var dao = module.exports={
 		},*/
 		
 		deleteinfo : function(data){
-			users.remove({'email':data.target},
+			Data.remove({'email':data.target},
 					
 				/*{
 			     justOne: true,
@@ -65,7 +65,7 @@ var dao = module.exports={
 		},
 		modifyinfo : function(data){
 			
-			users.findAndModify({
+			Data.findAndModify({
 				query : {email:data.target},
 				update:  {email:data.email,nickname:data.nickname,password:data.password }}
 				,function(err,result){
@@ -84,7 +84,7 @@ var dao = module.exports={
 		getinfo : function(data){
 			console.log(data);
 			console.log('여기까지오냐dfgdgdg');
-			users.findOne({'email':data.email},function(err,result){
+			Data.findOne({'email':data.email},function(err,result){
 				if(err){
 					throw err;
 				}
@@ -100,15 +100,15 @@ var dao = module.exports={
 			return evt;
 		},
 		loginformcheck:function(data){
-			users.findOne({'$and':[{'email':data.email},{'password':data.password}]},function(err,post){
+			Data.findOne({'$and':[{'email':data.email},{'password':data.password}]},function(err,result){
 				console.log('??????????????????fghfghfh?????????????');
 				//console.log("gagsgfff"+result);
 				if(err){
 					console.log(err);
 				}
-				if(post){
+				if(result){
 					
-					evt.emit('logincomplete',err,post);
+					evt.emit('logincomplete',err,result);
 					
 				}else{
 					
