@@ -63,7 +63,7 @@ var daolecture = module.exports = {
 		lecture.find({}).count(function(err,cursor){
 			totalpage=cursor;
 		})
-		lecture.find({}).sort({date : -1}).limit(5).skip(req.body.page * 5).toArray(function(err,cursor){
+		lecture.find({}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){
 			
 			if(err){
 				throw err;
