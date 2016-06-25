@@ -4,11 +4,10 @@ html
 		meta(charset='utf-8')
 		meta(name='viewport',content='width=device=width, initial-scale=1')
 		title= title
-		script(type='text/javascript' src='/outerResources/jquery-3.0.0.js')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/outerResources/bootstrap.css')
 		script(type='text/javascript' src='/outerResources/bootstrap.min.js')
-		
+		script(type='text/javascript' src='/outerResources/jquery-3.0.0.js')
 		//script(type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
 		//script(type='text/javascript' src='http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
 		//link(rel='stylesheet', type='text/css', href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css')
@@ -33,18 +32,20 @@ html
 							a(href="/") home
 						li
 							a(href="/simulator") simulator
-						li
-							a(href='/join') signup
-						li
-							a(href='/login') login
-						li
-							a(href='/logout') logout
-						li
-							a(href='/info') info
-						li
-							a(href='/lecture') lecture	
-						li
-							a(href='/dictionaryform') dictionary
+						- if(!session.logined)
+							li
+								a(href='/join') signup
+							li
+								a(href='/login') login
+						- if(session.logined)
+							li
+								a(href='/logout') logout
+							li
+								a(href='/info') info
+							li
+								a(href='/lecture') lecture	
+							li
+								a(href='/dictionaryform') dictionary
 						li
 							a(href="") who's made?
 		block content
