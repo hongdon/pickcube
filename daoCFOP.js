@@ -13,7 +13,7 @@ db.once("open",function () {
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
-		cubeobj : Array,
+		cubeobj : Schema.Types.Mixed,
 		moves : String,
 		view : Number,
 		recommend :Number,
@@ -129,7 +129,7 @@ var daoCFOP = module.exports={
 			//console.log(data.cubeObj); 
 			var totalpage;
 			console.log(data.cubeObj);
-			f2ldic.find({cubeobj:{$elemMatch: data.cubeObj}},function(err,results){
+			f2ldic.find({cubeobj:{$all: data.cubeObj}},function(err,results){
 				console.log(results);
 			})
 			
