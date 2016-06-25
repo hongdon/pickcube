@@ -129,16 +129,16 @@ var daoCFOP = module.exports={
 			//console.log(data.cubeObj); 
 			var totalpage;
 			console.log('TYPPEEE'+ typeof data.cubeObj);
-			f2ldic.find({cubeobj:data.cubeObj},function(err,results){
+			f2ldic.find({cubeobj:{$elemMatch :data.cubeObj}},function(err,results){
 				console.log(results);
 			})
 			
-			f2ldic.find({cubeobj:data.cubeObj}).count(function(err,results){
+			f2ldic.find({cubeobj:{$elemMatch :data.cubeObj}}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
 				console.log(results);
 				totalpage = results;
 			})
-			f2ldic.find({cubeobj : data.cubeObj}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
+			f2ldic.find({cubeobj:{$elemMatch :data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
 				if(err){
 					console.log(err);
 				}
