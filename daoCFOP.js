@@ -22,12 +22,10 @@ db.once("open",function () {
 	var face = new Schema({
 		facearray :[cubicle,cubicle,cubicle,cubicle,cubicle,cubicle,cubicle,cubicle,cubicle]
 	})
-	var cube =new Schema({
-		cubeobj :[face,face,face,face,face,face]
-	})
+	
 	var dataSchema = new Schema({
-		//cubeobj:cube,
-		cubeobj : Schema.Types.Mixed,
+		cubeobj:[face,face,face,face,face,face],
+		//cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
 		moves : String,
 		view : Number,
@@ -54,7 +52,18 @@ var daoCFOP = module.exports={
 			console.log('WRITTTTTE!')
 			console.log(data.cubeObj)
 			var newData = new f2ldic();
-			newData.cubeobj = data.cubeobj,
+			//newData.cubeobj = data.cubeobj,
+			for(var i=0;i<data.cubeObj.length;i++){
+				if(i===0){
+					for(var j=0;j<data.cubeObj[i][j].length;j++){
+						for(var k=0;k<data.cubeObj[i][j][k];k++){
+							newData.cubeobj[i][j][k] = data.cubeObj[i][j][k]
+						}
+					}
+					
+				}
+			}
+			
 			newData.moves = data.moves,
 			newData.view = 0,
 			newData.recommend =0,
