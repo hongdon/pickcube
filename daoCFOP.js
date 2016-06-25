@@ -10,6 +10,18 @@ db.once("open",function () {
 	db.on("error",function (err) {
 	  console.log("DB ERROR :", err);
 	});
+	/*var cubicle = new Schema({
+		face : String,
+		index : String,
+		marked : String,
+		color : String
+	})
+	var face = new Schema({
+		facearray :[cubicle,cubicle,cubicle,cubicle,cubicle,cubicle,cubicle,cubicle,cubicle]
+	})
+	var cube =new Schema({
+		cubeobj :[face,face,face,face,face,face]
+	})*/
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
@@ -130,10 +142,12 @@ var daoCFOP = module.exports={
 			//console.log(data.cubeObj); 
 			var totalpage;
 			console.log(data.cubeObj);
-			f2ldic.find({cubeobj:data.cubeObj},function(err,results){
+			
+			f2ldic.find().where({cubeobj:data.cubeObj},function(err,results){
 				console.log("없냐??")
 				console.log(results);
 			})
+					
 			
 			f2ldic.find({cubeobj:{$all: data.cubeObj}}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
