@@ -26,8 +26,8 @@ db.once("open",function () {
 		cubeobj :[face,face,face,face,face,face]
 	})
 	var dataSchema = new Schema({
-		cubeobj:cube,
-		//cubeobj : [Schema.Types.Mixed],
+		//cubeobj:cube,
+		cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
 		moves : String,
 		view : Number,
@@ -145,9 +145,9 @@ var daoCFOP = module.exports={
 			var totalpage;
 			console.log(data.cubeObj);
 			
-			f2ldic.find({cubeobj:data.cubeObj}).find(function(err,results){
+			f2ldic.find({}).find(function(err,results){
 				console.log("없냐??")
-				console.log(results);
+				console.log(typeof results[1].cubeobj);
 			})
 					
 			
