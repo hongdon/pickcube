@@ -127,12 +127,20 @@ var daolecture = module.exports = {
 },
 viewsUp : function(data,res){
 	
-	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	ObjectId = new ObjectId(resss);
+	console.log('data:'+req.body.id);
+	//console.log(data.charAt(1));
 	
-	lecture.findAndModify({
-		query : {_id:ObjectId},
+	var resss = new Buffer(req.body.id,'hex')
+	console.log(resss);
+	//var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+
+
+	console.log(objectId)
+
+	lecture.findOneAndUpdate({
+		query : {_id:objectId},
 		update : {$inc : {view : 1}}
 		},function(err,result){
 		if(err){
@@ -142,21 +150,35 @@ viewsUp : function(data,res){
 			console.log('view up!')
 		}
 	})
+	/*lecture.findAndModify({
+		query : {_id:ObjectId},
+		update : {$inc : {view : 1}}
+		},function(err,result){
+		if(err){
+			throw err;
+		}
+		if(result){
+			console.log('view up!')
+		}
+	})*/
 },
 recommendlecture : function(req,res){
-	//console.log(data);
 	console.log('data:'+req.body.id);
 	//console.log(data.charAt(1));
 	
 	var resss = new Buffer(req.body.id,'hex')
-	
+	console.log(resss);
 	//var ObjectId =  require('mongolian').ObjectId
-	var ObjectId = new mongoose.Types.ObjectId(resss)
-	//ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+
+
+	console.log(objectId)
+
 	
 	
-	lecture.findAndModify({
-		query : {_id:ObjectId},
+	lecture.findOneAndUpdate({
+		query : {_id:objectId},
 		update : {$inc : {recommend : 1}}
 		},function(err,result){
 		if(err){
@@ -169,17 +191,21 @@ recommendlecture : function(req,res){
 	})
 },
 modifylecture : function(req,res){
-	console.log('수정 오니');
 	console.log('data:'+req.body.id);
 	//console.log(data.charAt(1));
 	
 	var resss = new Buffer(req.body.id,'hex')
-	
+	console.log(resss);
 	//var ObjectId =  require('mongolian').ObjectId
-	var ObjectId = new mongoose.Types.ObjectId(resss)
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+
+
+	console.log(objectId)
+
 	//ObjectId = new ObjectId(resss);
-	lecture.findAndModify({
-		query :{_id:ObjectId},
+	lecture.findOneAndUpdate({
+		query :{_id:objectId},
 		update : {$set:{title:req.body.title,contents:req.body.contents}}
 	},function(err,result){
 		if(err){
@@ -203,7 +229,7 @@ deletelecture : function(req,res){
 	var ObjectId = new mongoose.Types.ObjectId(resss)
 	//ObjectId = new ObjectId(resss);
 	ObjectId = new ObjectId(resss);
-	lecture.findAndModify({
+	lecture.findOneAndRemove({
 		query :{_id:ObjectId},
 		remove : true
 	},function(err,result){
