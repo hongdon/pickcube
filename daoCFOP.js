@@ -133,6 +133,7 @@ var daoCFOP = module.exports={
 				totalpage = cursor;
 			})
 			f2ldic.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
+				console.log(cursor)
 				if(err){
 					throw err;
 				}
