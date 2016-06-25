@@ -1,4 +1,4 @@
-var makeCubeObj = new makeCube(3);
+﻿var makeCubeObj = new makeCube(3);
 
 makeCubeObj.facesSetting("lfrbud");
 makeCubeObj.setEmpty(makeCubeObj.full);
@@ -158,6 +158,7 @@ function Dofunc(eventObj){
 
 $(function(){
 	$('#f2lsearch').click(function(){
+		console.log("여기 들어오는가?")
 		$.ajax({
 			
 			type:"POST",
