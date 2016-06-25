@@ -152,7 +152,12 @@ var daoCFOP = module.exports={
 				//console.log(result)
 				//console.log(results[1].cubeobj[1])
 			})
-			
+			f2ldic.aggregate().match({cubeobj : data.cubeObj}).exec(function(err,response){
+				if(err) console.log(err);
+				
+				console.log("어그리게이트")
+				console.log(response)
+			})
 			
 			
 			
