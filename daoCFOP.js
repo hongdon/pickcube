@@ -148,6 +148,7 @@ var daoCFOP = module.exports={
 			f2ldic.find({}).find(function(err,results){
 				console.log("없냐??")
 				console.log(typeof results[1].cubeobj);
+				console.log(results[1].cubeobj)
 			})
 					
 			
