@@ -13,7 +13,7 @@ db.once("open",function () {
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
-		cubeobj : Array,
+		cubeobj : {},
 		moves : String,
 		view : Number,
 		recommend :Number,
@@ -136,7 +136,7 @@ var daoCFOP = module.exports={
 				if(err){
 					console.log(err);
 				}
-				console.log(cursor);
+				console.log('CURSOR'+cursor);
 				if(cursor){
 					console.log('result 들어오냐');
 					
