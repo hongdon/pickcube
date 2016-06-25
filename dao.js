@@ -12,10 +12,10 @@ db.once("open",function () {
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
-		name : String,
-		nickname : String,
-		password : String,
-		Joindate : Date  
+		email : {type:String,required:true, unique:true},
+		nickname : {type:String,required:true,unique:true},
+		password : {type:String, required:true},
+		Joindate : {type:Date}
 	})	
 	var Data = mongoose.model('members',dataSchema);
 	
@@ -100,26 +100,7 @@ var dao = module.exports={
 			return evt;
 		},
 		loginformcheck:function(data){
-			Data.findOne().and([{email:data.email},{password:data.password}],function(err,result){
-				console.log('??????????????????fghfghfh?????????????');
-				console.log("gagsgfff"+result);
-				if(err){
-					console.log(err);
-				}
-				if(result){
-					
-					evt.emit('logincomplete',err,result);
-					
-				}else{
-					
-										
-					evt.emit('logincomplete',err,false);
-					
-				}
-			})
-			return evt;
-			
-			/*Data.findOne({$and:[{email:data.email},{password:data.password}]},function(err,result){
+			/*Data.findOne().and([{email:data.email},{password:data.password}],function(err,result){
 				console.log('??????????????????fghfghfh?????????????');
 				console.log("gagsgfff"+result);
 				if(err){
@@ -137,6 +118,25 @@ var dao = module.exports={
 				}
 			})
 			return evt;*/
+			
+			Data.findOne({$and:[{email:data.email},{password:data.password}]},function(err,result){
+				console.log('??????????????????fghfghfh?????????????');
+				console.log("gagsgfff"+result);
+				if(err){
+					console.log(err);
+				}
+				if(result){
+					
+					evt.emit('logincomplete',err,result);
+					
+				}else{
+					
+										
+					evt.emit('logincomplete',err,false);
+					
+				}
+			})
+			return evt;
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
