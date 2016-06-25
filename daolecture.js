@@ -102,7 +102,7 @@ var daolecture = module.exports = {
 		console.log(resss);
 		//var ObjectId =  require('mongolian').ObjectId
 		var ObjectId = require('mongoose').Types.ObjectId
-		objectId = new ObjectId(resss);
+		objectId = new ObjectId(req.body.id);
 	
 	
 		console.log(objectId)
