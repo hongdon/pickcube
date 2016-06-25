@@ -145,7 +145,7 @@ var daoCFOP = module.exports={
 			var totalpage;
 			console.log(data.cubeObj);
 			
-			f2ldic.collection.find({cubeobj:data.cubeObj}).find(function(err,results){
+			f2ldic.find().all(function(err,results){
 				console.log("없냐??")
 				console.log(typeof results[1].cubeobj);
 				console.log(results[1].cubeobj)
