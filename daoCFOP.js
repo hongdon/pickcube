@@ -13,7 +13,7 @@ db.once("open",function () {
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
-		cubeobj : Array,
+		cubeobj : mixed,
 		moves : String,
 		view : Number,
 		recommend :Number,
@@ -22,7 +22,7 @@ db.once("open",function () {
 		date : Date
 		
 	})	
-	var f2ldic = mongoose.model('f2ldics',dataSchema);
+	var f2ldic = mongoose.model('f2ldic',dataSchema);
 	var oridic = mongoose.model('oridic',dataSchema);
 	var perdic = mongoose.model('perdic',dataSchema);
 /*var usersf=db.collection('cubeobjf2l')
@@ -128,6 +128,8 @@ var daoCFOP = module.exports={
 			//console.log('daoCFOP!')
 			//console.log(data.cubeObj); 
 			var totalpage;
+			var countquery =f2ldic.where({cubeobj:data.cubeObj});
+			query.find()
 			f2ldic.find({cubeobj:data.cubeObj}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
 				console.log(results);
