@@ -100,7 +100,7 @@ var dao = module.exports={
 			return evt;
 		},
 		loginformcheck:function(data){
-			Data.findOne({$and:[{email:data.email},{password:data.password}]},function(err,result){
+			Data.findOne().and([{email:data.email},{password:data.password}],function(err,result){
 				console.log('??????????????????fghfghfh?????????????');
 				console.log("gagsgfff"+result);
 				if(err){
@@ -118,6 +118,25 @@ var dao = module.exports={
 				}
 			})
 			return evt;
+			
+			/*Data.findOne({$and:[{email:data.email},{password:data.password}]},function(err,result){
+				console.log('??????????????????fghfghfh?????????????');
+				console.log("gagsgfff"+result);
+				if(err){
+					console.log(err);
+				}
+				if(result){
+					
+					evt.emit('logincomplete',err,result);
+					
+				}else{
+					
+										
+					evt.emit('logincomplete',err,false);
+					
+				}
+			})
+			return evt;*/
 		},
 		joinformcheck:function(data){
 			console.log("계속 도나?")
@@ -150,9 +169,6 @@ var dao = module.exports={
 		hasEmail : function(req,res){
 			Data.findOne({email:req.email},function(err,result){
 				if(err){
-					console.log('haseamil'+result)
-					res.send(false);
-					idchecked=false;
 					console.log(err);
 				}else if(result===undefined){
 					res.send(true);
@@ -167,9 +183,7 @@ var dao = module.exports={
 		hasNickname : function(req,res){
 			Data.findOne({nickname:req.nickname},function(err,result){
 				if(err){
-					res.send(false);
-					nicknamechecked=false;
-					nicknamechecked=true;
+					console.log(err);
 				}else if(result===undefined){
 					res.send(true);
 					nicknamechecked=true;
