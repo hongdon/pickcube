@@ -13,7 +13,7 @@ db.once("open",function () {
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
-		cubeobj : {},
+		cubeobj : Array,
 		moves : String,
 		view : Number,
 		recommend :Number,
