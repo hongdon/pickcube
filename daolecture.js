@@ -1,16 +1,42 @@
-﻿var Mongolian = require('mongolian')
+﻿/*var Mongolian = require('mongolian')
 ,server = new Mongolian
 ,db=server.db('PICKTHECUBE')
 
 ,lecture=db.collection('lecture')
-,reply =db.collection('replylecture')
+,reply =db.collection('replylecture')*/
+var mongoose = require('mongoose')
+mongoose.connect("mongodb://hongdon:rjsgml8911@ds021751.mlab.com:21751/pickthecube")
+var db = mongoose.connection;
+db.once("open",function () {
+	  console.log("DB connected!");
+	});
+	db.on("error",function (err) {
+	  console.log("DB ERROR :", err);
+	});
+	var Schema = mongoose.Schema
+	//var db = new Mongolian(process.env.MONGODB_URI)
+	var dataSchema = new Schema({
+		title : String,
+		contents : String,
+		nickname:String,
+		cubeobj : Schema.Types.Mixed,
+		date : Date,
+		view : Number,
+		recommend : Number
+	})	
+	var lecture = mongoose.model('lecture',dataSchema);
 
 var daolecture = module.exports = {
 	
 	writelecture : function(req,res){
-		
-		
-		lecture.insert({
+		var newData = new Data();
+		newData.title = req.body.title,
+		newData.contents = req.body.contents,
+		newData.nickname = req.session.nickname,
+		newData.cubeobj = req.body.cubeObj,
+		newData.view = 0,
+		newData.recommend =0
+		/*lecture.insert({
 			
 			title : req.body.title,
 			contents : req.body.contents,
@@ -19,9 +45,9 @@ var daolecture = module.exports = {
 			date : new Date(),
 			view : 0,
 			recommend : 0,
-			unrecommend :0
 			
-		},function(err,result){
+			
+		}*/newData.save(function(err,result){
 			
 			if(err){
 				throw err;
@@ -74,8 +100,9 @@ var daolecture = module.exports = {
 		
 		var resss = new Buffer(req.body.id,'hex')
 		
-		var ObjectId =  require('mongolian').ObjectId
-		ObjectId = new ObjectId(resss);
+		//var ObjectId =  require('mongolian').ObjectId
+		var ObjectId = new mongoose.Types.ObjectId(resss)
+		//ObjectId = new ObjectId(resss);
 	
 	
 		console.log(ObjectId)
@@ -118,10 +145,14 @@ viewsUp : function(data,res){
 },
 recommendlecture : function(req,res){
 	//console.log(data);
-	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	console.log('data:'+req.body.id);
+	//console.log(data.charAt(1));
 	
-	ObjectId = new ObjectId(resss);
+	var resss = new Buffer(req.body.id,'hex')
+	
+	//var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = new mongoose.Types.ObjectId(resss)
+	//ObjectId = new ObjectId(resss);
 	
 	
 	lecture.findAndModify({
@@ -139,10 +170,14 @@ recommendlecture : function(req,res){
 },
 modifylecture : function(req,res){
 	console.log('수정 오니');
-	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	console.log('data:'+req.body.id);
+	//console.log(data.charAt(1));
 	
-	ObjectId = new ObjectId(resss);
+	var resss = new Buffer(req.body.id,'hex')
+	
+	//var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = new mongoose.Types.ObjectId(resss)
+	//ObjectId = new ObjectId(resss);
 	lecture.findAndModify({
 		query :{_id:ObjectId},
 		update : {$set:{title:req.body.title,contents:req.body.contents}}
@@ -159,9 +194,14 @@ modifylecture : function(req,res){
 },
 deletelecture : function(req,res){
 	console.log('수정 오니');
-	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	console.log('data:'+req.body.id);
+	//console.log(data.charAt(1));
 	
+	var resss = new Buffer(req.body.id,'hex')
+	
+	//var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = new mongoose.Types.ObjectId(resss)
+	//ObjectId = new ObjectId(resss);
 	ObjectId = new ObjectId(resss);
 	lecture.findAndModify({
 		query :{_id:ObjectId},
