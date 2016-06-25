@@ -25,7 +25,7 @@ db.once("open",function () {
 	var Schema = mongoose.Schema
 	//var db = new Mongolian(process.env.MONGODB_URI)
 	var dataSchema = new Schema({
-		cubeobj : Schema.Types.Mixed,
+		cubeobj : [Schema.Types.Mixed],
 		//cubeobj : {face :String,index:String,color:String,marked:String},
 		moves : String,
 		view : Number,
