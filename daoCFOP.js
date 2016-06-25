@@ -35,6 +35,7 @@ db.once("open",function () {
 		date : Date
 		
 	})	
+	dataSchema.set('toObject', { getters: true });
 	var f2ldic = mongoose.model('f2ldic',dataSchema);
 	var oridic = mongoose.model('oridic',dataSchema);
 	var perdic = mongoose.model('perdic',dataSchema);
@@ -52,9 +53,7 @@ var daoCFOP = module.exports={
 			console.log('WRITTTTTE!')
 			console.log(data.cubeObj)
 			var newData = new f2ldic();
-			//newData.cubeobj = data.cubeobj,
-		
-			
+			newData.cubeobj = data.cubeobj,
 			newData.moves = data.moves,
 			newData.view = 0,
 			newData.recommend =0,
