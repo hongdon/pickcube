@@ -10,7 +10,10 @@ db.once("open",function () {
 	db.on("error",function (err) {
 	  console.log("DB ERROR :", err);
 	});
-	/*var cubicle = new Schema({
+	/**/
+	var Schema = mongoose.Schema
+	//var db = new Mongolian(process.env.MONGODB_URI)
+	var cubicle = new Schema({
 		face : String,
 		index : String,
 		marked : String,
@@ -21,11 +24,10 @@ db.once("open",function () {
 	})
 	var cube =new Schema({
 		cubeobj :[face,face,face,face,face,face]
-	})*/
-	var Schema = mongoose.Schema
-	//var db = new Mongolian(process.env.MONGODB_URI)
+	})
 	var dataSchema = new Schema({
-		cubeobj : [Schema.Types.Mixed],
+		cubeobj:cube,
+		//cubeobj : [Schema.Types.Mixed],
 		//cubeobj : {face :String,index:String,color:String,marked:String},
 		moves : String,
 		view : Number,
