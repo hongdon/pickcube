@@ -101,8 +101,8 @@ var daolecture = module.exports = {
 		var resss = new Buffer(req.body.id,'hex')
 		
 		//var ObjectId =  require('mongolian').ObjectId
-		var ObjectId = new mongoose.Types.ObjectId(resss)
-		//ObjectId = new ObjectId(resss);
+		var ObjectId = mongoose.Types.ObjectId
+		ObjectId = new ObjectId(resss);
 	
 	
 		console.log(ObjectId)
