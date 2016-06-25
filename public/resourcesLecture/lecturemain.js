@@ -1,4 +1,4 @@
-var makeCubeObj = new makeCube(3);
+﻿var makeCubeObj = new makeCube(3);
 var view = new setView(makeCubeObj.full,3);
 makeCubeObj.facesSetting("lfrbud");
 makeCubeObj.setEmpty(makeCubeObj.full);
@@ -575,7 +575,8 @@ $(document).on('click','#showlecturelist',function(){
 							
 							
 						}
-						makeCubeObj.full = data.result.cubeObj;
+						
+						makeCubeObj.full = data.result.cubeobj;
 							view = new setView(makeCubeObj.full,3);
 							makeCubeObj.left = makeCubeObj.full[0]
 							makeCubeObj.front = makeCubeObj.full[1]
