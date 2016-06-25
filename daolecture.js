@@ -101,13 +101,13 @@ var daolecture = module.exports = {
 		var resss = new Buffer(req.body.id,'hex')
 		console.log(resss);
 		//var ObjectId =  require('mongolian').ObjectId
-		var ObjectId = mongoose.Types.ObjectId
-		ObjectId = new ObjectId(resss);
+		var ObjectId = require('mongoose').Types.ObjectId
+		objectId = new ObjectId(resss);
 	
 	
-		console.log(ObjectId)
+		console.log(objectId)
 	
-		lecture.findOne({"_id":ObjectId},function(err,result){
+		lecture.findOne({"_id":objectId},function(err,result){
 			if(err){
 				throw err;
 			}
