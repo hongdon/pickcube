@@ -22,9 +22,9 @@ db.once("open",function () {
 		date : Date
 		
 	})	
-	var f2ldic = mongoose.model('f2ldic',dataSchema);
-	var oridic = mongoose.model('oridic',dataSchema);
-	var perdic = mongoose.model('perdic',dataSchema);
+	var f2ldic = mongoose.model('f2ldics',dataSchema);
+	var oridic = mongoose.model('oridics',dataSchema);
+	var perdic = mongoose.model('perdics',dataSchema);
 /*var usersf=db.collection('cubeobjf2l')
 ,userso=db.collection('cubeobjorientation')
 ,usersp=db.collection('cubeobjpermutation')*/
