@@ -124,15 +124,15 @@ var daoCFOP = module.exports={
 			//return evt;
 		},
 		findf2l : function(data,res){
-			console.log('daoCFOP!')
-			console.log(data.cubeObj); 
+			//console.log('daoCFOP!')
+			//console.log(data.cubeObj); 
 			var totalpage;
 			f2ldic.find({cubeobj:data.cubeObj}).count(function(err,cursor){
-				console.log('asfsafsdfsadfsdgsadg');
-				console.log(cursor);
+				//console.log('asfsafsdfsadfsdgsadg');
+				//console.log(cursor);
 				totalpage = cursor;
 			})
-			f2ldic.find({cubeobj : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
+			f2ldic.find({cubeobj : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).exec(function(err, cursor) {
 				if(err){
 					console.log(err);
 				}
