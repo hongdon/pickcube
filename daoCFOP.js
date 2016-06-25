@@ -128,27 +128,27 @@ var daoCFOP = module.exports={
 			//console.log('daoCFOP!')
 			//console.log(data.cubeObj); 
 			var totalpage;
-			f2ldic.find({cubeobj:data.cubeObj}).count(function(err,cursor){
+			f2ldic.find({cubeobj:data.cubeObj}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
 				//console.log(cursor);
-				totalpage = cursor;
+				totalpage = results;
 			})
-			f2ldic.find({cubeobj : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).exec(function(err, cursor) {
+			f2ldic.find({cubeobj : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).exec(function(err, results) {
 				if(err){
 					console.log(err);
 				}
-				console.log('CURSOR'+cursor);
-				if(cursor){
+				console.log('CURSOR'+results);
+				if(results){
 					console.log('result 들어오냐');
 					
 					//console.log(typeof cursor[0]._id.toString().valueOf());
 					
-					for(var i=0;i<cursor.length;i++){
-						console.log(typeof cursor[i]._id)
-						console.log(cursor[i]._id)
+					for(var i=0;i<results.length;i++){
+						console.log(typeof results[i]._id)
+						console.log(results[i]._id)
 						console.log('아뒤아뒤')
 						if(cursor[i]._id){
-							cursor[i]._id = cursor[i]._id.toString().valueOf()
+							cursor[i]._id = results[i]._id.toString().valueOf()
 						}
 						
 						/*if(cursor[i]===undefined){
@@ -157,7 +157,7 @@ var daoCFOP = module.exports={
 						}*/
 						
 					}
-					res.send({result : cursor, totpagenum : totalpage})
+					res.send({result : results, totpagenum : totalpage})
 				}
 			})
 			
