@@ -29,7 +29,7 @@ db.once("open",function () {
 var daolecture = module.exports = {
 	
 	writelecture : function(req,res){
-		var newData = new Data();
+		var newData = new lecture();
 		newData.title = req.body.title,
 		newData.contents = req.body.contents,
 		newData.nickname = req.session.nickname,
