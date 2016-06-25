@@ -149,6 +149,7 @@ var daoCFOP = module.exports={
 				console.log("없냐??")
 				console.log(typeof results[1].cubeobj);
 				console.log(results[1].cubeobj)
+				console.log(results[1].cubeobj[1][1])
 			})
 					
 			
