@@ -144,17 +144,15 @@ var daoCFOP = module.exports={
 			var totalpage;
 			console.log(data.cubeObj);
 			
-			f2ldic.find({})
-			.where('cubeobj').equals(data.cubeObj)
-			.exec(function(err,results){
+			f2ldic.find({cubeobj:data.cubeObj},function(err,results){
 				console.log("없냐??")
-				console.log(results[0].cubeobj);
 				console.log(results)
 				
-				var result = results[0].cubeobj=data.cubeobj?true:false;
-				console.log(result)
+				//var result = results[0].cubeobj=data.cubeobj?true:false;
+				//console.log(result)
 				//console.log(results[1].cubeobj[1])
 			})
+			
 			
 			
 			
