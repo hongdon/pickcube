@@ -112,7 +112,7 @@ var daolecture = module.exports = {
 				throw err;
 			}
 			if(result){
-				daolecture.viewsUp(req.body.id,res);
+				daolecture.viewsUp(objectId,res);
 
 				console.log('RESULTTTTTTTTTTTTTTTTTT')
 				console.log(result);
@@ -127,20 +127,20 @@ var daolecture = module.exports = {
 },
 viewsUp : function(data,res){
 	
-	console.log('data:'+req.body.id);
+/*	console.log('data:'+req.body.id);
 	//console.log(data.charAt(1));
 	
 	var resss = new Buffer(req.body.id,'hex')
 	console.log(resss);
 	//var ObjectId =  require('mongolian').ObjectId
 	var ObjectId = require('mongoose').Types.ObjectId
-	objectId = new ObjectId(req.body.id);
+	objectId = new ObjectId(req.body.id);*/
 
 
-	console.log(objectId)
+	/*console.log(objectId)*/
 
 	lecture.findOneAndUpdate({
-		query : {_id:objectId},
+		query : {_id:data},
 		update : {$inc : {view : 1}}
 		},function(err,result){
 		if(err){
