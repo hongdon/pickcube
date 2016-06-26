@@ -143,7 +143,7 @@ var daoCFOP = module.exports={
 			//console.log('daoCFOP!')
 			//console.log(data.cubeObj); 
 			var totalpage;
-			console.log(data.cubeObj);
+			/*console.log(data.cubeObj);
 			var cubeObj1 = require('mongoose').Schema.Types.Mixed
 			var cubeObj2 = new cubeObj1(data.cubeObj)
 			f2ldic.find({cubeobj:cubeObj2},function(err,results){
@@ -154,18 +154,19 @@ var daoCFOP = module.exports={
 				//console.log(result)
 				//console.log(results[1].cubeobj[1])
 			})
-			/*f2ldic.aggregate().match({cubeobj : data.cubeObj}).exec(function(err,response){
+			f2ldic.aggregate().match({cubeobj : data.cubeObj}).exec(function(err,response){
 				if(err) console.log(err);
 				
 				console.log("어그리게이트")
 				console.log(response)
-			})*/
+			})
+			*/
 			
-			
-			
+			var cubeObj1 = require('mongoose').Schema.Types.Mixed
+			var cubeObj2 = new cubeObj1(data.cubeObj)
 					
 			
-			f2ldic.find({cubeobj:{$all: {$all: {$all :data.cubeObj}}}}).count(function(err,results){
+			f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
 				console.log(results);
 				totalpage = results;
