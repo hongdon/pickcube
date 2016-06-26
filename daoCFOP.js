@@ -25,9 +25,9 @@ db.once("open",function () {
 	
 	var dataSchema = new Schema({
 		//cubeobj:[face,face,face,face,face,face],
-		//cubeobj : Schema.Types.Mixed,
+		cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
-		cubeobj : {type:Array, "default":[]},
+		//cubeobj : {type:Array, "default":[]},
 		moves : String,
 		view : Number,
 		recommend :Number,
