@@ -728,10 +728,10 @@ $(document).on('click','#replycommit',function(){
 $(document).on('click','#replypagenums',function(){
 	
 	var butid = $(event.target).val();
-	var pagnum = $(event.target).contents();
+	var pagnum = $(event.target).text()
 	console.log(butid)
 	
-	pagenum = parseInt(pagnum.textContent)-1
+	pagenum = parseInt(pagnum)-1
 	console.log(pagnum)
 	console.log('페이지값'+butid)
 	$.ajax({
