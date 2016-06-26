@@ -755,13 +755,13 @@ $(document).on('click','#replypagenums',function(){
 			
 		}
 		$('#replyfield').append(
-				'<tr>'
+				'<tr id="pagefield">'
 				
 										
 		)		
 		for(var i=0 ; i<totalpage;i++){
 			$('#pagefield').append(
-					'<td id="pagefield">'+
+					'<td >'+
 				'<button class="btn btn-default" id="replypagenums" value="'+butid+'">'+(i+1)
 					+'</td>'
 			)
