@@ -289,6 +289,7 @@ showallreply:function(req,res){
 	var totalpage;
 	reply.find({}).count(function(err,cursor){
 		totalpage=cursor;
+		console.log(totalpage);
 	})
 	reply.find({target:req.body.targetlecture}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){
 		
