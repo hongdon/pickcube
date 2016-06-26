@@ -65,10 +65,10 @@ var daoCFOP = module.exports={
 			//newData.cubeobj = data.cubeobj,
 			for(var i=0;i<data.cubeobj.length;i++){
 				for(var j=0;j<data.cubeobj[i].length;j++){
-					newData.cubeobj[i][j].face = data.cubeObj[i][j].face
-					newData.cubeobj[i][j].index =data.cubeObj[i][j].index
-					newData.cubeobj[i][j].color =data.cubeObj[i][j].color
-					newData.cubeobj[i][j].marked =data.cubeObj[i][j].marked
+					newData.cubeobj[i][j].face = data.cubeobj[i][j].face
+					newData.cubeobj[i][j].index =data.cubeobj[i][j].index
+					newData.cubeobj[i][j].color =data.cubeobj[i][j].color
+					newData.cubeobj[i][j].marked =data.cubeobj[i][j].marked
 									
 				}
 			}
