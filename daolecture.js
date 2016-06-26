@@ -31,7 +31,7 @@ db.once("open",function () {
 		target : String
 	})
 	var lecture = mongoose.model('lecture',dataSchema);
-	var reply = mongoose.model('reply',dataSchema);
+	var reply = mongoose.model('reply',replySchema);
 var daolecture = module.exports = {
 	
 	writelecture : function(req,res){
