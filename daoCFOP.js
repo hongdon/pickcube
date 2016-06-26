@@ -178,7 +178,7 @@ var daoCFOP = module.exports={
 				console.log(results);
 				totalpage = results;
 			})*/
-			f2ldic.find({cubeobj:{$all: data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
+			/*f2ldic.find({cubeobj:{$all: data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
 				if(err){
 					console.log(err);
 				}
@@ -196,15 +196,15 @@ var daoCFOP = module.exports={
 							cursor[i]._id = results[i]._id.toString().valueOf()
 						}
 						
-						/*if(cursor[i]===undefined){
+						if(cursor[i]===undefined){
 							res.send(false);
 							break;
-						}*/
+						}
 						
 					}
 					res.send({result : results, totpagenum : totalpage})
 				}
-			})
+			})*/
 			
 		},
 		findOri : function(data,res){
