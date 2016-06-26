@@ -253,7 +253,7 @@ writereply : function(req,res){
 	var newData = new reply();
 	newData.comment = req.body.comment
 	newData.nickname = req.session.nickname
-	target : req.body.targetlecture
+	newData.target= req.body.targetlecture
 	
 	newData.save(function(err,result){
 		if(err){
