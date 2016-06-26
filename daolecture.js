@@ -226,18 +226,20 @@ modifylecture : function(req,res){
 	})
 },
 deletelecture : function(req,res){
-	console.log('수정 오니');
 	console.log('data:'+req.body.id);
 	//console.log(data.charAt(1));
 	
 	var resss = new Buffer(req.body.id,'hex')
-	
+	console.log(resss);
 	//var ObjectId =  require('mongolian').ObjectId
-	var ObjectId = new mongoose.Types.ObjectId(resss)
-	//ObjectId = new ObjectId(resss);
-	ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+
+
+	console.log(objectId)
+
 	lecture.findOneAndRemove(
-		{_id:ObjectId}
+		{_id:objectId}
 		
 	,function(err,result){
 		if(err){
