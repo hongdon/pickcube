@@ -287,7 +287,7 @@ showallreply:function(req,res){
 	reply.find({}).count(function(err,cursor){
 		totalpage=cursor;
 	})
-	reply.find({target:req.body.targetlecture}).sort({date : -1}).limit(5).skip(req.body.page * 5).toArray(function(err,cursor){
+	reply.find({target:req.body.targetlecture}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){
 		
 		if(err){
 			throw err;
