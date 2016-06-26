@@ -638,20 +638,21 @@ $(document).on('click','#showlecturelist',function(){
 							}
 							$('#replyfield').append(
 									'<tr>'
-									+'<td id="pagefield">'
+									//+'<td id="pagefield">'
 															
 							)		
 							for(var i=0 ; i<totalpage;i++){
 								$('#pagefield').append(
+										'<td>'+
 									'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
-										
+										+'</td>'
 								)
 								
 							}
 							$('#pagefield').append(
 									
 									'</td>'
-									+'</tr>'
+									//+'</tr>'
 									
 							)			
 									
@@ -701,7 +702,7 @@ $(document).on('click','#replycommit',function(){
 					for(var i=0 ; i<totalpage;i++){
 						$('#pagefield').append(
 								'<td id="pagefield">'+
-							'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
+							'<button class="btn btn-default" id="replypagenums" value="'+butid+'">'+(i+1)
 								+'</td>'
 						)
 						
@@ -724,6 +725,64 @@ $(document).on('click','#replycommit',function(){
 		}
 	})
 })
+$(document).on('click','#replypagenums',function(){
+	
+	var butid = $(event.target).val();
+	var pagnum = $(event.target).contents();
+	pagenum = parseInt(pagnum)
+	console.log('페이지값'+butid)
+	$.ajax({
+		type:"post",
+		url :"/showallreply",
+		dataType:'json',
+		data:{targetlecture :butid,page:0},
+		success:function(data){
+			$('#replyfield').empty();
+			var totalpage = Math.ceil((data.totpagenum)/5);
+
+			if(data){
+				console.log(data)
+		for(var i=0;i<data.result.length;i++){
+			$('#replyfield').prepend(
+					
+			'<span>'+data.result[i].comment+'&nbsp;&nbsp;&nbsp;&nbsp;'+data.result[i].nickname+'&nbsp;&nbsp;&nbsp;&nbsp;'+'</span>'
+			
+			
+			)
+			
+		}
+		$('#replyfield').append(
+				'<tr>'
+				
+										
+		)		
+		for(var i=0 ; i<totalpage;i++){
+			$('#pagefield').append(
+					'<td id="pagefield">'+
+				'<button class="btn btn-default" id="replypagenums" value="'+butid+'">'+(i+1)
+					+'</td>'
+			)
+			
+		}
+		$('#pagefield').append(
+				
+				
+				+'</tr>'
+				
+		)			
+				
+			}
+			
+		}
+	})	
+	
+	
+})
+
+
+
+
+
 $(document).on('click','#recommend',function(){
 	
 	//console.log("BUTID"+butid)
