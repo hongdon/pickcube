@@ -27,12 +27,290 @@ db.once("open",function () {
 	})
 	
 	var dataSchema = new Schema({
-		/*cubeobj: [[
+		cubeobj: [
+		          [
 		           {face : String,
 					index : String,
 					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
 					color : String}
-		         ]],*/
+																
+		         ],
+		         [
+		           {face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String}
+																
+		         ],
+		         [
+		           {face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String}
+																
+		         ],
+		         [
+		           {face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String}
+																
+		         ],
+		         [
+		           {face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String}
+																
+		         ],
+		         [
+		           {face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String},
+					
+					{face : String,
+					index : String,
+					marked : String,
+					color : String}
+																
+		         ]
+		          ],
 		//cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
 		cubeobj : Array,
