@@ -144,7 +144,7 @@ var daoCFOP = module.exports={
 			//console.log(data.cubeObj); 
 			var totalpage;
 			console.log(data.cubeObj);
-			var cubeObj1 = require('mongoose').Types.Array
+			var cubeObj1 = require('mongoose').Schema.Types.Mixed
 			var cubeObj2 = new cubeObj1(data.cubeObj)
 			f2ldic.find({cubeobj:cubeObj2},function(err,results){
 				console.log("없냐??")
