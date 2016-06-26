@@ -27,15 +27,15 @@ db.once("open",function () {
 	})
 	
 	var dataSchema = new Schema({
-		cubeobj: [[
+		/*cubeobj: [[
 		           {face : String,
 					index : String,
 					marked : String,
 					color : String}
-		         ]],
+		         ]],*/
 		//cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
-		//cubeobj : {type:Array, "default":[]},
+		cubeobj : {type:Array, "default":[]},
 		moves : String,
 		view : Number,
 		recommend :Number,
