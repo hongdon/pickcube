@@ -599,7 +599,7 @@ $(document).on('click','#showlecturelist',function(){
 						view.colorpainting();
 						
 						$('#lecturefield').append(
-								//'<div class="container" id="replyfield">'
+								'<div class="col-sm-2" id="replyfield"></div>'+
 								'<div class="form-group">'
 				               + '<div class="col-sm-2">'
 				               +  ' <label for="reply" class="control-label">comment</label>'
@@ -695,19 +695,20 @@ $(document).on('click','#replycommit',function(){
 					}
 					$('#replyfield').append(
 							'<tr>'
-							+'<td id="pagefield">'
+							
 													
 					)		
 					for(var i=0 ; i<totalpage;i++){
 						$('#pagefield').append(
+								'<td id="pagefield">'+
 							'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
-								
+								+'</td>'
 						)
 						
 					}
 					$('#pagefield').append(
 							
-							'</td>'
+							
 							+'</tr>'
 							
 					)			
