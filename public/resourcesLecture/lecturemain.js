@@ -787,7 +787,8 @@ $(document).on('click','#replypagenums',function(){
 
 
 $(document).on('click','#recommend',function(){
-	
+	var butid = $(event.target).val();
+
 	//console.log("BUTID"+butid)
 	$.ajax({
 		type:"post",
