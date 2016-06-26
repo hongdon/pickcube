@@ -729,7 +729,7 @@ $(document).on('click','#replypagenums',function(){
 	
 	var butid = $(event.target).val();
 	var pagnum = $(event.target).contents();
-	pagenum = parseInt(pagnum-1)
+	pagenum = parseInt(pagnum)-1
 	console.log('페이지값'+butid)
 	$.ajax({
 		type:"post",
