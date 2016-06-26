@@ -25,9 +25,9 @@ db.once("open",function () {
 	
 	var dataSchema = new Schema({
 		//cubeobj:[face,face,face,face,face,face],
-		cubeobj : Schema.Types.Mixed,
+		//cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
-		//cubeobj : {type:Array, "default":[]},
+		cubeobj : {type:Array, "default":[]},
 		moves : String,
 		view : Number,
 		recommend :Number,
@@ -162,10 +162,10 @@ var daoCFOP = module.exports={
 			})
 			*/
 			
-			var cubeObj1 = require('mongoose').Schema.Types.Mixed
+			var cubeObj1 = require('mongoose').Schema.Types.Array
 			var cubeObj2 = new cubeObj1(data.cubeObj)
 					console.log(cubeObj2);
-			f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2.path}}}},function(err,results){
+			f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}},function(err,results){
 				console.log("없냐??")
 				console.log(results)
 				
