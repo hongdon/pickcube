@@ -599,8 +599,8 @@ $(document).on('click','#showlecturelist',function(){
 						view.colorpainting();
 						
 						$('#lecturefield').append(
-								'<div class="container" id="replyfield">'
-								+'<div class="form-group">'
+								//'<div class="container" id="replyfield">'
+								'<div class="form-group">'
 				               + '<div class="col-sm-2">'
 				               +  ' <label for="reply" class="control-label">comment</label>'
 				               +' </div>'
