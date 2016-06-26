@@ -735,7 +735,7 @@ $(document).on('click','#replypagenums',function(){
 		type:"post",
 		url :"/showallreply",
 		dataType:'json',
-		data:{targetlecture :butid,page:0},
+		data:{targetlecture :butid,page:pagenum},
 		success:function(data){
 			$('#replyfield').empty();
 			var totalpage = Math.ceil((data.totpagenum)/5);

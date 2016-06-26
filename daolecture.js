@@ -145,17 +145,18 @@ viewsUp : function(data,res){
 
 	/*console.log(objectId)*/
 
-	lecture.findOneAndUpdate({
-		query : {_id:data},
-		update : {$inc : {view : 1}}
-		},function(err,result){
+	lecture.findOneAndUpdate(
+		{_id:data},
+		{$inc : {view : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
 		if(result){
 			console.log('view up!')
 		}
-	})
+		}
+	)
 	/*lecture.findAndModify({
 		query : {_id:ObjectId},
 		update : {$inc : {view : 1}}
@@ -183,10 +184,10 @@ recommendlecture : function(req,res){
 
 	
 	
-	lecture.findOneAndUpdate({
-		query : {_id:objectId},
-		update : {$inc : {recommend : 1}}
-		},function(err,result){
+	lecture.findOneAndUpdate(
+		{_id:objectId},
+		{$inc : {recommend : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -210,10 +211,10 @@ modifylecture : function(req,res){
 	console.log(objectId)
 
 	//ObjectId = new ObjectId(resss);
-	lecture.findOneAndUpdate({
-		query :{_id:objectId},
-		update : {$set:{title:req.body.title,contents:req.body.contents}}
-	},function(err,result){
+	lecture.findOneAndUpdate(
+		{_id:objectId},
+		{$set:{title:req.body.title,contents:req.body.contents}}
+	,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -235,10 +236,10 @@ deletelecture : function(req,res){
 	var ObjectId = new mongoose.Types.ObjectId(resss)
 	//ObjectId = new ObjectId(resss);
 	ObjectId = new ObjectId(resss);
-	lecture.findOneAndRemove({
-		query :{_id:ObjectId},
-		remove : true
-	},function(err,result){
+	lecture.findOneAndRemove(
+		{_id:ObjectId}
+		
+	,function(err,result){
 		if(err){
 			throw err;
 		}
