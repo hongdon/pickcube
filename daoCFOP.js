@@ -35,7 +35,7 @@ db.once("open",function () {
 		         ]],
 		//cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
-		cubeobj : {type:Array, "default":[]},
+		//cubeobj : {type:Array, "default":[]},
 		moves : String,
 		view : Number,
 		recommend :Number,
@@ -195,7 +195,7 @@ var daoCFOP = module.exports={
 				console.log(results);
 				totalpage = results;
 			})*/
-			/*f2ldic.find({cubeobj:{$all: data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
+			f2ldic.find({cubeobj:{$all: data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
 				if(err){
 					console.log(err);
 				}
@@ -221,7 +221,7 @@ var daoCFOP = module.exports={
 					}
 					res.send({result : results, totpagenum : totalpage})
 				}
-			})*/
+			})
 			
 		},
 		findOri : function(data,res){
