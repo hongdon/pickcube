@@ -27,7 +27,7 @@ db.once("open",function () {
 	var replySchema = new Schema({
 		comment : String,
 		nickname : String,
-		date : new Date(),
+		date : Date,
 		target : String
 	})
 	var lecture = mongoose.model('lecture',dataSchema);
