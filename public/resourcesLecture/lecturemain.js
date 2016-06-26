@@ -729,6 +729,8 @@ $(document).on('click','#replypagenums',function(){
 	
 	var butid = $(event.target).val();
 	var pagnum = $(event.target).contents();
+	console.log(butid)
+	console.log(pagnum)
 	pagenum = parseInt(pagnum)-1
 	console.log('페이지값'+butid)
 	$.ajax({
