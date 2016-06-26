@@ -165,12 +165,19 @@ var daoCFOP = module.exports={
 			var cubeObj1 = require('mongoose').Schema.Types.Mixed
 			var cubeObj2 = new cubeObj1(data.cubeObj)
 					
-			
-			f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}}).count(function(err,results){
+			f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}},function(err,results){
+				console.log("없냐??")
+				console.log(results)
+				
+				//var result = results[0].cubeobj=data.cubeobj?true:false;
+				//console.log(result)
+				//console.log(results[1].cubeobj[1])
+			})
+			/*f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
 				console.log(results);
 				totalpage = results;
-			})
+			})*/
 			f2ldic.find({cubeobj:{$all: data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
 				if(err){
 					console.log(err);
