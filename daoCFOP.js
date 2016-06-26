@@ -164,8 +164,8 @@ var daoCFOP = module.exports={
 			
 			var cubeObj1 = require('mongoose').Schema.Types.Array
 			var cubeObj2 = new cubeObj1(data.cubeObj)
-					console.log(cubeObj2);
-			f2ldic.find({cubeobj:{$all: cubeObj2.path}},function(err,results){
+					//console.log(cubeObj2);
+			f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}}},function(err,results){
 				console.log("없냐??")
 				console.log(results)
 				
