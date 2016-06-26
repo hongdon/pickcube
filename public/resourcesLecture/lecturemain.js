@@ -398,19 +398,20 @@ $(document).on('click','#showlecturelist',function(){
 				
 				$('#lecturefield').append(
 						'<tr>'
-						+'<td id="pagefield">'
+						
 												
 				)		
 				for(var i=0 ; i<totalpage;i++){
-					$('#pagefield').append(
-						'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
-							
+					$('#lecturefield').append(
+							'<td>'
+								+'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
+							+'</td>'
 					)
 					
 				}
 				$('#pagefield').append(
 						
-						'</td>'
+						
 						+'</tr>'
 						
 				)
