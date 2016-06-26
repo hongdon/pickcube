@@ -870,7 +870,7 @@ $(document).on('click','#deletelecture',function(){
 		
 		data:{id: butid},
 		success:function(data){
-			
+			$('#lecturefield').empty()
 			$('#lecturefield').append(
 						'<p>성공적으로 글이 삭제되었습니다.</p>'		
 						+'<input type="button" id="showlecturelist" value="목록으로">')
