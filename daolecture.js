@@ -24,8 +24,14 @@ db.once("open",function () {
 		view : Number,
 		recommend : Number
 	})	
+	var replySchema = new Schema({
+		comment : String,
+		nickname : String,
+		date : new Date(),
+		target : String
+	})
 	var lecture = mongoose.model('lecture',dataSchema);
-
+	var reply = mongoose.model('reply',dataSchema);
 var daolecture = module.exports = {
 	
 	writelecture : function(req,res){
@@ -243,7 +249,21 @@ deletelecture : function(req,res){
 },
 
 writereply : function(req,res){
-	reply.insert({
+	
+	var newData = new reply();
+	newData.comment = req.body.comment
+	newData.nickname = req.session.nickname
+	target : req.body.targetlecture
+	
+	newData.save(function(err,result){
+		if(err){
+			throw err;
+		}
+		if(result){
+			res.send(true);
+		}
+	})
+	/*reply.insert({
 		
 		//title : req.body.title,
 		comment : req.body.comment,
@@ -259,7 +279,7 @@ writereply : function(req,res){
 		if(result){
 			res.send(true);
 		}
-	})
+	})*/
 },
 showallreply:function(req,res){
 	
