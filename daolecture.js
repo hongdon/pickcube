@@ -287,7 +287,7 @@ writereply : function(req,res){
 showallreply:function(req,res){
 	
 	var totalpage;
-	reply.find({}).count(function(err,cursor){
+	reply.find({target:req.body.targetlecture}).count(function(err,cursor){
 		totalpage=cursor;
 		console.log(totalpage);
 	})
@@ -316,7 +316,9 @@ showallreply:function(req,res){
 				}*/
 				
 			}
+			
 			res.send({result : cursor, totpagenum : totalpage});
+			
 		}
 	})
 }
