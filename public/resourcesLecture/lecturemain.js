@@ -637,7 +637,7 @@ $(document).on('click','#showlecturelist',function(){
 								
 							}
 							$('#replyfield').append(
-									'<tr>'
+									'<tr id="pagefield">'
 									//+'<td id="pagefield">'
 															
 							)		
@@ -695,13 +695,13 @@ $(document).on('click','#replycommit',function(){
 						
 					}
 					$('#replyfield').append(
-							'<tr>'
+							'<tr id="pagefield">'
 							
 													
 					)		
 					for(var i=0 ; i<totalpage;i++){
 						$('#pagefield').append(
-								'<td id="pagefield">'+
+								'<td >'+
 							'<button class="btn btn-default" id="replypagenums" value="'+butid+'">'+(i+1)
 								+'</td>'
 						)
@@ -729,7 +729,7 @@ $(document).on('click','#replypagenums',function(){
 	
 	var butid = $(event.target).val();
 	var pagnum = $(event.target).contents();
-	pagenum = parseInt(pagnum)
+	pagenum = parseInt(pagnum-1)
 	console.log('페이지값'+butid)
 	$.ajax({
 		type:"post",
