@@ -63,8 +63,8 @@ var daoCFOP = module.exports={
 			console.log(data.cubeObj)
 			var newData = new f2ldic();
 			//newData.cubeobj = data.cubeobj,
-			for(var i=0;i<data.cubeObj.length;i++){
-				for(var j=0;data.cubeObj[i].length;j++){
+			for(var i=0;i<data.cubeobj.length;i++){
+				for(var j=0;j<data.cubeobj[i].length;j++){
 					newData.cubeobj[i][j].face = data.cubeObj[i][j].face
 					newData.cubeobj[i][j].index =data.cubeObj[i][j].index
 					newData.cubeobj[i][j].color =data.cubeObj[i][j].color
