@@ -636,25 +636,25 @@ $(document).on('click','#showlecturelist',function(){
 								)
 								
 							}
-							$('#replyfield').append(
-									'<tr id="pagefield">'
-									//+'<td id="pagefield">'
-															
-							)		
-							for(var i=0 ; i<totalpage;i++){
-								$('#pagefield').append(
-										'<td>'+
-									'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
-										+'</td>'
-								)
-								
-							}
-							$('#pagefield').append(
-									
-									'</td>'
-									//+'</tr>'
-									
-							)			
+									$('#replyfield').append(
+											'<tr id="pagefield">'
+											
+																	
+									)		
+									for(var i=0 ; i<totalpage;i++){
+										$('#pagefield').append(
+												'<td >'+
+											'<button class="btn btn-default" id="replypagenums" value="'+butid+'">'+(i+1)
+												+'</td>'
+										)
+										
+									}
+									$('#pagefield').append(
+											
+											
+											+'</tr>'
+											
+									)				
 									
 								}
 								
