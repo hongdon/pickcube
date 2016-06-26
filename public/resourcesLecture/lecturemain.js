@@ -824,7 +824,7 @@ $(document).on('click','#modifylectureform',function(){
 	            +'    <span><textarea id="inputsc"></textarea></span>'
 	            +'</div>'
 	            +'</div>'
-	            +'<div><span><input type="button" class="btn btn-defaul" id="modifyinputbtn" value="시뮬레이터등록"></span></div>'
+	            +'<div><span><input type="button" class="btn btn-defaul" id="inputbtn" value="시뮬레이터등록"></span></div>'
 	            +'<button class="btn btn-default" id="modifylecture" value=""> 수정완료'
 	            +'<div id="buttons"></div>'
 	
@@ -875,5 +875,38 @@ $(document).on('click','#deletelecture',function(){
 						'<p>성공적으로 글이 삭제되었습니다.</p>'		
 						+'<input type="button" id="showlecturelist" value="목록으로">')
 			}
+	})
+})
+$(document).on('click','#inputandfindbutt',function(){
+	var whatfind = $('#inputandfind').val();
+	$.ajax({
+		type:"post",
+		url:"/findsearch",
+		dataType:'josn',
+		data:{findthing : whatfind},
+		success:function(data){
+			$('#lecturefield').empty()
+			for(var i=0;i<data.result.length;i++){
+
+				
+				$('#lecturefield').append(
+						'<table>'+
+						'<tr>'
+						
+						//'<button id="searchf2l" class="btn btn-default" value="'+data[i]._id.toString().valueOf()+'">'+data[i].moves
+						//+'<button id="dorecommend" class="btn btn-default" value="'+data[i]._id.toString().valueOf()+'">추천'
+						//+'<h2><a id="'+data[i]._id.toString().valueOf()+'">'+data[i].title+'</h2>'
+						+'<button id="searchlecture" class="btn btn-default" value="'+data.result[i]._id.toString().valueOf()+'">'+data.result[i].title
+						+'&nbsp;&nbsp;&nbsp;&nbsp;'
+						+'</tr>'
+						+'<h> 조회수 :'+data.result[i].view+'</h>'
+						+'<h> 추천수 :'+data.result[i].recommend+'</h>'
+						+'<h> 작성자 :'+data.result[i].nickname+'</h>'
+						+'</table>'
+						
+				)
+				
+			}
+		}
 	})
 })
