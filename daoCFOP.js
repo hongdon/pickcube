@@ -179,10 +179,10 @@ var daoCFOP = module.exports={
 			})
 			*/
 			var cubeobjcode="";
-			for(var i=0;i<data.cubeobj.length;i++){
-				for(var j=0;j<data.cubeobj[i].length;j++){
+			for(var i=0;i<data.cubeObj.length;i++){
+				for(var j=0;j<data.cubeObj[i].length;j++){
 					
-					cubeobjcode=cubeobjcode+data.cubeobj[i][j].color;
+					cubeobjcode=cubeobjcode+data.cubeObj[i][j].color;
 							
 				}
 			}
