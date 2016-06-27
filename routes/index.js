@@ -6,6 +6,7 @@
 var dao = require('../dao');
 var daoCFOP	= require('../daoCFOP');
 var daolecture = require('../daolecture');
+var daoprofile = reqire('../daoprofile');
 exports.index = function(req, res){
 	
 	console.log(req.session);
@@ -289,4 +290,16 @@ exports.cubedic=function(req,res){
 }
 exports.cubeprofilewriteform=function(req,res){
 	res.render('cubeprofilewriteform',{session:req.session})
+}
+exports.profilewrite=function(req,res){
+	daoprofile.profilewrite(req,res).on('finishwrite',function(err,result){
+		
+		res.render('/profilelist')
+	})
+
+}
+exports.profilelist=function(req,res){
+	daoprofile.profilelist(req,res).on('finishsearching',function(err,result){
+		res.render('profilelist',{session : req.session,result:result});
+	})
 }

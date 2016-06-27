@@ -22,6 +22,7 @@ block content
 						div(class='form-group')
 							p 회전감
 							select(id='feel')
+								option(value="") 회전감
 								option(value="3") 상
 								option(value="2") 중
 								option(value="1") 하
@@ -29,6 +30,7 @@ block content
 						div(class='form-group')
 							p 가격
 							select(id='feel')
+								option(value="") 가격
 								option(value="3") 10000원이하
 								option(value="2") 10000원대
 								option(value="1") 20000원이상
@@ -36,15 +38,16 @@ block content
 						div(class='form-group')
 							p 가성비
 							select(id='feel')
+								option(value="") 가성비
 								option(value="5") 매우 좋음
 								option(value="4") 좋음
 								option(value="3") 보통
-								option(value="2") 보통
-								option(value="1") 보통
+								option(value="2") 나쁨
+								option(value="1") 매우 나쁨
 							
 						div(class='form-group')
 							p comment
 							input(class="form-control" id="exampleInputEmail1" placeholder="comment" type="text")
 						button(type="submit" class="btn btn-default") Submit
-						
+	script(scr='/resourcesProfile/check.js', charset='utf-8')
 																			
