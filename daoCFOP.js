@@ -27,294 +27,11 @@ db.once("open",function () {
 	})
 	
 	var dataSchema = new Schema({
-		cubeobj: {type : Array ,"dafault": [
-		          [
-		           {face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String}
-																
-		         ],
-		         [
-		           {face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String}
-																
-		         ],
-		         [
-		           {face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String}
-																
-		         ],
-		         [
-		           {face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String}
-																
-		         ],
-		         [
-		           {face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String}
-																
-		         ],
-		         [
-		           {face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String},
-					
-					{face : String,
-					index : String,
-					marked : String,
-					color : String}
-																
-		         ]
-		          ]
-		},
-		//cubeobj : Schema.Types.Mixed,
+		
+		cubeobj : Schema.Types.Mixed,
 		//cubeobj : {face :String,index:String,color:String,marked:String},
 		//cubeobj : Array,
+		cubeobjcode : String,
 		moves : String,
 		view : Number,
 		recommend :Number,
@@ -341,17 +58,20 @@ var daoCFOP = module.exports={
 			console.log('WRITTTTTE!')
 			console.log(data.cubeObj)
 			var newData = new f2ldic();
-			
-			//newData.cubeobj = data.cubeobj,
+			var cubeobjcode="";
 			for(var i=0;i<data.cubeobj.length;i++){
 				for(var j=0;j<data.cubeobj[i].length;j++){
-					newData.cubeobj[i][j].face = data.cubeobj[i][j].face
+					/*newData.cubeobj[i][j].face = data.cubeobj[i][j].face
 					newData.cubeobj[i][j].index =data.cubeobj[i][j].index
 					newData.cubeobj[i][j].color =data.cubeobj[i][j].color
-					newData.cubeobj[i][j].marked =data.cubeobj[i][j].marked
+					newData.cubeobj[i][j].marked =data.cubeobj[i][j].marked*/
+					cubeobjcode=cubeobjcode+data.cubeobj[i][j].color;
 							
 				}
 			}
+			newData.cubeobj = data.cubeobj,
+			
+			newData.cubeobjcode = cubeobjcode,
 			newData.moves = data.moves,
 			newData.view = 0,
 			newData.recommend =0,
@@ -458,24 +178,31 @@ var daoCFOP = module.exports={
 				console.log(response)
 			})
 			*/
-			
-			var cubeObj1 = require('mongoose').Schema.Types.Array
-			var cubeObj2 = new Array(data.cubeObj)
+			var cubeobjcode="";
+			for(var i=0;i<data.cubeobj.length;i++){
+				for(var j=0;j<data.cubeobj[i].length;j++){
+					
+					cubeobjcode=cubeobjcode+data.cubeobj[i][j].color;
+							
+				}
+			}
+			//var cubeObj1 = require('mongoose').Schema.Types.Array
+			//var cubeObj2 = new Array(data.cubeObj)
 					//console.log(cubeObj2);
-			f2ldic.find({cubeobj:cubeObj2},function(err,results){
+			/*f2ldic.find({cubeobj:cubeObj2},function(err,results){
 				console.log("없냐??")
 				console.log(results)
 				
 				//var result = results[0].cubeobj=data.cubeobj?true:false;
 				//console.log(result)
 				//console.log(results[1].cubeobj[1])
-			})
-			/*f2ldic.find({cubeobj:{$all: {$all: {$all :cubeObj2}}}}).count(function(err,results){
+			})*/
+			f2ldic.find({cubeobjcode:cubeobjcode}).count(function(err,results){
 				//console.log('asfsafsdfsadfsdgsadg');
 				console.log(results);
 				totalpage = results;
-			})*/
-			f2ldic.find({cubeobj:{$all: data.cubeObj}}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
+			})
+			f2ldic.find({cubeobjcode:cubeobjcode}).limit(5).skip(data.page * 5).sort({view : -1}).exec(function(err, results) {
 				if(err){
 					console.log(err);
 				}
