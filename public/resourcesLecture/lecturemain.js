@@ -14,6 +14,7 @@ var remove;
 
 function setid(id){
 	this.id = id;
+	console.log(this.id);
 }
 $(document).ready(function(){
 if(this.id!==""){
