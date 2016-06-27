@@ -422,10 +422,10 @@ viewsUpF : function(data,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(data);
 	
-	f2ldic.findOneAndUpdate({
-		query : {_id:ObjectId},
-		update : {$inc : {view : 1}}
-		},function(err,result){
+	f2ldic.findOneAndUpdate(
+		{_id:ObjectId},
+		{$inc : {view : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -439,10 +439,10 @@ viewsUpO : function(data,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(data);
 	
-	oridic.findOneAndUpdate({
-		query : {_id:objectId},
-		update : {$inc : {view : 1}}
-		},function(err,result){
+	oridic.findOneAndUpdate(
+		{_id:objectId},
+		{$inc : {view : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -457,9 +457,9 @@ viewsUpP : function(data,res){
 	objectId = new ObjectId(data);
 	
 	perdic.findOneAndUpdate({
-		query : {_id:objectId},
-		update : {$inc : {view : 1}}
-		},function(err,result){
+		{_id:objectId},
+		{$inc : {view : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -474,10 +474,10 @@ recommendUpf : function(data,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(data);
 	
-	f2ldic.findAndModify({
-		query : {_id:objectId},
-		update : {$inc : {recommend : 1}}
-		},function(err,result){
+	f2ldic.findAndModify(
+		{_id:objectId},
+		{$inc : {recommend : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -495,9 +495,9 @@ recommendUpo : function(data,res){
 	
 	
 	oridic.findAndMfindOneAndUpdateodify({
-		query : {_id:objectId},
-		update : {$inc : {recommend : 1}}
-		},function(err,result){
+		{_id:objectId},
+		{$inc : {recommend : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -514,10 +514,10 @@ recommendUpp : function(data,res){
 	objectId = new ObjectId(req.body.id);
 	
 	
-	perdic.findOneAndUpdate({
-		query : {_id:objectId},
-		update : {$inc : {recommend : 1}}
-		},function(err,result){
+	perdic.findOneAndUpdate(
+		{_id:objectId},
+		{$inc : {recommend : 1}}
+		,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -532,10 +532,10 @@ modifyf2l : function(req,res){
 	var resss = new Buffer(req.body.id,'hex')
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
-	f2ldic.findOneAndUpdate({
-		query :{_id:objectId},
-		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
-	},function(err,result){
+	f2ldic.findOneAndUpdate(
+		{_id:objectId},
+		{$set:{moves:req.body.moves,comment:req.body.comment}}
+	,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -552,9 +552,9 @@ deletef2l : function(req,res){
 	objectId = new ObjectId(req.body.id);
 	
 	ObjectId = new ObjectId(resss);
-	f2ldic.findOneAndRemove({
-		query :{_id:ObjectId}
-	},function(err,result){
+	f2ldic.findOneAndRemove(
+		{_id:ObjectId}
+	,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -568,10 +568,10 @@ modifyori : function(req,res){
 	var resss = new Buffer(req.body.id,'hex')
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
-	oridic.findOneAndUpdate({
-		query :{_id:objectId},
-		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
-	},function(err,result){
+	oridic.findOneAndUpdate(
+		{_id:objectId},
+		{$set:{moves:req.body.moves,comment:req.body.comment}}
+	,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -587,9 +587,9 @@ deleteori : function(req,res){
 	var resss = new Buffer(req.body.id,'hex')
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
-	oridic.findOneAndRemove({
-		query :{_id:ObjectId}
-	},function(err,result){
+	oridic.findOneAndRemove(
+		{_id:ObjectId}
+	,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -603,10 +603,10 @@ modifyper : function(req,res){
 	var resss = new Buffer(req.body.id,'hex')
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
-	perdic.findOneAndUpdate({
-		query :{_id:ObjectId},
-		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
-	},function(err,result){
+	perdic.findOneAndUpdate(
+		{_id:ObjectId},
+		{$set:{moves:req.body.moves,comment:req.body.comment}}
+	,function(err,result){
 		if(err){
 			throw err;
 		}
@@ -623,10 +623,10 @@ deleteper : function(req,res){
 	objectId = new ObjectId(req.body.id);
 	
 	ObjectId = new ObjectId(resss);
-	perdic.findOneAndRemove({
-		query :{_id:ObjectId},
-		remove : true
-	},function(err,result){
+	perdic.findOneAndRemove(
+		{_id:ObjectId}
+	
+	,function(err,result){
 		if(err){
 			throw err;
 		}
