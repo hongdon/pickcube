@@ -12,6 +12,14 @@ var fmarker;
 var marker;
 var remove;
 
+function setid(id){
+	this.id = id;
+}
+$(document).ready(function(){
+if(this.id!==""){
+	$('#searchlecture').trigger('click');
+}	
+})
 
 $("#setblackImage").click(function(){
 	console.log('셋 블랙이미지')
@@ -445,7 +453,7 @@ $(document).on('click','#showlecturelist',function(){
 				//console.log(data.length)
 				for(var i=0;i<data.result.length;i++){
 
-				
+				console.log(data.result[i].view)
 				$('#lecturefield').append(
 						'<table>'+
 						'<tr>'
@@ -502,7 +510,12 @@ $(document).on('click','#showlecturelist',function(){
 	
 	
 	$(document).on('click','#searchlecture',function(){
-		var butid = $(event.target).val();
+		if(this.id===""){
+		var butid = $(event.target).val();	
+		}
+		else{
+			var butid = this.id;
+		}
 		
 		$.ajax({
 			

@@ -57,20 +57,9 @@ $(document).ready(function(){
 	$('#field').load('lecture.jade')
 })
 
-/*$(document).on('click','a',function(){
-	$('#field').empty();
-	$('#field').load('lecture.jade')
-	var aid = $('a').attr('id');
-$.ajax({
-		
-		type:"POST",
-		url:'/findeverylecture',
-		dataType:'json',
-		data:{},
-		success:function(data){}
-		});
+$(document).on('click','a',function(){
+var id = new setid($('a').attr('id'))
+location.href='/lecture'	
 	
 	
-	
-	
-})*/
+})
