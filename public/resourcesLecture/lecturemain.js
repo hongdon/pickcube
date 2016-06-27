@@ -23,9 +23,10 @@ function getUrlParams() {
 } 
 $(document).ready(function(){
 params = getUrlParams();
+$('#showlecturelist').trigger('click');
 console.log(params.id)
 if(params.id){
-	$('#showlecturelist').trigger('click');
+	
 	$('#searchlecture').trigger('click')
 }
 })
