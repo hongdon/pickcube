@@ -61,7 +61,7 @@ $(document).on('click','a',function(){
 	var vaule = $(event.target).attr('id');
 var id = new setid(vaule)
 console.log(id)
-location.href='/lecture'	
+location.href='/lecture/?id='+vaule	
 	
 	
 })

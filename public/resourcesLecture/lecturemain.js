@@ -12,16 +12,16 @@ var fmarker;
 var marker;
 var remove;
 
-function setid(id){
+/*function setid(id){
 	this.id = id;
 	
-}
-$(document).ready(function(){
+}*/
+/*$(document).ready(function(){
 if(this.id!=="searchlecture"){
 	console.log(this.id);
 	$('#searchlecture').trigger('click');
 }	
-})
+})*/
 
 $("#setblackImage").click(function(){
 	console.log('셋 블랙이미지')
@@ -514,13 +514,13 @@ $(document).on('click','#showlecturelist',function(){
 	$(document).on('click','#searchlecture',function(){
 		
 
-		if(this.id==="searchlecture"){
+		//if(this.id==="searchlecture"){
 		var butid = $(event.target).val();	
-		}
-		else{
-			var butid = this.id;
-			console.log(butid)
-		}
+		//}
+		//else{
+			//var butid = this.id;
+			//console.log(butid)
+		//}
 		
 		$.ajax({
 			
