@@ -527,8 +527,9 @@ $(document).on('click','#showlecturelist',function(){
 			//var butid = this.id;
 			//console.log(butid)
 		//}
-		if(params.id!==""){
+		if(params.id!==undefined){
 			butid = params.id
+			console.log(butid);
 		}
 		
 		$.ajax({
