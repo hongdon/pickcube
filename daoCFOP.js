@@ -216,8 +216,8 @@ var daoCFOP = module.exports={
 						console.log(typeof results[i]._id)
 						console.log(results[i]._id)
 						console.log('아뒤아뒤')
-						if(cursor[i]._id){
-							cursor[i]._id = results[i]._id.toString().valueOf()
+						if(results[i]._id){
+							results[i]._id = results[i]._id.toString().valueOf()
 						}
 						
 						if(cursor[i]===undefined){
