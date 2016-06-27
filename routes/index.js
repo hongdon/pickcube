@@ -304,6 +304,6 @@ exports.profilelist=function(req,res){
 
 	daoprofile.profilelist(req,res).on('finishsearching',function(err,result){
 		console.log('IMG'+result.imageaddr)
-		res.render('profilelist',{session : req.session,imageaddr : result[0].imageaddr});
+		res.render('profilelist',{session : req.session,result : result});
 	})
 }

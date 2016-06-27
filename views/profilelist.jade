@@ -5,6 +5,13 @@ block content
 	div(class='section')
 		div(class='container')
 			div(class='row')
-				div(class='col-md-6')
-					img(id='imageaddr' src='#{imageaddr}')
-					p #{imageaddr}
+				div(class='col-md-12')
+					ul(class='media')
+					//img(id='imageaddr' src='#{imageaddr}')
+					//p #{imageaddr}
+						each val in result
+							li(class='media')
+								a(class='pull-left' herf='#')img(class="media-object" src='#{val.imageaddr}')
+								div(class='media-body')
+									h4(class='media-heading') #{val.brand}
+									<p> #{val.name}
