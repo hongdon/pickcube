@@ -25,6 +25,7 @@ $(document).ready(function(){
 params = getUrlParams();
 console.log(params.id)
 if(params.id){
+	$('#showlecturelist').trigger('click');
 	$('#searchlecture').trigger('click')
 }
 })
