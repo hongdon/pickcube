@@ -220,7 +220,7 @@ var daoCFOP = module.exports={
 							results[i]._id = results[i]._id.toString().valueOf()
 						}
 						
-						if(cursor[i]===undefined){
+						if(results[i]===undefined){
 							res.send(false);
 							break;
 						}
