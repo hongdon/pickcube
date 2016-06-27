@@ -6,7 +6,7 @@
 var dao = require('../dao');
 var daoCFOP	= require('../daoCFOP');
 var daolecture = require('../daolecture');
-var daoprofile = reqire('../daoprofile');
+var daoprofile = require('../daoprofile');
 exports.index = function(req, res){
 	
 	console.log(req.session);
