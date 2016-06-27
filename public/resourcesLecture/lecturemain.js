@@ -511,13 +511,14 @@ $(document).on('click','#showlecturelist',function(){
 	
 	
 	$(document).on('click','#searchlecture',function(){
-		console.log(this.id);
+		
 
 		if(this.id==="searchlecture"){
 		var butid = $(event.target).val();	
 		}
 		else{
 			var butid = this.id;
+			console.log(butid)
 		}
 		
 		$.ajax({

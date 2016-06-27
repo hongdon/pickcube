@@ -58,7 +58,9 @@ $(document).ready(function(){
 })
 
 $(document).on('click','a',function(){
-var id = new setid($('a').attr('id'))
+	var vaule = $(event.target).attr('id');
+var id = new setid(vaule)
+console.log(id)
 location.href='/lecture'	
 	
 	
