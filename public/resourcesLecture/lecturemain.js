@@ -17,7 +17,7 @@ function setid(id){
 	console.log(this.id);
 }
 $(document).ready(function(){
-if(this.id!==""){
+if(this.id!=="searchlecture"){
 	$('#searchlecture').trigger('click');
 }	
 })
@@ -513,7 +513,7 @@ $(document).on('click','#showlecturelist',function(){
 	$(document).on('click','#searchlecture',function(){
 		console.log(this.id);
 
-		if(this.id===""){
+		if(this.id==="searchlecture"){
 		var butid = $(event.target).val();	
 		}
 		else{
