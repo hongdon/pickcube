@@ -5,6 +5,43 @@ block content
 		div(class='container')
 			div(class='row')
 				div(class='col-md-6')
-					img(src='/images/Qiyi/146341915701abc6acb0244972ba36063c224870da__mn314401__w885__h590__f167542__Ym201605.jpg'
-					class="img-responsive")
-					
+					img(src='/images/Qiyi/146341915701abc6acb0244972ba36063c224870da__mn314401__w885__h590__f167542__Ym201605.jpg' class="img-responsive")
+				
+			div(class='row')
+				div(class='col-md-12')
+					form(role='form' action='/profilewrite' onsubmit='return check(this)')
+						div(class='form-group')
+							p 브랜드
+							input( class="form-control" id="exampleInputEmail1" placeholder="brand" type="text")
+						div(class='form-group')
+							p 이름
+							input( class="form-control" id="exampleInputEmail1" placeholder="name" type="text")
+						div(class='form-group')
+							p 코컷/역코컷
+							input( class="form-control" id="exampleInputEmail1" placeholder="코컷/역코컷" type="text")
+						div(class='form-group')
+							p 회전감
+							div(class='btn-group')
+								button(href='', class='btn btn-default')상
+								button(href='', class='btn btn-default')중
+								button(href='', class='btn btn-default')하
+						div(class='form-group')
+							p 가격
+							div(class='btn-group')
+								button(href='', class='btn btn-default') 10000원이하
+								button(href='', class='btn btn-default') 10000원대
+								button(href='', class='btn btn-default') 20000원이상	
+						div(class='form-group')
+							p 가성비
+							div(class='btn-group')
+								button(href='', class='btn btn-default' )매우 좋음
+								button(href='', class='btn btn-default' )좋음
+								button(href='', class='btn btn-default' )보통
+								button(href='', class='btn btn-default' )나쁨
+								button(href='', class='btn btn-default' )매우 나쁨
+						div(class='form-group')
+							p comment
+							input( class="form-control" id="exampleInputEmail1" placeholder="comment" type="text")
+						button(type="submit" class="btn btn-default")Submit
+						
+																			
