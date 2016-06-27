@@ -456,7 +456,7 @@ viewsUpP : function(data,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(data);
 	
-	perdic.findOneAndUpdate({
+	perdic.findOneAndUpdate(
 		{_id:objectId},
 		{$inc : {view : 1}}
 		,function(err,result){
@@ -494,7 +494,7 @@ recommendUpo : function(data,res){
 	objectId = new ObjectId(data);
 	
 	
-	oridic.findAndMfindOneAndUpdateodify({
+	oridic.findAndMfindOneAndUpdateodify(
 		{_id:objectId},
 		{$inc : {recommend : 1}}
 		,function(err,result){
