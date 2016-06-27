@@ -294,7 +294,8 @@ exports.cubeprofilewriteform=function(req,res){
 exports.profilewrite=function(req,res){
 	daoprofile.profilewrite(req,res).on('finishwrite',function(err,result){
 		
-		res.send('/profilelist')
+		//res.send('/profilelist')
+		res.redirect('/profilelist')
 	})
 
 }
