@@ -40,7 +40,7 @@ db.once("open",function () {
 		date : Date
 		
 	})	
-	dataSchema.set('toObject', { getters: true });
+	//dataSchema.set('toObject', { getters: true });
 	var f2ldic = mongoose.model('f2ldic',dataSchema);
 	var oridic = mongoose.model('oridic',dataSchema);
 	var perdic = mongoose.model('perdic',dataSchema);
@@ -55,8 +55,8 @@ evt = new EventEmitter();
 var daoCFOP = module.exports={
 		
 		writef2l :function(data,req,res){
-			console.log('WRITTTTTE!')
-			console.log(data.cubeObj)
+			//console.log('WRITTTTTE!')
+			//console.log(data.cubeObj)
 			var newData = new f2ldic();
 			var cubeobjcode="";
 			for(var i=0;i<data.cubeobj.length;i++){
@@ -109,8 +109,8 @@ var daoCFOP = module.exports={
 			//return evt;
 		},
 		writeOri :function(data,req,res){
-			console.log('WRITTTTTE!')
-			console.log(data.cubeObj)
+			//console.log('WRITTTTTE!')
+			//console.log(data.cubeObj)
 			var newData = new oridic();
 			var cubeobjcode="";
 			for(var i=0;i<data.cubeobj.length;i++){
@@ -143,8 +143,8 @@ var daoCFOP = module.exports={
 			})
 		},
 		writeper :function(data,req,res){
-			console.log('WRITTTTTE!')
-			console.log(data.cubeObj)
+			//console.log('WRITTTTTE!')
+			//console.log(data.cubeObj)
 			var newData = new perdic();
 			var cubeobjcode="";
 			for(var i=0;i<data.cubeobj.length;i++){
@@ -423,7 +423,7 @@ viewsUpF : function(data,res){
 	objectId = new ObjectId(data);
 	
 	f2ldic.findOneAndUpdate(
-		{_id:ObjectId},
+		{_id:objectId},
 		{$inc : {view : 1}}
 		,function(err,result){
 		if(err){
@@ -553,7 +553,7 @@ deletef2l : function(req,res){
 	
 	ObjectId = new ObjectId(resss);
 	f2ldic.findOneAndRemove(
-		{_id:ObjectId}
+		{_id:objectId}
 	,function(err,result){
 		if(err){
 			throw err;
@@ -588,7 +588,7 @@ deleteori : function(req,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
 	oridic.findOneAndRemove(
-		{_id:ObjectId}
+		{_id:objectId}
 	,function(err,result){
 		if(err){
 			throw err;
@@ -604,7 +604,7 @@ modifyper : function(req,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
 	perdic.findOneAndUpdate(
-		{_id:ObjectId},
+		{_id:objectId},
 		{$set:{moves:req.body.moves,comment:req.body.comment}}
 	,function(err,result){
 		if(err){
@@ -624,7 +624,7 @@ deleteper : function(req,res){
 	
 	ObjectId = new ObjectId(resss);
 	perdic.findOneAndRemove(
-		{_id:ObjectId}
+		{_id:objectId}
 	
 	,function(err,result){
 		if(err){
