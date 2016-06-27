@@ -31,7 +31,7 @@ $(document).ready(function(){
 					)
 				}
 				if(data[i].recommend<31&&data[i].recommend>20){
-					console.log(data[i].recommend)
+					console.log(data[i]._id)
 
 					$('#field').append(
 							
