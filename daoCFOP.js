@@ -551,7 +551,7 @@ deletef2l : function(req,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(req.body.id);
 	
-	ObjectId = new ObjectId(resss);
+	//ObjectId = new ObjectId(resss);
 	f2ldic.findOneAndRemove(
 		{_id:objectId}
 	,function(err,result){
