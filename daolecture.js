@@ -322,7 +322,43 @@ showallreply:function(req,res){
 			
 		}
 	})
-}/*,
+},
+findeverylecture : function(req,res){
+	console.log('showlecturelist')
+var totalpage;
+	
+	lecture.find({}).sort({recommend :-1}).exec(function(err,cursor){
+		
+		if(err){
+			throw err;
+		}
+		console.log(cursor);
+		if(cursor){
+			
+			
+			//console.log(typeof cursor[0]._id.toString().valueOf());
+			
+			for(var i=0;i<cursor.length;i++){
+				console.log(typeof cursor[i]._id)
+				console.log(cursor[i]._id)
+				console.log('아뒤아뒤')
+				if(cursor[i]._id){
+					cursor[i]._id = cursor[i]._id.toString().valueOf()
+				}
+				
+				if(cursor[i]===undefined){
+					res.send(false);
+					break;
+				}
+				
+			}
+			res.send({result : cursor});
+		}
+	})
+	
+}
+
+/*,
 findsearch:function(req,res){
 	var totalpage;
 	lecture.find({ :req.body.targetlecture}).count(function(err,cursor){

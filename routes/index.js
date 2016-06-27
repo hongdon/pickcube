@@ -307,3 +307,15 @@ exports.profilelist=function(req,res){
 		res.render('profilelist',{session : req.session,result : result});
 	})
 }
+exports.searchprofile=function(req,res){
+	daoprofile.searchprofile(req,res).on('findsearchprofile',function(err,result){
+		res.render('profile',{session:req.session,result:result})
+	})
+}
+
+exports.monthlycube=function(req,res){
+	res.render('monthlycube',{session:req.session})
+}
+exports.findeverylecture=function(req,res){
+	daolecture.findeverylecture(req,res);
+}
