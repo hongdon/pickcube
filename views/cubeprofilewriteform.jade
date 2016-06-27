@@ -28,20 +28,20 @@ block content
 						
 						div(class='form-group')
 							p 가격
-							div(class='btn-group')
-								button(class='btn btn-default') 10000원이하
-								button(class='btn btn-default') 10000원대
-								button(class='btn btn-default') 20000원이상	
-							p(id='price')
+							select(id='feel')
+								option(value="3") 10000원이하
+								option(value="2") 10000원대
+								option(value="1") 20000원이상
+							
 						div(class='form-group')
 							p 가성비
-							div(class='btn-group')
-								button(class='btn btn-default') 매우 좋음
-								button(class='btn btn-default') 좋음
-								button(class='btn btn-default') 보통
-								button(class='btn btn-default') 나쁨
-								button(class='btn btn-default') 매우 나쁨
-							p(id='goodorbad')
+							select(id='feel')
+								option(value="5") 매우 좋음
+								option(value="4") 좋음
+								option(value="3") 보통
+								option(value="2") 보통
+								option(value="1") 보통
+							
 						div(class='form-group')
 							p comment
 							input(class="form-control" id="exampleInputEmail1" placeholder="comment" type="text")
