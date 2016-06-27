@@ -338,7 +338,7 @@ var daoCFOP = module.exports={
 		
 			console.log(objectId)
 		
-			f2ldic.findOne({"_id":objectId},function(err,result){
+			f2ldic.findOne({_id:objectId},function(err,result){
 				if(err){
 					throw err;
 				}
@@ -370,7 +370,7 @@ findOribyId : function(data,req,res){
 
 	console.log(objectId)
 
-	oridic.findOne({"_id":objectId},function(err,result){
+	oridic.findOne({_id:objectId},function(err,result){
 		if(err){
 			throw err;
 		}
@@ -400,7 +400,7 @@ findperbyId : function(data,req,res){
 
 	console.log(ObjectId)
 
-	perdic.findOne({"_id":objectId},function(err,result){
+	perdic.findOne({_id:objectId},function(err,result){
 		if(err){
 			throw err;
 		}
