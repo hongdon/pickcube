@@ -17,7 +17,7 @@ var params;
 	
 }*/
 function getUrlParams() {
-	$('#showlecturelist').trigger('click');
+	
 	var params = {};
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
     return params;
@@ -27,8 +27,170 @@ params = getUrlParams();
 
 console.log(params.id)
 if(params.id){
+
+		butid = params.id
+		
 	
-	$('#searchlecture').triggerHandler('click')
+	$.ajax({
+		
+	type:"POST",
+	url:'/searchlecture',
+	dataType:'json',
+	data:{id: butid},		
+	success:function(data){
+		if(data){
+			parse.count=0;
+			console.log(data);
+			
+			$("#lecturefield").empty()
+			$('#inputsctr').empty()
+			//$('#buttons').empty()
+			var result = parse.parser(data.result.contents);
+			console.log(result);
+			if(data.result.nickname===data.session.nickname){
+				$("#lecturefield").append(
+						
+						'<button class="btn btn-default" id="modifylectureform" value="'+data.result._id+'"> 수정'							
+						+'<button class="btn btn-default" id="deletelecture" value="'+data.result._id+'"> 삭제'
+						
+						)
+			}
+			
+			
+			$("#lecturefield").append(
+					
+					'<button class="btn btn-default" id="recommend" value="'+data.result._id+'"> ↑'							
+					
+			)
+			
+			
+					var matching = new RegExp(/^[A-Z]{1}$/);
+					var matching2 = new RegExp(/^[a-z]{1}$/);
+					var matching1 = new RegExp(/^[0-9]{1}$/);
+					for(var i=0;i<result[0].length;i++){
+						if(result[0][i]!==undefined){
+							
+							if(!result[0][i].match(matching1)){
+								console.log('for 돌고있냐')
+								//moveController.Controller(result[0][i]);
+								if(result[1][index]==="↵"){
+									$('#inputsctr').append('<p>')
+								}else{
+									
+									parse.writeoperation(result[0][i]);	
+
+								}
+								//parse.painterlast();
+							}
+							else{
+								var index = result[0][i];
+								console.log(index);
+								//parse.writeoperation(result[0][index]);
+								//parse.writecomment(result[1][index])
+								if(result[1][index]==="↵"){
+									$('#inputsctr').append('<p>')
+								}else{
+									$('#inputsctr').append('&nbsp;&nbsp;&nbsp;&nbsp;'+result[1][index]+'&nbsp;&nbsp;&nbsp;&nbsp;')
+
+								}
+								
+								
+							}
+							
+						}
+						
+						
+						
+						
+					}
+					
+					makeCubeObj.full = data.result.cubeobj;
+						view = new setView(makeCubeObj.full,3);
+						makeCubeObj.left = makeCubeObj.full[0]
+						makeCubeObj.front = makeCubeObj.full[1]
+						makeCubeObj.right = makeCubeObj.full[2]
+						makeCubeObj.back = makeCubeObj.full[3]
+						makeCubeObj.upper = makeCubeObj.full[4]
+						makeCubeObj.down = makeCubeObj.full[5]
+						
+						cubeDiagram = new MakingCubeDiagram(makeCubeObj);
+						moveCubeObj = new movingCube(makeCubeObj,3);
+						moveController = new movingController(moveCubeObj);
+						view.eraseAllmarkers();
+						
+					view.colorpainting();
+					view.setmarker();
+					parse.writehead();
+					//parse.painterlast();
+					parse.painterfirst();
+					view.colorpainting();
+					
+					$('#lecturefield').append(
+							'<div class="form-group" id="replyfield"></div>'+
+							'<div class="form-group">'
+			               + '<div class="col-sm-2">'
+			               +  ' <label for="reply" class="control-label">comment</label>'
+			               +' </div>'
+			               +' <div class="col-sm-8">'
+			               +'<input type="text" class="form-control" id="comment">'
+			                 +'</div>'
+			                +'<button class="btn btn-default" id="replycommit" value=""> commit'
+			                +'</div>'
+							//+'<input type="button" class="btn btn-default" id="'+data.result._id+'" value="modifycommit">' 
+														
+							
+					)
+					$('#replycommit').val(data.result._id);
+					
+					
+					$.ajax({
+						type:"post",
+						url :"/showallreply",
+						dataType:'json',
+						data:{targetlecture :butid},
+						success:function(data){
+							
+							var totalpage = Math.ceil((data.totpagenum)/5);
+
+							if(data){
+								console.log(data)
+						for(var i=0;i<data.result.length;i++){
+							$('#replyfield').prepend(
+									
+							'<span>'+data.result[i].comment+'&nbsp;&nbsp;&nbsp;&nbsp;'+data.result[i].nickname+'&nbsp;&nbsp;&nbsp;&nbsp;'+'</span>'
+							
+							
+							)
+							
+						}
+								$('#replyfield').append(
+										'<tr id="pagefield">'
+										
+																
+								)		
+								for(var i=0 ; i<totalpage;i++){
+									$('#pagefield').append(
+											'<td >'+
+										'<button class="btn btn-default" id="replypagenums" value="'+butid+'">'+(i+1)
+											+'</td>'
+									)
+									
+								}
+								$('#pagefield').append(
+										
+										
+										+'</tr>'
+										
+								)				
+								
+							}
+							
+						}
+					})		
+		}
+	}
+	})
+	
 }
 })
 
@@ -525,15 +687,7 @@ $(document).on('click','#showlecturelist',function(){
 
 		
 		var butid = $(event.target).val();	
-		//}
-		//else{
-			//var butid = this.id;
-			//console.log(butid)
-		//}
-		if(params.id!==undefined){
-			butid = params.id
-			console.log(butid);
-		}
+		
 		
 		$.ajax({
 			
