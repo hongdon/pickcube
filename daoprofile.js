@@ -42,31 +42,37 @@ var daoprofile = module.exports = {
 			}
 		})
 			
-			
+		return evt	;
 			
 		},
 		profilelist : function(req,res){
 			profile.find({}).count(function(err,cursor){})
-			profile.find({}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){})
-
-			if(err){
-				throw err;
-			}
-			console.log(cursor);
-			if(cursor){
-			
-				for(var i=0;i<cursor.length;i++){
-					console.log(typeof cursor[i]._id)
-					console.log(cursor[i]._id)
-					console.log('酒第酒第')
-					if(cursor[i]._id){
-						cursor[i]._id = cursor[i]._id.toString().valueOf()
-					}
-				}
-					
+			profile.find({}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){
 				
-		}
-			evt.emit('finishsearching',err,cursor)
+				if(err){
+					throw err;
+				}
+				console.log(cursor);
+				if(cursor){
+				
+					for(var i=0;i<cursor.length;i++){
+						console.log(typeof cursor[i]._id)
+						console.log(cursor[i]._id)
+						console.log('酒第酒第')
+						if(cursor[i]._id){
+							cursor[i]._id = cursor[i]._id.toString().valueOf()
+						}
+					}
+						
+					
+			}
+				evt.emit('finishsearching',err,cursor)
+				
+			})
+
+			
+			
+			return evt;
 			//res.render('profilelist',{result : cursor,session:session})
 		}
 }
