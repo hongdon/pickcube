@@ -28,7 +28,7 @@ var profile = mongoose.model('profile',dataSchema);
 var daoprofile = module.exports = {
 		profilewrite : function(req,res){
 			var newData = new profile();
-			newData.brand = req.body.title
+			newData.brand = req.body.brand
 			newData.name = req.body.name
 			newData.cc = req.body.cc
 			newData.rotatefeeling = req.body.feel
