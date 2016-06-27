@@ -111,16 +111,28 @@ var daoCFOP = module.exports={
 		writeOri :function(data,req,res){
 			console.log('WRITTTTTE!')
 			console.log(data.cubeObj)
-			userso.insert({
-				cubeobj : data.cubeobj,
-				moves : data.moves,
-				view : 0,
-				recommend:0,
-				comment : data.comment,
-				nickname:req.session.nickname,
-				email:req.session.email,
-				date :new Date(),
-			},function(err,result){
+			var newData = new oridic();
+			var cubeobjcode="";
+			for(var i=0;i<data.cubeobj.length;i++){
+				for(var j=0;j<data.cubeobj[i].length;j++){
+					/*newData.cubeobj[i][j].face = data.cubeobj[i][j].face
+					newData.cubeobj[i][j].index =data.cubeobj[i][j].index
+					newData.cubeobj[i][j].color =data.cubeobj[i][j].color
+					newData.cubeobj[i][j].marked =data.cubeobj[i][j].marked*/
+					cubeobjcode=cubeobjcode+data.cubeobj[i][j].color;
+							
+				}
+			}
+			newData.cubeobj = data.cubeobj,
+			
+			newData.cubeobjcode = cubeobjcode,
+			newData.moves = data.moves,
+			newData.view = 0,
+			newData.recommend =0,
+			newData.comment = data.comment,
+			newData.nickname = req.session.nickname
+			
+			newData.save(function(err,result){
 				if(err){
 					throw err;
 				}
@@ -129,22 +141,32 @@ var daoCFOP = module.exports={
 				res.send(true);
 				}
 			})
-			
-			//return evt;
 		},
 		writeper :function(data,req,res){
 			console.log('WRITTTTTE!')
 			console.log(data.cubeObj)
-			usersp.insert({
-				cubeobj : data.cubeobj,
-				moves : data.moves,
-				view : 0,
-				recommend:0,
-				comment : data.comment,
-				nickname:req.session.nickname,
-				email:req.session.email,
-				date :new Date(),
-			},function(err,result){
+			var newData = new perdic();
+			var cubeobjcode="";
+			for(var i=0;i<data.cubeobj.length;i++){
+				for(var j=0;j<data.cubeobj[i].length;j++){
+					/*newData.cubeobj[i][j].face = data.cubeobj[i][j].face
+					newData.cubeobj[i][j].index =data.cubeobj[i][j].index
+					newData.cubeobj[i][j].color =data.cubeobj[i][j].color
+					newData.cubeobj[i][j].marked =data.cubeobj[i][j].marked*/
+					cubeobjcode=cubeobjcode+data.cubeobj[i][j].color;
+							
+				}
+			}
+			newData.cubeobj = data.cubeobj,
+			
+			newData.cubeobjcode = cubeobjcode,
+			newData.moves = data.moves,
+			newData.view = 0,
+			newData.recommend =0,
+			newData.comment = data.comment,
+			newData.nickname = req.session.nickname
+			
+			newData.save(function(err,result){
 				if(err){
 					throw err;
 				}
@@ -153,31 +175,11 @@ var daoCFOP = module.exports={
 				res.send(true);
 				}
 			})
-			
-			//return evt;
 		},
 		findf2l : function(data,res){
-			//console.log('daoCFOP!')
-			//console.log(data.cubeObj); 
+		
 			var totalpage;
-			/*console.log(data.cubeObj);
-			var cubeObj1 = require('mongoose').Schema.Types.Mixed
-			var cubeObj2 = new cubeObj1(data.cubeObj)
-			f2ldic.find({cubeobj:cubeObj2},function(err,results){
-				console.log("없냐??")
-				console.log(results)
-				
-				//var result = results[0].cubeobj=data.cubeobj?true:false;
-				//console.log(result)
-				//console.log(results[1].cubeobj[1])
-			})
-			f2ldic.aggregate().match({cubeobj : data.cubeObj}).exec(function(err,response){
-				if(err) console.log(err);
-				
-				console.log("어그리게이트")
-				console.log(response)
-			})
-			*/
+		
 			var cubeobjcode="";
 			for(var i=0;i<data.cubeObj.length;i++){
 				for(var j=0;j<data.cubeObj[i].length;j++){
@@ -235,12 +237,20 @@ var daoCFOP = module.exports={
 			var totalpage;
 			console.log('daoCFOP!')
 			console.log(data.cubeObj); 
-			userso.find({'cubeobj':data.cubeObj}).count(function(err,cursor){
+			var cubeobjcode="";
+			for(var i=0;i<data.cubeObj.length;i++){
+				for(var j=0;j<data.cubeObj[i].length;j++){
+					
+					cubeobjcode=cubeobjcode+data.cubeObj[i][j].color;
+							
+				}
+			}
+			oridic.find({cubeobjcode:cubeobjcode}).count(function(err,cursor){
 				console.log('asfsafsdfsadfsdgsadg');
 				console.log(cursor);
 				totalpage = cursor;
 			})
-			userso.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
+			oridic.find({cubeobjcode:cubeobjcode}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
 				if(err){
 					throw err;
 				}
@@ -273,12 +283,20 @@ var daoCFOP = module.exports={
 			console.log('daoCFOP!')
 			console.log(data.cubeObj); 
 			var totalpage;
-			usersp.find({'cubeobj':data.cubeObj}).count(function(err,cursor){
+			var cubeobjcode="";
+			for(var i=0;i<data.cubeObj.length;i++){
+				for(var j=0;j<data.cubeObj[i].length;j++){
+					
+					cubeobjcode=cubeobjcode+data.cubeObj[i][j].color;
+							
+				}
+			}
+			perdic.find({'cubeobj':data.cubeObj}).count(function(err,cursor){
 				console.log('asfsafsdfsadfsdgsadg');
 				console.log(cursor);
 				totalpage = cursor;
 			})
-			usersp.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
+			perdic.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).toArray(function(err, cursor) {
 				if(err){
 					throw err;
 				}
@@ -314,13 +332,13 @@ var daoCFOP = module.exports={
 			
 			var resss = new Buffer(data,'hex')
 			
-			var ObjectId =  require('mongolian').ObjectId
-			ObjectId = new ObjectId(resss);
+			var ObjectId = require('mongoose').Types.ObjectId
+			objectId = new ObjectId(req.body.id);
 		
 		
-			console.log(ObjectId)
+			console.log(objectId)
 		
-			f2ldic.findOne({"_id":ObjectId},function(err,result){
+			f2ldic.findOne({"_id":objectId},function(err,result){
 				if(err){
 					throw err;
 				}
@@ -346,13 +364,13 @@ findOribyId : function(data,req,res){
 	
 	var resss = new Buffer(data,'hex')
 	
-	var ObjectId =  require('mongolian').ObjectId
-	ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
 
 
-	console.log(ObjectId)
+	console.log(objectId)
 
-	userso.findOne({"_id":ObjectId},function(err,result){
+	oridic.findOne({"_id":objectId},function(err,result){
 		if(err){
 			throw err;
 		}
@@ -376,13 +394,13 @@ findperbyId : function(data,req,res){
 	
 	var resss = new Buffer(data,'hex')
 	
-	var ObjectId =  require('mongolian').ObjectId
-	ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
 
 
 	console.log(ObjectId)
 
-	usersp.findOne({"_id":ObjectId},function(err,result){
+	perdic.findOne({"_id":objectId},function(err,result){
 		if(err){
 			throw err;
 		}
@@ -401,10 +419,10 @@ findperbyId : function(data,req,res){
 },
 viewsUpF : function(data,res){
 	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
 	
-	f2ldic.findAndModify({
+	f2ldic.findOneAndUpdate({
 		query : {_id:ObjectId},
 		update : {$inc : {view : 1}}
 		},function(err,result){
@@ -418,11 +436,11 @@ viewsUpF : function(data,res){
 },
 viewsUpO : function(data,res){
 	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(data);
 	
-	userso.findAndModify({
-		query : {_id:ObjectId},
+	oridic.findOneAndUpdate({
+		query : {_id:objectId},
 		update : {$inc : {view : 1}}
 		},function(err,result){
 		if(err){
@@ -435,11 +453,11 @@ viewsUpO : function(data,res){
 },
 viewsUpP : function(data,res){
 	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	ObjectId = new ObjectId(resss);
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(data);
 	
-	usersp.findAndModify({
-		query : {_id:ObjectId},
+	perdic.findOneAndUpdate({
+		query : {_id:objectId},
 		update : {$inc : {view : 1}}
 		},function(err,result){
 		if(err){
@@ -453,13 +471,11 @@ viewsUpP : function(data,res){
 recommendUpf : function(data,res){
 	console.log(data);
 	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	
-	ObjectId = new ObjectId(resss);
-	
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(data);
 	
 	f2ldic.findAndModify({
-		query : {_id:ObjectId},
+		query : {_id:objectId},
 		update : {$inc : {recommend : 1}}
 		},function(err,result){
 		if(err){
@@ -474,13 +490,12 @@ recommendUpf : function(data,res){
 recommendUpo : function(data,res){
 	console.log(data);
 	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(data);
 	
-	ObjectId = new ObjectId(resss);
 	
-	
-	userso.findAndModify({
-		query : {_id:ObjectId},
+	oridic.findAndMfindOneAndUpdateodify({
+		query : {_id:objectId},
 		update : {$inc : {recommend : 1}}
 		},function(err,result){
 		if(err){
@@ -495,13 +510,12 @@ recommendUpo : function(data,res){
 recommendUpp : function(data,res){
 	console.log(data);
 	var resss = new Buffer(data,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
 	
-	ObjectId = new ObjectId(resss);
 	
-	
-	usersp.findAndModify({
-		query : {_id:ObjectId},
+	perdic.findOneAndUpdate({
+		query : {_id:objectId},
 		update : {$inc : {recommend : 1}}
 		},function(err,result){
 		if(err){
@@ -516,11 +530,10 @@ recommendUpp : function(data,res){
 modifyf2l : function(req,res){
 	console.log('수정 오니');
 	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	
-	ObjectId = new ObjectId(resss);
-	f2ldic.findAndModify({
-		query :{_id:ObjectId},
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+	f2ldic.findOneAndUpdate({
+		query :{_id:objectId},
 		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
 	},function(err,result){
 		if(err){
@@ -535,13 +548,12 @@ modifyf2l : function(req,res){
 },
 deletef2l : function(req,res){
 	console.log('수정 오니');
-	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
 	
 	ObjectId = new ObjectId(resss);
-	usersf.findAndModify({
-		query :{_id:ObjectId},
-		remove : true
+	f2ldic.findOneAndRemove({
+		query :{_id:ObjectId}
 	},function(err,result){
 		if(err){
 			throw err;
@@ -554,11 +566,10 @@ deletef2l : function(req,res){
 modifyori : function(req,res){
 	console.log('수정 오니');
 	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	
-	ObjectId = new ObjectId(resss);
-	userso.findAndModify({
-		query :{_id:ObjectId},
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+	oridic.findOneAndUpdate({
+		query :{_id:objectId},
 		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
 	},function(err,result){
 		if(err){
@@ -574,12 +585,10 @@ modifyori : function(req,res){
 deleteori : function(req,res){
 	console.log('수정 오니FFFF');
 	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	
-	ObjectId = new ObjectId(resss);
-	userso.findAndModify({
-		query :{_id:ObjectId},
-		remove : true
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+	oridic.findOneAndRemove({
+		query :{_id:ObjectId}
 	},function(err,result){
 		if(err){
 			throw err;
@@ -592,10 +601,9 @@ deleteori : function(req,res){
 modifyper : function(req,res){
 	console.log('수정 오니');
 	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
-	
-	ObjectId = new ObjectId(resss);
-	usersp.findAndModify({
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
+	perdic.findOneAndUpdate({
 		query :{_id:ObjectId},
 		update : {$set:{moves:req.body.moves,comment:req.body.comment}}
 	},function(err,result){
@@ -611,11 +619,11 @@ modifyper : function(req,res){
 },
 deleteper : function(req,res){
 	console.log('수정 오니');
-	var resss = new Buffer(req.body.id,'hex')
-	var ObjectId =  require('mongolian').ObjectId
+	var ObjectId = require('mongoose').Types.ObjectId
+	objectId = new ObjectId(req.body.id);
 	
 	ObjectId = new ObjectId(resss);
-	usersp.findAndModify({
+	perdic.findOneAndRemove({
 		query :{_id:ObjectId},
 		remove : true
 	},function(err,result){
