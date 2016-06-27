@@ -11,17 +11,23 @@ var color;
 var fmarker;
 var marker;
 var remove;
-
+var params;
 /*function setid(id){
 	this.id = id;
 	
 }*/
-/*$(document).ready(function(){
-if(this.id!=="searchlecture"){
-	console.log(this.id);
-	$('#searchlecture').trigger('click');
-}	
-})*/
+function getUrlParams() {
+    var params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+    return params;
+} 
+$(document).ready(function(){
+params = getUrlParams();
+console.log(params.id)
+if(prams.id){
+	$('#searchlecture').trigger('click')
+}
+})
 
 $("#setblackImage").click(function(){
 	console.log('셋 블랙이미지')
@@ -514,13 +520,16 @@ $(document).on('click','#showlecturelist',function(){
 	$(document).on('click','#searchlecture',function(){
 		
 
-		//if(this.id==="searchlecture"){
+		
 		var butid = $(event.target).val();	
 		//}
 		//else{
 			//var butid = this.id;
 			//console.log(butid)
 		//}
+		if(params.id!==""){
+			butid = params.id
+		}
 		
 		$.ajax({
 			
