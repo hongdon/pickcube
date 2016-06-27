@@ -58,7 +58,7 @@ $(document).ready(function(){
 })
 
 $(document).on('click','a',function(){
-	//var vaule = $(event.target).attr('id');
+	var vaule = $(event.target).attr('id');
 
 //console.log(id)
 location.href='/lecture/?id='+vaule	
