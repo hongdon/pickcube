@@ -30,8 +30,8 @@ var daoprofile = module.exports = {
 			newData.brand = req.body.title
 			newData.name = req.body.name
 			newData.cc = req.body.cc
-			newData.rotatefeeling = req.body.feeling
-			newData.procie = req.body.price
+			newData.rotatefeeling = req.body.feel
+			newData.price = req.body.price
 			newData.goodorbad = req.body.goodorbad
 			newData.nickname = req.session.nickname
 		newData.save(function(err,result){
