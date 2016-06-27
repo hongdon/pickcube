@@ -511,6 +511,8 @@ $(document).on('click','#showlecturelist',function(){
 	
 	
 	$(document).on('click','#searchlecture',function(){
+		console.log(this.id);
+
 		if(this.id===""){
 		var butid = $(event.target).val();	
 		}
