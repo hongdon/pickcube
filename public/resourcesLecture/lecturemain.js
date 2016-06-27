@@ -17,7 +17,7 @@ var params;
 	
 }*/
 function getUrlParams() {
-	$('#showlecturelist').trigger('click');
+	$('#showlecturelist').triggerHandler('click');
 	var params = {};
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
     return params;
@@ -28,7 +28,7 @@ params = getUrlParams();
 console.log(params.id)
 if(params.id){
 	
-	$('#searchlecture').trigger('click')
+	$('#searchlecture').triggerHandler('click')
 }
 })
 
