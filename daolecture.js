@@ -352,7 +352,7 @@ var totalpage;
 				}
 				
 			}
-			res.send({result : cursor});
+			res.send(cursor);
 		}
 	})
 	
