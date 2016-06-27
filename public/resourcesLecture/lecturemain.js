@@ -17,7 +17,7 @@ var params;
 	
 }*/
 function getUrlParams() {
-	$('#showlecturelist').triggerHandler('click');
+	$('#showlecturelist').trigger('click');
 	var params = {};
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
     return params;
