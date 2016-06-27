@@ -19,6 +19,7 @@ var dataSchema = new Schema({
 	price : String,
 	goodorbad : String,
 	nickname : String,
+	imageaddr : String,
 	date : Date
 })
 
@@ -34,6 +35,7 @@ var daoprofile = module.exports = {
 			newData.price = req.body.price
 			newData.goodorbad = req.body.goodorbad
 			newData.nickname = req.session.nickname
+			newData.imageaddr = req.body.image
 		newData.save(function(err,result){
 			if(err){
 				throw err;

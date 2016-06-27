@@ -6,6 +6,7 @@ if($('#brand').val()!==""){
 				if($('#price').val()!==""){
 					if($('#goodorbad').val()!==""){
 						
+						$('#image').val($('#imageaddr').attr('src'))
 					}else{
 						alert('모든 칸을 다 입력해 주십시오')
 						return false;
