@@ -420,7 +420,7 @@ findperbyId : function(data,req,res){
 viewsUpF : function(data,res){
 	var resss = new Buffer(data,'hex')
 	var ObjectId = require('mongoose').Types.ObjectId
-	objectId = new ObjectId(req.body.id);
+	objectId = new ObjectId(data);
 	
 	f2ldic.findOneAndUpdate({
 		query : {_id:ObjectId},
