@@ -11,7 +11,7 @@ block content
 				
 			div(class='row')
 				div(class='col-md-12')
-					form(role='form' action='/profilewrite' onsubmit='return check(this)')
+					form(role='form' action='/profilewrite' method='POST' onsubmit='return check(this)')
 						div(class='form-group')
 						p 브랜드
 							input(class="form-control" id="brand" name = 'brand' placeholder="brand" type="text")
