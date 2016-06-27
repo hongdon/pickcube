@@ -7,16 +7,24 @@ block content
 			div(class='row')
 				div(class='col-md-12')
 					ul(class='media')
+						each haha in result
+							li(class='media')
+								a(class='pull-left' herf='#')img(class="media-object" src='#{haha.imageaddr}' height="64" width="64")
+								div(class='media-body')
+									h4(class='media-heading') #{haha.brand}
+								<p> #{haha.name}
+					
+					
 					//img(id='imageaddr' src='#{imageaddr}')
 					//p #{imageaddr}
-						-for(var i=0;i<#{result}.length;i++){
+					//	-for(var i=0;i<#{result}.length;i++){
 						
-						li(class='media')
-								
-								a(class='pull-left' herf='#')img(class="media-object" src='#{result[i].imageaddr}' height="64" width="64")
-								div(class='media-body')
-									h4(class='media-heading') #{result[i].brand}
-								<p> #{result[i].name}
+					//	li(class='media')
+					//			
+					//			a(class='pull-left' herf='#')img(class="media-object" src='#{result[i].imageaddr}' height="64" width="64")
+					//			div(class='media-body')
+					//				h4(class='media-heading') #{result[i].brand}
+					//			<p> #{result[i].name}
 								
 						}
 						//each val, i in result
