@@ -9,9 +9,26 @@ block content
 					ul(class='media')
 					//img(id='imageaddr' src='#{imageaddr}')
 					//p #{imageaddr}
-						each val in result
-							li(class='media')
-								a(class='pull-left' herf='#')img(class="media-object" src='#{val.imageaddr}')
+						-for(var i=0;i<#{result}.length;i++){
+						
+						li(class='media')
+								
+								a(class='pull-left' herf='#')img(class="media-object" src='#{result[i].imageaddr}' height="64" width="64")
 								div(class='media-body')
-									h4(class='media-heading') #{val.brand}
-									<p> #{val.name}
+									h4(class='media-heading') #{result[i].brand}
+								<p> #{result[i].name}
+								
+						}
+						//each val, i in result
+							//li(class='media')
+							//	if(i==='imageaddr'){
+							//	a(class='pull-left' herf='#')img(class="media-object" src='#{val}' height="64" width="64")
+							//	}
+							//	if(i==='brand'){
+							//	div(class='media-body')
+							//		h4(class='media-heading') #{val.brand}
+							//	}
+							//	if(i==='name'){
+							//	<p> #{val.name}
+							//	}
+									
