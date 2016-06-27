@@ -300,7 +300,9 @@ exports.profilewrite=function(req,res){
 
 }
 exports.profilelist=function(req,res){
-	daoprofile.profilelist(req,res).on('finishsearching',function(err,result){
+	res.render('profilelist',{session : req.session,result:result});
+
+	/*	daoprofile.profilelist(req,res).on('finishsearching',function(err,result){
 		res.render('profilelist',{session : req.session,result:result});
-	})
+	})*/
 }
