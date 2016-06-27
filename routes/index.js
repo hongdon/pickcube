@@ -287,3 +287,6 @@ exports.findsearch=function(req,res){
 exports.cubedic=function(req,res){
 	res.render('cubeprofile',{session:req.session})
 }
+exports.cubeprofilewriteform=function(req,res){
+	res.render('cubeprofilewriteform',{session:req.session})
+}
