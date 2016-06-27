@@ -333,7 +333,7 @@ var daoCFOP = module.exports={
 			var resss = new Buffer(data,'hex')
 			
 			var ObjectId = require('mongoose').Types.ObjectId
-			objectId = new ObjectId(req.body.id);
+			objectId = new ObjectId(data);
 		
 		
 			console.log(objectId)
@@ -365,7 +365,7 @@ findOribyId : function(data,req,res){
 	var resss = new Buffer(data,'hex')
 	
 	var ObjectId = require('mongoose').Types.ObjectId
-	objectId = new ObjectId(req.body.id);
+	objectId = new ObjectId(data);
 
 
 	console.log(objectId)
@@ -395,7 +395,7 @@ findperbyId : function(data,req,res){
 	var resss = new Buffer(data,'hex')
 	
 	var ObjectId = require('mongoose').Types.ObjectId
-	objectId = new ObjectId(req.body.id);
+	objectId = new ObjectId(data);
 
 
 	console.log(ObjectId)
