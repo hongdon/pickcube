@@ -10,7 +10,11 @@ var express = require('express')
   , path = require('path')
    ,cookieParser = require('cookie-parser')
   ,session = require('express-session'),
+ /* flash = require('connect-flash'),
+  passport = require('passport'),
+  async = require('async'),*/
   sessionvar;
+
   /*,redis = require('redis')
   ,redisStore = require('connect-redis')(session)
   ,client = redis.createClient();*/
@@ -45,9 +49,20 @@ app.use(session({secret: '@#@$MYSIGN#@$#$',
 		  }
 	 }));
 
-
+/*passport.serializerUser(function(user,done){
+	done(null,user.id);
+});
+passport.deserializeUser(function(id,done){
+	
+})*/
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.bodyParser());
+/*app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+*/
+
 /*app.use('/',function(req,res){
 	output={};
 	output.cookies = req.cookies;
@@ -125,8 +140,9 @@ app.post('/deletelecture',routes.deletelecture);
 
 app.post('/writereply',routes.writereply);
 app.post('/showallreply',routes.showallreply);
+app.post('/findsearch',routes.findsearch)
+
+app.get('/cubedic',routes.cubedic);
 http.createServer(app).listen(app.get('port'), function(){
-  	   console.log('Express server listening on port ' + app.get('port'));
-
-
+	  console.log('Express server listening on port ' + app.get('port'));
 });

@@ -279,3 +279,11 @@ exports.writereply=function(req,res){
 exports.showallreply=function(req,res){
 	daolecture.showallreply(req,res);
 }
+exports.findsearch=function(req,res){
+	daolecture.findsearch(req,res);
+}
+
+
+exports.cubedic=function(req,res){
+	res.render('cubeprofile',{session:req.session})
+}
