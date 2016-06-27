@@ -17,19 +17,21 @@ var params;
 	
 }*/
 function getUrlParams() {
-    var params = {};
+	$('#showlecturelist').trigger('click');
+	var params = {};
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
     return params;
 } 
 $(document).ready(function(){
 params = getUrlParams();
-$('#showlecturelist').trigger('click');
 
-})
+console.log(params.id)
 if(params.id){
 	
 	$('#searchlecture').trigger('click')
 }
+})
+
 $("#setblackImage").click(function(){
 	console.log('셋 블랙이미지')
 	// 표식 제거
