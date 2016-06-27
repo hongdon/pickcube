@@ -49,7 +49,7 @@ var daoprofile = module.exports = {
 		},
 		profilelist : function(req,res){
 			profile.find({}).count(function(err,cursor){})
-			profile.find({}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){
+			profile.find({}).sort({date : -1}).limit(1).skip(req.body.page * 5).exec(function(err,cursor){
 				
 				if(err){
 					throw err;
