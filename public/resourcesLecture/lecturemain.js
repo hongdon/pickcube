@@ -24,7 +24,7 @@ function getUrlParams() {
 $(document).ready(function(){
 params = getUrlParams();
 console.log(params.id)
-if(prams.id){
+if(params.id){
 	$('#searchlecture').trigger('click')
 }
 })
