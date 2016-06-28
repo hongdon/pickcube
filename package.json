@@ -2,24 +2,29 @@
   "name": "Simulator",
   "version": "0.0.1",
   "private": true,
+ 
   "scripts": {
     "start": "node app.js"
+    
   },
   "dependencies": {
-    "async": "^2.0.0-rc.6",
-    "connect-flash": "^0.1.1",
     "connect-redis": "^3.0.2",
     "cookie-parser": "^1.4.3",
     "express": "3.2.6",
-    "express-session": "^1.13.0",
+    "express-session": "1.13.0",
     "jade": "*",
-    "mongolian": "*",
-    "mongoose": "*",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "mongoose":"*",
+    "mongolian":"*",
+    "async":"^1.5.2",
+    "connect-flash":"^0.1.1",
+    "passport":"^0.3.2",
+    "passport-loal":"^1.0.0",
+    "multiparty":"~4.1.2"
+    
+   
   },
-  "engines": {
-    "node": "4.4.4",
-    "npm": "2.15.1"
+  "engines":{
+	  "node":"4.4.4",
+	  "npm":"2.15.1"
   }
 }

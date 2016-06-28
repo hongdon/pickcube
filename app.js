@@ -76,6 +76,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var upload = require('./routes/upload.js');
+app.use('/upload', upload);
+
 /*app.get('/',function(req,res){
 	session = req.session;
 	console.log('session123123'+session)
@@ -138,6 +141,7 @@ app.post('/recommendlecture',routes.recommendlecture);
 app.post('/lecturemodify',routes.modifylecture);
 app.post('/deletelecture',routes.deletelecture);
 app.post('/searchlecturebynickname',routes.searchlecturebynickname);
+
 app.post('/writereply',routes.writereply);
 app.post('/showallreply',routes.showallreply);
 app.post('/findsearch',routes.findsearch)
@@ -150,6 +154,61 @@ app.get('/searchprofile/:brand?',routes.searchprofile)
 
 app.get('/monthlycube',routes.monthlycube);
 app.post('/findeverylecture',routes.findeverylecture);
+
+
+
+
+router.post('/imageupload', function(req, res, next) {
+ 
+      var form = new multiparty.Form();
+     
+      // get field name & value
+      form.on('field',function(name,value){
+           console.log('normal field / name = '+name+' , value = '+value);
+      });
+     
+      // file upload handling
+      form.on('part',function(part){
+           var filename;
+           var size;
+           if (part.filename) {
+                 filename = part.filename;
+                 size = part.byteCount;
+           }else{
+                 part.resume();
+          
+           }    
+ 
+           console.log("Write Streaming file :"+filename);
+           var writeStream = fs.createWriteStream('/images/'+filename);
+           writeStream.filename = filename;
+           part.pipe(writeStream);
+ 
+           part.on('data',function(chunk){
+                 console.log(filename+' read '+chunk.length + 'bytes');
+           });
+          
+           part.on('end',function(){
+                 console.log(filename+' Part read complete');
+                 writeStream.end();
+           });
+      });
+ 
+      // all uploads are completed
+      form.on('close',function(){
+           res.status(200).send('Upload complete');
+      });
+     
+      // track progress
+      form.on('progress',function(byteRead,byteExpected){
+           //console.log(' Reading total  '+byteRead+'/'+byteExpected);
+    	  res.send(true);
+      });
+     
+      form.parse(req);
+ 
+ 
+});
 http.createServer(app).listen(app.get('port'), function(){
 	  console.log('Express server listening on port ' + app.get('port'));
 });
