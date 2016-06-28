@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 					$('#field').append(
 							
-			'<div id="'+data[i]._id+'" style="float:left;border-top:1px solid;border-bottom:1px solid;border-left:1px solid;border-right:1px solid; background-color:#F15F5F;width:450px;height:400px">'
+			'<div id="'+data[i]._id+'"style="float:left;border-top:1px solid;border-bottom:1px solid;border-left:1px solid;border-right:1px solid; background-color:#F15F5F;width:450px;height:400px">'
 							+'<a id="'+data[i]._id+'">'+data[i].title+
 							'<p>'+data[i].nickname
 					)
@@ -60,14 +60,14 @@ $(document).ready(function(){
 	$('#field').load('lecture.jade')
 })
 
-$(document).on('click','a',function(){
-	var vaule = $(event.target).attr('div');
+$(document).on('click','div',function(){
+	var vaule = $(event.target).attr('id');
 
 //console.log(id)
 	if(vaule){
 		location.href='/lecture?id='+vaule	
-	}
 
+	}
 	
 	
 })
