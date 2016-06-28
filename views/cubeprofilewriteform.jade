@@ -6,14 +6,17 @@ block content
 	div(class='section')
 		div(class='container')
 			div(class='row')
-				div(class='col-md-6')
+				div(class='col-md-6' id='field')
 					img(id='imageaddr' src='/images/Qiyi/146341915701abc6acb0244972ba36063c224870da__mn314401__w885__h590__f167542__Ym201605.jpg' class="img-responsive")
 				
 			div(class='row')
 				div(class='col-md-12')
 					form(role='form' action='/profilewrite' method='POST' onsubmit='return check(this)')
+						
 						div(class='form-group')
-							input(type='hidden' id='image' name='image')
+						p 이미지
+							input(type='file' name='filename')
+							input(type='button' id='imgcommitbtn' value='이미지 올리기' class='btn btn-default')
 						div(class='form-group')
 						p 브랜드
 							input(class="form-control" id="brand" name = 'brand' placeholder="brand" type="text")
@@ -21,8 +24,11 @@ block content
 							p 이름
 							input(class="form-control" id="name" name='name' placeholder="name" type="text")
 						div(class='form-group')
-							p 코컷/역코컷
-							input(class="form-control" id="cc" name='cc' placeholder="코컷/역코컷" type="text")
+							p 코컷
+							input(class="form-control" id="cc" name='cc' placeholder="코컷" type="text")
+						div(class='form-group')
+							p 역코컷
+							input(class="form-control" id="ccc" name='ccc' placeholder="역코컷" type="text")
 						div(class='form-group')
 							p 회전감
 							input(class="form-control" id="feel" name='feel' placeholder="회전감" type="text")
