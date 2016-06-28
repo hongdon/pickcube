@@ -2,10 +2,8 @@
   "name": "Simulator",
   "version": "0.0.1",
   "private": true,
- 
   "scripts": {
     "start": "node app.js"
-    
   },
   "dependencies": {
     "connect-redis": "^3.0.2",
@@ -13,14 +11,13 @@
     "express": "3.2.6",
     "express-session": "1.13.0",
     "jade": "*",
-    "mongoose":"*",
-    "mongolian":"*",
-    "multiparty":"~4.1.2"
-    
-   
+    "mongolian": "*",
+    "mongoose": "*",
+    "multer": "^1.1.0",
+    "multiparty": "~4.1.2"
   },
-  "engines":{
-	  "node":"4.4.4",
-	  "npm":"2.15.1"
+  "engines": {
+    "node": "4.4.4",
+    "npm": "2.15.1"
   }
 }

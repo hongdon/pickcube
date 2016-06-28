@@ -14,7 +14,7 @@ var express = require('express')
   passport = require('passport'),
   async = require('async'),*/
   sessionvar;
-
+var multer  = require('multer');
   /*,redis = require('redis')
   ,redisStore = require('connect-redis')(session)
   ,client = redis.createClient();*/
@@ -29,7 +29,7 @@ app.set('view engine', 'jade');
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
-
+app.use(multer());
 app.use(express.methodOverride());
 app.use(cookieParser());
 app.use(session({secret: '@#@$MYSIGN#@$#$',
@@ -57,6 +57,7 @@ passport.deserializeUser(function(id,done){
 })*/
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.bodyParser());
+
 /*app.use(flash());
 
 app.use(passport.initialize());
@@ -76,8 +77,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var upload = require('multiparty');
-app.use(upload);
 
 /*app.get('/',function(req,res){
 	session = req.session;
