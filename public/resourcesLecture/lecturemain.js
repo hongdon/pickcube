@@ -1220,4 +1220,7 @@ $(document).on('click','#inputandfindbutt',function(){
 								
 							}
 						})		
+			}
+		}
+		})
 })
