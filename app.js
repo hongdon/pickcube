@@ -137,7 +137,7 @@ app.post('/searchlecture',routes.getonelecture)
 app.post('/recommendlecture',routes.recommendlecture);
 app.post('/lecturemodify',routes.modifylecture);
 app.post('/deletelecture',routes.deletelecture);
-
+app.post('/searchlecturebynickname',routes.searchlecturebynickname);
 app.post('/writereply',routes.writereply);
 app.post('/showallreply',routes.showallreply);
 app.post('/findsearch',routes.findsearch)

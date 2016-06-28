@@ -356,6 +356,24 @@ var totalpage;
 		}
 	})
 	
+},
+searchlecturebynickname : function(req,res){
+	lecture.findOne({"nickname":req.body.nickname},function(err,result){
+		if(err){
+			throw err;
+		}
+		if(result){
+			daolecture.viewsUp(objectId,res);
+				
+			console.log('RESULTTTTTTTTTTTTTTTTTT')
+			console.log(result);
+			console.log(result.cubeobj);
+			/*evt.emit('findf2lbyId',err,result);*/
+			result._id =result._id.toString().valueOf() 
+			res.send({result : result,session:req.session});
+		}
+	})
+	
 }
 
 /*,

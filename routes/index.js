@@ -272,6 +272,9 @@ exports.deletelecture=function(req,res){
 exports.recommendlecture=function(req,res){
 	daolecture.recommendlecture(req, res);
 }
+exports.searchlecturebynickname=function(req,res){
+	daolecture.searchlecturebynickname(req,res);
+}
 
 
 exports.writereply=function(req,res){
