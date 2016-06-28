@@ -83,7 +83,7 @@ if ('development' == app.get('env')) {
 }
 
 var multer = require('multer');
-app.post('/simpleupload', multer({ dest: '/cubeimages'}).single('myfile'), function(req,res){
+app.post('/simpleupload', multer({ dest: '/tmp/upload/'}).single('myfile'), function(req,res){
       console.log(req.body); //form fields
       console.log(req.file); //form files
       if(req.file){
