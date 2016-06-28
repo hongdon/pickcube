@@ -9,7 +9,7 @@ $(document).on('click','#imgupload',function(){
 		success:function(data){
 			
 			console.log('오냐;')
-			console.log(data.result1)
+			console.log(data)
 			/*$('#lecturefield').empty()
 			$('#lecturefield').append(
 						'<p>성공적으로 글이 삭제되었습니다.</p>'		
