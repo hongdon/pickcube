@@ -61,10 +61,13 @@ $(document).ready(function(){
 })
 
 $(document).on('click','a',function(){
-	var vaule = $(event.target).attr('id');
+	var vaule = $(event.target).attr('div');
 
 //console.log(id)
-location.href='/lecture?id='+vaule	
+	if(vaule){
+		location.href='/lecture?id='+vaule	
+	}
+
 	
 	
 })
