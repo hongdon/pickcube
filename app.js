@@ -76,8 +76,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var upload = require('./routes/upload.js');
-app.use('/upload', upload);
+var upload = require('multiparty');
+app.use(upload);
 
 /*app.get('/',function(req,res){
 	session = req.session;
