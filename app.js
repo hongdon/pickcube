@@ -84,10 +84,11 @@ if ('development' == app.get('env')) {
 
 var multer = require('multer');
 app.post('/simpleupload', multer({ dest: '/tmp/upload/'}).single('myfile'), function(req,res){
+	//2단으로 디렉토리 지정해야 되더라 1단으로하면 안됨 ㅇㅇ
       console.log(req.body); //form fields
       console.log(req.file); //form files
       if(req.file){
-    	  res.send(true);
+    	  res.send({result : true, result1 : req.file});
       }
       res.status(204).end();
 });
