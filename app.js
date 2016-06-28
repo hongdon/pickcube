@@ -32,7 +32,7 @@ app.set('view engine', 'jade');
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(multer());
+
 app.use(express.methodOverride());
 app.use(cookieParser());
 app.use(session({secret: '@#@$MYSIGN#@$#$',
