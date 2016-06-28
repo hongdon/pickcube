@@ -19,8 +19,8 @@ var express = require('express')
   ,redisStore = require('connect-redis')(session)
   ,client = redis.createClient();*/
 var app = express();
-var router = express.Router();
-var multiparty = require('multiparty');
+/*var router = express.Router();
+var multiparty = require('multiparty');*/
 
 //var router = express.Router();
 //var MemStore = express.session.MemoryStore;
@@ -67,8 +67,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 */
 
-var upload = require('./routes/upload.js');
-app.use('/upload', upload);
+/*var upload = require('./routes/upload.js');
+app.use('/upload', upload);*/
 /*app.use('/',function(req,res){
 	output={};
 	output.cookies = req.cookies;
@@ -82,6 +82,15 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var multer = require('multer');
+app.post('/simpleupload', multer({ dest: '/images'}).single('myfile'), function(req,res){
+      console.log(req.body); //form fields
+      console.log(req.file); //form files
+      if(req.file){
+    	  res.send(true);
+      }
+      res.status(204).end();
+});
 
 /*app.get('/',function(req,res){
 	session = req.session;

@@ -15,7 +15,7 @@
     "jade": "*",
     "mongoose":"*",
     "mongolian":"*",
-    "multiparty":"~4.1.2"
+    "multer":"~1.1.0"
     
    
   },
