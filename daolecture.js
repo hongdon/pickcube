@@ -358,19 +358,36 @@ var totalpage;
 	
 },
 searchlecturebynickname : function(req,res){
-	lecture.findOne({"nickname":req.body.nickname},function(err,result){
+	var totalpage;
+	lecture.find({nickname : req.body.nickname}).count(function(err,cursor){
+		totalpage=cursor;
+	})
+	lecture.find({}).sort({date : -1}).limit(5).skip(req.body.page * 5).exec(function(err,cursor){
+		
 		if(err){
 			throw err;
 		}
-		if(result){
-			//daolecture.viewsUp(objectId,res);
+		console.log(cursor);
+		if(cursor){
+			
+			
+			//console.log(typeof cursor[0]._id.toString().valueOf());
+			
+			for(var i=0;i<cursor.length;i++){
+				console.log(typeof cursor[i]._id)
+				console.log(cursor[i]._id)
+				console.log('아뒤아뒤')
+				if(cursor[i]._id){
+					cursor[i]._id = cursor[i]._id.toString().valueOf()
+				}
 				
-			//console.log('RESULTTTTTTTTTTTTTTTTTT')
-			//console.log(result);
-			//console.log(result.cubeobj);
-			/*evt.emit('findf2lbyId',err,result);*/
-			result._id =result._id.toString().valueOf() 
-			res.send({result : result,session:req.session});
+				/*if(cursor[i]===undefined){
+					res.send(false);
+					break;
+				}*/
+				
+			}
+			res.send({result : cursor, totpagenum : totalpage});
 		}
 	})
 	
