@@ -98,6 +98,7 @@ app.post('/simpleupload', multer({ dest: '/tmp/upload/'}).single('myfile'), func
 	console.log('session123123'+session)
 	res.json(session)
 })*/
+app.get('/whosmade',routes.whosmade)
 app.get('/', routes.index);
 app.get('/simulator',routes.simulator);
 app.get('/lecture',routes.lecture)
