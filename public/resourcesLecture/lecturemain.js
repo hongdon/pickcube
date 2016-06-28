@@ -1065,7 +1065,7 @@ $(document).on('click','#deletelecture',function(){
 $(document).on('click','#inputandfindbutt',function(){
 	var inputednickname = $('#inputandfind').val();
 	
-	if(inputednicname){
+	if(inputednickname){
 		$.ajax({
 			
 			type:"POST",
