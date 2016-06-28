@@ -14,11 +14,14 @@ var express = require('express')
   passport = require('passport'),
   async = require('async'),*/
   sessionvar;
-var multer  = require('multer');
+//var multer  = require('multer');
   /*,redis = require('redis')
   ,redisStore = require('connect-redis')(session)
   ,client = redis.createClient();*/
 var app = express();
+var router = express.Router();
+var multiparty = require('multiparty');
+
 //var router = express.Router();
 //var MemStore = express.session.MemoryStore;
 // all environments
@@ -64,6 +67,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 */
 
+var upload = require('./routes/upload.js');
+app.use('/upload', upload);
 /*app.use('/',function(req,res){
 	output={};
 	output.cookies = req.cookies;
@@ -157,7 +162,7 @@ app.post('/findeverylecture',routes.findeverylecture);
 
 
 
-router.post('/imageupload', function(req, res, next) {
+app.post('/imageupload', function(req, res, next) {
  
       var form = new multiparty.Form();
      
