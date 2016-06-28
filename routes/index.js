@@ -1,12 +1,327 @@
-﻿extends layout
+﻿
+/*
+ * GET home page.
+ */
 
-block content
-	h1 1. 로그인을 하시면 F2l,OLL,PLL 을 직접 큐브에 색을 입힌 후 해당 케이스를 검색할 수 있는 기능을 제공하고 있습니다. 만약 찾는 케이스가 없다면 직접 짧은 코멘트와 함께 입력 가능합니다.
-	h2 2. Simulator 는 저장기능이 없는 단순 시뮬레이터입니다. 버튼으로 큐브를 움직이실 수도 있고, 입력하는 곳에 RURU와 같이 직접 입력하셔서 큐브를 움직일 수 있습니다.
-	h2 3. Cube.. 는 큐브에 대한 평가를 위한 곳인데 추후에 곧 완성하겠습니다. (RUD 다 안됨. 클릭하셔도 되는게 없습니다 -_-;;)
-	h2 4. lecture 는 기존에 큐브에 관한 글을 쓸 떄 하나하나 이미지를 따와야 하지만 여기서는 [입력하시고 싶은 말]RURU를 하시면 자동으로 RURU만 인식할 수 있게 됩니다.
-	h2 &nbsp;말로 설명이 어려워... 가셔서 직접 [안녕하세요]RURU를 입력해 보시면 되겠습니다 RURU@의 경우에 @를 초기화로 인식합니다. 
-	h2 5. 저장 당시의 큐브 다이어그램이 저장되어 조회시 그 다이어그램이 생성되므로, 저장할 때는 꼭 다이어그램을 확인해 주십시오.
-	h2 6. 月刊cube는 lecure에서 추천수를 많이 받은 순서대로 출력해주는 페이지입니다. 추천수가 높을수록 사각형이 커지며 색도 달라집니다. 0~10 11~20 21~30 30이상 이렇게 
-	h2 &nbsp;4단계로 구성해 놓았습니다. 해당 사각형을 클릭하면 해당 lecture의 글을 조회하여 띄워줍니다.
+var dao = require('../dao');
+var daoCFOP	= require('../daoCFOP');
+var daolecture = require('../daolecture');
+var daoprofile = require('../daoprofile');
+exports.index = function(req, res){
 	
+	console.log(req.session);
+	res.render('index', { tittle : 'Express',session:req.session});	
+};
+exports.simulator=function(req,res){
+	res.render('simulator',{session : req.session})
+}
+exports.lecture=function(req,res){
+	res.render('lecture',{session:req.session})
+}
+exports.wiki = function(req,res){
+	console.log(req.session);
+	
+	res.render('wiki',{title:'Express',session:req.session});
+	
+}
+exports.join = function(req,res){
+	//console.log(req.body);
+	//console.log('joinsession'+req.session)
+	var data ={nickname : req.body.nickname	,email: req.body.email,password:req.body.password}
+	//var resultquery=dao.joinformcheck(data);
+	
+	dao.joinformcheck(data).on('joinfinish',function(err,result){
+		console.log('join 콜백')
+		if(err){
+			console.log('joinfinisherror'+err)
+			
+		}else if(result===true){
+			var sess = req.session
+			sess.email = req.body.email;
+			sess.logined = true;
+			sess.nickname =req.body.nickname;
+			console.log(sess);
+			res.render('join-success',{session:sess})
+			
+		}else{
+			req.session.logined= false;
+			//res.send('<script>alert("회원가입 실패")</script>')
+			res.render('join-fail',{session:req.session})
+		}
+	})
+}
+exports.joinform=function(req,res){
+	res.render('join-form',{title:'Express',session:req.session});
+	
+}
+exports.whosmade=function(req,res){
+	res.render('whosmade',{session:req.session})
+}
+exports.checkid=function(req,res){
+	dao.hasEmail(req.body,res);
+} 
+exports.checknickname=function(req,res){
+	dao.hasNickname(req.body,res);
+}
+exports.loginform = function(req,res){
+
+	res.render('login-form',{title:'Express',session:req.session});
+	
+	
+}
+exports.login= function(req,res){
+	var data ={email : req.body.email,password:req.body.password};
+	
+	var resultquery=dao.loginformcheck(data);
+	resultquery.on('logincomplete',function(err,result){
+		if(result){
+			var sess = req.session
+			sess.email = req.body.email;
+			sess.logined = true;
+			sess.nickname =result.nickname;
+			console.log(sess);
+			res.render('join-success',{session:sess})
+		}else{
+			req.session.logined= false;
+			//res.send('<script>alert("회원가입 실패")</script>')
+			res.render('join-fail',{session:req.session})
+		}
+	})
+}
+exports.info=function(req,res){
+	var data = {email:req.session.email};
+	var resultquery=dao.getinfo(data);
+	resultquery.on('getinfo',function(err,result){
+		console.log(result)
+		if(result){
+			res.render('information',{email : result.email,nickname:result.nickname,password : result.password,session:req.session});
+
+		}
+		else{
+			
+		}
+	});
+}
+exports.modifyinfo=function(req,res){
+	console.log(req.body);
+	console.log('joinsession'+req.session)
+	var data ={target : req.session.email, nickname : req.body.nickname	,email: req.body.email,password:req.body.password}
+	var resultquery = dao.modifyinfo(data);
+	resultquery.on('finishmodify',function(err,result){
+		if(result){
+			req.session.email = data.email;
+			req.session.nickname= data.nickname;
+			req.session.logined=true;
+			res.render('modify-success',{session:req.session});
+		}
+		else{
+			res.render('modify-fail',{session:req.session});
+		}
+	})
+	
+	
+}
+
+exports.deleteinfo=function(req,res){
+	var data={target : req.session.email};
+	var resultquery = dao.deleteinfo(data);
+	resultquery.on('finishdelete',function(err,result){
+		if(result){
+			req.session.email="";
+			req.session.nickname="";
+			req.session.logined=false;
+			res.render('modify-success',{session:req.session})
+		}
+		else{
+			res.render('modify-fail',{session:req.session})
+		}
+	})
+}
+exports.logout= function(req,res){
+	
+	//req.session.destroy();
+	req.session.logined=false;
+	req.session.email="";
+	req.session.nickname="";
+	res.render('index',{session:req.session})
+}
+//--------------------------------------------------------------------------------------------회원가입 끝
+//-----------------------------------------------------------공식 사전 시작---------------------------------------------------
+
+
+exports.dictionaryform=function(req,res){
+	res.render('dictionary-form',{session:req.session});
+}
+exports.dictionaryf2l=function(req,res){
+	res.render('dictionaryf2l',{session:req.session});
+}
+exports.searchf2l = function(req,res){
+	//console.log(req.body);
+	//daoCFOP.searchf2l(req.body,res);
+	console.log('PARAM123')
+	//console.log(req.query.id);
+	daoCFOP.findf2l(req.body,res);
+	//daoCFOP.searchf2l(req.body,req, res)
+	/*resultqueryf2l.on('insertf2l',function(err,result){
+		
+	})*/
+}
+exports.getonesearchf2l=function(req,res){
+	console.log('PARAM')
+	console.log(req.query.id);
+	//var obj = 'ObjectId("'+req.query.id+'")';
+	
+	
+	var queryresult = daoCFOP.findf2lbyId(req.body.id,req, res);
+/*queryresult.on('findf2lbyId',function(err,result){
+		if(result){
+			res.render('find-by-id-result',{session : req.session, cubeobj:result.cubeobj,moves:result.moves,comment:result.comment})
+		}
+	})*/
+}
+exports.dictionaryorientation=function(req,res){
+	res.render('dictionaryOrientation',{session:req.session})
+}
+exports.dictionarypermutation=function(req,res){
+	res.render('dictionaryPermutation',{session:req.session})
+}
+/*exports.writef2lform=function(req,res){
+	res.render('dictionary-f2l-write-form',{session:req.session})
+}*/
+exports.writef2l=function(req,res){
+	console.log(req.body);
+	daoCFOP.writef2l(req.body,req,res)
+}
+exports.recommendupf = function(req,res){
+	console.log(req.body.id);
+	daoCFOP.recommendUpf(req.body.id,res)
+}
+exports.modifyf2l=function(req,res){
+
+	daoCFOP.modifyf2l(req, res)
+}
+exports.deletef2l=function(req,res){
+
+	daoCFOP.deletef2l(req, res);
+}
+exports.f2lpage=function(req,res){
+	daoCFOP.pagef2l(req,res);
+}
+
+
+exports.searchOri=function(req,res){
+	daoCFOP.findOri(req.body, res);
+}
+exports.writeOri=function(req,res){
+	daoCFOP.writeOri(req.body, req, res)
+}
+exports.getonesearchOri=function(req,res){
+	daoCFOP.findOribyId(req.body.id,req, res)
+
+}
+exports.modifyori=function(req,res){
+
+	daoCFOP.modifyori(req, res)
+}
+exports.deleteori=function(req,res){
+
+	daoCFOP.deleteori(req, res);
+}
+exports.recommendupo = function(req,res){
+	console.log(req.body.id);
+	daoCFOP.recommendUpo(req.body.id,res)
+}
+
+
+exports.searchper=function(req,res){
+	daoCFOP.findper(req.body, res)
+}
+exports.writeper=function(req,res){
+	daoCFOP.writeper(req.body, req, res)
+}
+exports.getonesearchper=function(req,res){
+	daoCFOP.findperbyId(req.body.id,req, res)
+}
+exports.recommendupp = function(req,res){
+	console.log(req.body.id);
+	daoCFOP.recommendUpp(req.body.id, res)
+}
+exports.modifyper=function(req,res){
+
+	daoCFOP.modifyper(req, res)
+}
+exports.deleteper=function(req,res){
+
+	daoCFOP.deleteper(req, res);
+}
+
+//////////////////////////////////-------------------강의 CRUD 라우팅 시작----------------------------------
+
+exports.writelecture=function(req,res){
+	daolecture.writelecture(req, res);
+}
+exports.showlecturelist=function(req,res){
+	daolecture.showlecturelist(req, res);
+}
+exports.getonelecture=function(req,res){
+	daolecture.findlecturebyId(req, res);
+}
+exports.modifylecture=function(req,res){
+	daolecture.modifylecture(req, res);
+}
+exports.deletelecture=function(req,res){
+	daolecture.deletelecture(req, res);
+}
+exports.recommendlecture=function(req,res){
+	daolecture.recommendlecture(req, res);
+}
+exports.searchlecturebynickname=function(req,res){
+	daolecture.searchlecturebynickname(req,res);
+}
+
+
+exports.writereply=function(req,res){
+	daolecture.writereply(req,res);
+}
+exports.showallreply=function(req,res){
+	daolecture.showallreply(req,res);
+}
+exports.findsearch=function(req,res){
+	daolecture.findsearch(req,res);
+}
+
+
+exports.cubedic=function(req,res){
+	res.render('cubeprofile',{session:req.session})
+}
+exports.cubeprofilewriteform=function(req,res){
+	res.render('cubeprofilewriteform',{session:req.session})
+}
+exports.profilewrite=function(req,res){
+	daoprofile.profilewrite(req,res).on('finishwrite',function(err,result){
+		
+		//res.send('/profilelist')
+		res.redirect('/profilelist')
+	})
+
+}
+exports.profilelist=function(req,res){
+	//res.render('profilelist',{session:session});
+
+	daoprofile.profilelist(req,res).on('finishsearching',function(err,result){
+		//console.log('IMG'+result.imageaddr)
+		res.render('profilelist',{session : req.session,result : result});
+	})
+}
+exports.searchprofile=function(req,res){
+	daoprofile.searchprofile(req,res).on('findsearchprofile',function(err,result){
+		res.render('profile',{session:req.session,result:result})
+	})
+}
+
+exports.monthlycube=function(req,res){
+	res.render('monthlycube',{session:req.session})
+}
+exports.findeverylecture=function(req,res){
+	daolecture.findeverylecture(req,res);
+}
