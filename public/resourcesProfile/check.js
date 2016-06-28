@@ -1,3 +1,50 @@
+$(document).on('click','#imgupload',function(){
+	
+	$.ajax({
+		type:"post",
+		url:'/simpleupload',
+		dataType:'json',
+		
+		data:{},
+		success:function(data){
+			
+			console.log('오냐;')
+			
+			/*$('#lecturefield').empty()
+			$('#lecturefield').append(
+						'<p>성공적으로 글이 삭제되었습니다.</p>'		
+						+'<input type="button" id="showlecturelist" value="목록으로">')
+			*/
+		}
+	})
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function check() {
 if($('#brand').val()!==""){
 	if($('#name').val()!==""){
