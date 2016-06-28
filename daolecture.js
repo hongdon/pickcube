@@ -363,11 +363,11 @@ searchlecturebynickname : function(req,res){
 			throw err;
 		}
 		if(result){
-			daolecture.viewsUp(objectId,res);
+			//daolecture.viewsUp(objectId,res);
 				
-			console.log('RESULTTTTTTTTTTTTTTTTTT')
-			console.log(result);
-			console.log(result.cubeobj);
+			//console.log('RESULTTTTTTTTTTTTTTTTTT')
+			//console.log(result);
+			//console.log(result.cubeobj);
 			/*evt.emit('findf2lbyId',err,result);*/
 			result._id =result._id.toString().valueOf() 
 			res.send({result : result,session:req.session});
