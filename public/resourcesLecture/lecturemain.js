@@ -1064,71 +1064,79 @@ $(document).on('click','#deletelecture',function(){
 })
 $(document).on('click','#inputandfindbutt',function(){
 	var inputednickname = $('#inputandfind').val();
-	$.ajax({
-		
-		type:"POST",
-		url:'/searchlecturebynickname',
-		dataType:'json',
-		data:{nickname: inputednickname},		
-		success:function(data){
+	
+	if(inputednicname){
+		$.ajax({
 			
-			if(data){
-				var totalpage = Math.ceil((data.totpagenum)/5);
+			type:"POST",
+			url:'/searchlecturebynickname',
+			dataType:'json',
+			data:{nickname: inputednickname},		
+			success:function(data){
+				
+				if(data){
+					var totalpage = Math.ceil((data.totpagenum)/5);
 
-				$('#inputsctr').empty()
-				$('#lecturefield').empty()
-				//console.log(data)
-				//console.log(data.length)
-				for(var i=0;i<data.result.length;i++){
+					$('#inputsctr').empty()
+					$('#lecturefield').empty()
+					//console.log(data)
+					//console.log(data.length)
+					for(var i=0;i<data.result.length;i++){
 
-				
-				$('#lecturefield').append(
-						'<table>'+
-						'<tr>'
-						
-						//'<button id="searchf2l" class="btn btn-default" value="'+data[i]._id.toString().valueOf()+'">'+data[i].moves
-						//+'<button id="dorecommend" class="btn btn-default" value="'+data[i]._id.toString().valueOf()+'">추천'
-						//+'<h2><a id="'+data[i]._id.toString().valueOf()+'">'+data[i].title+'</h2>'
-						+'<button id="searchlecture" class="btn btn-default" value="'+data.result[i]._id.toString().valueOf()+'">'+data.result[i].title
-						+'&nbsp;&nbsp;&nbsp;&nbsp;'
-						+'</tr>'
-						+'<h> 조회수 :'+data.result[i].view+'</h>'
-						+'<h> 추천수 :'+data.result[i].recommend+'</h>'
-						+'<h> 작성자 :'+data.result[i].nickname+'</h>'
-						+'</table>'
-						
-				)
-				
-			}
-				
-				
-				
-				$('#lecturefield').append(
-						'<tr>'
-						
-												
-				)		
-				for(var i=0 ; i<totalpage;i++){
+					
 					$('#lecturefield').append(
-							'<td>'
-								+'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
-							+'</td>'
+							'<table>'+
+							'<tr>'
+							
+							//'<button id="searchf2l" class="btn btn-default" value="'+data[i]._id.toString().valueOf()+'">'+data[i].moves
+							//+'<button id="dorecommend" class="btn btn-default" value="'+data[i]._id.toString().valueOf()+'">추천'
+							//+'<h2><a id="'+data[i]._id.toString().valueOf()+'">'+data[i].title+'</h2>'
+							+'<button id="searchlecture" class="btn btn-default" value="'+data.result[i]._id.toString().valueOf()+'">'+data.result[i].title
+							+'&nbsp;&nbsp;&nbsp;&nbsp;'
+							+'</tr>'
+							+'<h> 조회수 :'+data.result[i].view+'</h>'
+							+'<h> 추천수 :'+data.result[i].recommend+'</h>'
+							+'<h> 작성자 :'+data.result[i].nickname+'</h>'
+							+'</table>'
+							
 					)
 					
 				}
-				$('#pagefield').append(
+					
+					
+					
+					$('#lecturefield').append(
+							'<tr>'
+							
+													
+					)		
+					for(var i=0 ; i<totalpage;i++){
+						$('#lecturefield').append(
+								'<td>'
+									+'<button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)
+								+'</td>'
+						)
 						
-						
-						+'</tr>'
-						
-				)
-				
-				
-				
+					}
+					$('#pagefield').append(
+							
+							
+							+'</tr>'
+							
+					)
+					
+					
+					
+				}
+				else{
+					$('#lecturefield').append('<p> 등록된 글이 없습니다! 왼쪽 글쓰기 버튼을 눌러 글을 써주세요!')
+				}
 			}
-			else{
-				$('#lecturefield').append('<p> 등록된 글이 없습니다! 왼쪽 글쓰기 버튼을 눌러 글을 써주세요!')
-			}
-		}
-	})
+		})
+	}else{
+		alert('입력후 검색해주세요!')
+	}
+	
+	
+
 })
