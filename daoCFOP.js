@@ -474,7 +474,7 @@ recommendUpf : function(data,res){
 	var ObjectId = require('mongoose').Types.ObjectId
 	objectId = new ObjectId(data);
 	
-	f2ldic.findAndModify(
+	f2ldic.findOneAndUpdate(
 		{_id:objectId},
 		{$inc : {recommend : 1}}
 		,function(err,result){
@@ -494,7 +494,7 @@ recommendUpo : function(data,res){
 	objectId = new ObjectId(data);
 	
 	
-	oridic.findAndMfindOneAndUpdateodify(
+	oridic.findOneAndUpdate(
 		{_id:objectId},
 		{$inc : {recommend : 1}}
 		,function(err,result){

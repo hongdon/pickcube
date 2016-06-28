@@ -158,7 +158,6 @@ function Dofunc(eventObj){
 
 $(function(){
 	$('#f2lsearch').click(function(){
-		console.log("여기 들어오는가?")
 		$.ajax({
 			
 			type:"POST",
@@ -426,7 +425,7 @@ $(document).on("click","#searchf2l",function(){
 								
 								)
 					}
-					for(var i=0;i<(result[0].length)+1;i++){
+					for(var i=0;i<(result[0].length);i++){
 						//moveController.Controller(result[0][i]);
 						parse.writeoperation(result[0][i]);
 						
