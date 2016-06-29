@@ -296,7 +296,7 @@ var daoCFOP = module.exports={
 				console.log(cursor);
 				totalpage = cursor;
 			})
-			perdic.find({'cubeobj' : data.cubeObj}).sort({view : -1}).limit(5).skip(data.page * 5).exec(function(err, cursor) {
+			perdic.find({cubeobjcode:cubeobjcode}).sort({view : -1}).limit(5).skip(data.page * 5).exec(function(err, cursor) {
 				if(err){
 					throw err;
 				}
