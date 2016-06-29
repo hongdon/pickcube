@@ -19,15 +19,35 @@ html
 		div(class='navbar navbar-default navbar-static-top')
 			div(class='container')
 				div(class='navbar-header')
-					button(type='button', class='navbar-toggle', data-toggle='collapse', data-target='#navbar-ex-collapse')
-						span(class='sr-only')
-						span(class='icon-bar') 
-						span(class='icon-bar')
-						span(class='icon-bar')
-					//a(class='navbar-brand') 
-					//span PICK THE CUBE
+					ul(class='nav navbar-nav navbar-right')
+						li
+							a(href="/") home
+						li
+							a(href="/simulator") simulator
+						- if(!session.logined)
+							li
+								a(href='/join') signup
+							li
+								a(href='/login') login
+						- if(session.logined)
+							li
+								a(href='/logout') logout
+							li
+								a(href='/info') info
+							li
+								a(href='/lecture') lecture	
+							li
+								a(href='/monthlycube') 月刊 cube
+							li
+								a(href='/dictionaryform') dictionary
+							li
+								a(href='/profilelist') cubes..
+						li
+							a(href="/whosmade") who's made?
+					a(class='navbar-brand') 
+					span PICK THE CUBE
 				div(class='collapse navbar-collapse', id='navbar-ex-collapse')
-					ul(class='nav navbar-nav navbar-middle')
+					ul(class='nav navbar-nav navbar-right')
 						li
 							a(href="/") home
 						li
