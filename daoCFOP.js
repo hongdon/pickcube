@@ -291,7 +291,7 @@ var daoCFOP = module.exports={
 							
 				}
 			}
-			perdic.find({'cubeobj':data.cubeObj}).count(function(err,cursor){
+			perdic.find({cubeobjcode:cubeobjcode}).count(function(err,cursor){
 				console.log('asfsafsdfsadfsdgsadg');
 				console.log(cursor);
 				totalpage = cursor;
