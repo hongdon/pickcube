@@ -194,7 +194,7 @@ $(function(){
 				$('#queryresultorifield').append(
 						'<tr>'
 						+'<td>'
-						+'<input type="button" class="btn btn-default" id="replacewritef2lform" value="새로 공식을 발견 하셨다구요? 어서 적어주세요!">'
+						+'<input type="button" class="btn btn-default" id="writeOricompleteform" value="새로 공식을 발견 하셨다구요? 어서 적어주세요!">'
 						
 						+'</td>'
 						+'</tr>'
