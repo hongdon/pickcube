@@ -1,4 +1,4 @@
-var makeCubeObj = new makeCube(3);
+﻿var makeCubeObj = new makeCube(3);
 var view = new setView(makeCubeObj.full,3);
 makeCubeObj.facesSetting("lfrbud");
 makeCubeObj.setEmpty(makeCubeObj.full);
@@ -222,7 +222,7 @@ function Dofunc(eventObj){
 			
 }
 $('#base').click(function(){
-	var prime = ["R","L","F","U","D","B","M","S","x","y","z"]
+	var prime = ["R","L","F","U","D","B","M","S","E","x","y","z"]
 	$('#buttonfield').empty();
 	for(var i=0;i<prime.length;i++){
 	$('#buttonfield').append(
@@ -232,7 +232,7 @@ $('#base').click(function(){
 	}			
 })
 $('#counter').click(function(){
-	var prime = ["R'","L'","F'","U'","D'","B'","M'","S'","x'","y'","z'"]
+	var prime = ["R'","L'","F'","U'","D'","B'","M'","S'","E'","x'","y'","z'"]
 	$('#buttonfield').empty();
 	for(var i=0;i<prime.length;i++){
 	$('#buttonfield').append(
@@ -242,7 +242,7 @@ $('#counter').click(function(){
 	}			
 })
 $('#double').click(function(){
-	var prime = ["R2","L2","F2","U2","D2","B2","M2","S2","x2","y2","z2"]
+	var prime = ["R2","L2","F2","U2","D2","B2","M2","S2","E2","x2","y2","z2"]
 	$('#buttonfield').empty();
 	for(var i=0;i<prime.length;i++){
 	$('#buttonfield').append(
@@ -252,7 +252,7 @@ $('#double').click(function(){
 	}			
 })
 $('#counterdouble').click(function(){
-	var prime = ["R'2","L'2","F'2","F'2","U'2","D'2","B'2","M'2","S'2","x'2","y'2","z'2"]
+	var prime = ["R'2","L'2","F'2","F'2","U'2","D'2","B'2","M'2","S'2","E'2","x'2","y'2","z'2"]
 	$('#buttonfield').empty();
 	for(var i=0;i<prime.length;i++){
 	$('#buttonfield').append(
