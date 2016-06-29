@@ -1,4 +1,4 @@
-var makeCubeObj = new makeCube(3);
+﻿var makeCubeObj = new makeCube(3);
 
 makeCubeObj.facesSetting("lfrbud");
 makeCubeObj.setEmpty(makeCubeObj.full);
@@ -228,7 +228,7 @@ $(function(){
 					$('#queryresultorifield').empty()
 					$('#queryresultorifield').append('<tr>'+
 							'<td id="">'+
-							'<input type="button" class="btn btn-default" id="replacewritef2lform" value="검색 결과가 없으십니까? 직접 작성은 어떨까요?"> '
+							'<input type="button" class="btn btn-default" id="replacewriteOriform" value="검색 결과가 없으십니까? 직접 작성은 어떨까요?"> '
 							
 							+'</td>'
 							+'</tr>'
@@ -324,7 +324,7 @@ $(document).on('click','#pagenums',function(){
 					$('#queryresultorifield').empty()
 					$('#queryresultorifield').append('<tr>'+
 							'<td id="">'+
-							'<input type="button" class="btn btn-default" id="replacewritef2lform" value="검색 결과가 없으십니까? 직접 작성은 어떨까요?"> '
+							'<input type="button" class="btn btn-default" id="replacewriteOriform" value="검색 결과가 없으십니까? 직접 작성은 어떨까요?"> '
 							
 							+'</td>'
 							+'</tr>'
