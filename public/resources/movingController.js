@@ -1,4 +1,4 @@
-function movingController(moveCubeObj){
+﻿function movingController(moveCubeObj){
 
 	this.movingCube = moveCubeObj;
 }
@@ -395,7 +395,7 @@ movingController.prototype.Controller = function(operation){
 		this.movingCube.axialclockwise(third);
 		this.movingCube.axialclockwise(second);
 		this.movingCube.selfclockwise(first);
-		this.movingCube.selfcounterclockwise(second);
+		this.movingCube.selfcounterclockwise(third);
 
 		
 		
@@ -409,7 +409,7 @@ movingController.prototype.Controller = function(operation){
 			this.movingCube.axialclockwise(third);
 			this.movingCube.axialclockwise(second);
 			this.movingCube.selfclockwise(first);
-			this.movingCube.selfcounterclockwise(second);
+			this.movingCube.selfcounterclockwise(third);
 		}
 	}
 	if(operation==="x'"){
