@@ -472,7 +472,9 @@ $(document).on("click","#operationbtn",function(){
 		parse.painterlast();
 		console.log($('#inputsctr').length)
 })
-$('#writelecture').click(function(){
+
+$(document).on('click','#writelecture',function(){
+	
 	
 	$('#lecturefield').empty()
 	$('#lecturefield').append(
