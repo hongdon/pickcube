@@ -299,15 +299,19 @@ $(document).on('click','#pagenums',function(){
 				$('#queryresultperfield').append(
 						'<tr>'
 						+'<td id="pagefield">'
-						+'<input type="button" class="btn btn-default" id="showfirstlist" value="첫페이지로">'
-						+'<input type="button" class="btn btn-default" id="showfrontlist" value="이전">'
 						
-				)		
+				)	
 				for(var i=0 ; i<totalpage;i++){
 					$('#pagefield').append(
 						'&nbsp;&nbsp;&nbsp;'+'<span><button class="btn btn-default" id="pagenums" value="'+(i)+'">'+(i+1)+'</span>'
 							
 					)
+					$('#pagefield').append(
+							
+							'</td>'
+								+'</tr>'
+								
+						)	
 					
 				}
 				$('#pagefield').append(
