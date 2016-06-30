@@ -83,7 +83,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var multer = require('multer');
+/*var multer = require('multer');
 app.post('/simpleupload', multer({ dest: '/tmp/upload/'}).single('myfile'), function(req,res){
 	//2단으로 디렉토리 지정해야 되더라 1단으로하면 안됨 ㅇㅇ
       console.log(req.body); //form fields
@@ -92,7 +92,7 @@ app.post('/simpleupload', multer({ dest: '/tmp/upload/'}).single('myfile'), func
     	  res.send({result : true, result1 : req.file});
       }
       res.status(204).end();
-});
+});*/
 
 /*app.get('/',function(req,res){
 	session = req.session;
