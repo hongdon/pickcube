@@ -173,57 +173,25 @@ app.post('/findeverylecture',routes.findeverylecture);
 
 
 
-app.post('/imageupload', function(req, res, next) {
- 
-      var form = new multiparty.Form();
-     
-      // get field name & value
-      form.on('field',function(name,value){
-           console.log('normal field / name = '+name+' , value = '+value);
-      });
-     
-      // file upload handling
-      form.on('part',function(part){
-           var filename;
-           var size;
-           if (part.filename) {
-                 filename = part.filename;
-                 size = part.byteCount;
-           }else{
-                 part.resume();
-          
-           }    
- 
-           console.log("Write Streaming file :"+filename);
-           var writeStream = fs.createWriteStream('/images/'+filename);
-           writeStream.filename = filename;
-           part.pipe(writeStream);
- 
-           part.on('data',function(chunk){
-                 console.log(filename+' read '+chunk.length + 'bytes');
-           });
-          
-           part.on('end',function(){
-                 console.log(filename+' Part read complete');
-                 writeStream.end();
-           });
-      });
- 
-      // all uploads are completed
-      form.on('close',function(){
-           res.status(200).send('Upload complete');
-      });
-     
-      // track progress
-      form.on('progress',function(byteRead,byteExpected){
-           //console.log(' Reading total  '+byteRead+'/'+byteExpected);
-    	  res.send(true);
-      });
-     
-      form.parse(req);
- 
- 
+app.post('/file-upload', function(req, res) {
+    // get the temporary location of the file
+    var tmp_path = req.files.thumbnail.path;
+    // set where the file should actually exists - in this case it is in the "images" directory
+
+    var target_path = './' + req.files.thumbnail.name;
+    // move the file from the temporary location to the intended location
+
+    fs.rename(tmp_path, target_path, function(err) {
+        if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+
+        fs.unlink(tmp_path, function() {
+            if (err) throw err;
+            res.send('File uploaded to: ' + target_path + ' - ' + req.files.thumbnail.size + ' bytes');
+        });
+    });
 });
+
 http.createServer(app).listen(app.get('port'), function(){
 	  console.log('Express server listening on port ' + app.get('port'));
 });
