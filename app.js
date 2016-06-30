@@ -19,6 +19,7 @@ var express = require('express')
   ,redisStore = require('connect-redis')(session)
   ,client = redis.createClient();*/
 var app = express();
+var fs = require('fs');
 /*var router = express.Router();
 var multiparty = require('multiparty');*/
 
